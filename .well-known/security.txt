@@ -1,0 +1,3 @@
+Contact: mailto:security@ldeluipy.es
+Preferred-Languages: es, en
+Canonical: https://ldeluipy.es/.well-known/security.txt

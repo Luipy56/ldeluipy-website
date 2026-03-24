@@ -1,0 +1,6 @@
+/* TEAM */
+Sitio: LdeLuipy — desarrollo web, documentación y demos.
+Hub: https://ldeluipy.es/
+
+/* GRACIAS */
+Diseño y código del hub en este dominio.

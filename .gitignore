@@ -1,0 +1,15 @@
+# Editor / OS
+.DS_Store
+Thumbs.db
+.cursor/
+
+# Backups de trabajo (regla del proyecto)
+*.bak
+*.bak.*
+*~
+
+# Logs temporales
+*.log
+
+# Variantes de backup
+*.bak2

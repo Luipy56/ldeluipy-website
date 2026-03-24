@@ -1,0 +1,269 @@
+{
+  "backgroundMode": "matrix",
+  "now": "Estoy cerrando circuitos en casa: mantener el hub y los servicios del dominio en orden, seguir iterando en lo que tengo abierto en GitHub —desde piezas web hasta el bloque de Minecraft y minijuegos— y convertir fricciones cotidianas en repos o notas cuando merece la pena fijarlas por escrito.",
+  "nowUpdated": "2026-03-22",
+  "siteUpdated": "2026-03-22",
+  "asciiBanner": "   ══ LdeLuipy ══\n   ██╗     ██████╗ ███████╗██╗     ██╗   ██╗██╗██████╗ ██╗   ██╗\n   ██║     ██╔══██╗██╔════╝██║     ██║   ██║██║██╔══██╗╚██╗ ██╔╝\n   ██║     ██║  ██║█████╗  ██║     ██║   ██║██║██████╔╝ ╚████╔╝\n   ██║     ██║  ██║██╔══╝  ██║     ██║   ██║██║██╔═══╝   ╚██╔╝\n   ███████╗██████╔╝███████╗███████╗╚██████╔╝██║██║        ██║\n   ╚══════╝╚═════╝ ╚══════╝╚══════╝ ╚═════╝ ╚═╝╚═╝        ╚═╝",
+  "missionTimeline": [
+    {
+      "date": "2026-03",
+      "title": "Hub sci-fi",
+      "text": "CRT, terminal ficticia, fondos alternativos y boot opcional."
+    },
+    {
+      "date": "2026-01",
+      "title": "Dominio estable",
+      "text": "Servicios (blog, note, check, stats, beer…) y PWA en la raíz."
+    }
+  ],
+  "systemStatus": {
+    "intro": "Estado lógico del taller (enlaces reales a herramientas del dominio).",
+    "lines": [
+      "Monitor: check.ldeluipy.es",
+      "Métricas: stats.ldeluipy.es",
+      "Notas rápidas: note.ldeluipy.es"
+    ]
+  },
+  "blogFeedUrl": "",
+  "blog": [
+    {
+      "title": "Visita el blog",
+      "url": "https://blog.ldeluipy.es/",
+      "date": ""
+    }
+  ],
+  "githubRepos": [
+    {
+      "name": "mc-bot",
+      "html_url": "https://github.com/Luipy56/mc-bot",
+      "description": null,
+      "stargazers_count": 0,
+      "language": "JavaScript",
+      "pushed_at": "2026-03-21T16:33:57Z"
+    },
+    {
+      "name": "BeerFinder",
+      "html_url": "https://github.com/Luipy56/BeerFinder",
+      "description": null,
+      "stargazers_count": 0,
+      "language": "TypeScript",
+      "pushed_at": "2026-03-21T13:37:20Z"
+    },
+    {
+      "name": "allvallminigames",
+      "html_url": "https://github.com/Luipy56/allvallminigames",
+      "description": null,
+      "stargazers_count": 0,
+      "language": "JavaScript",
+      "pushed_at": "2026-03-20T17:46:56Z"
+    },
+    {
+      "name": "laravel-ecommerce",
+      "html_url": "https://github.com/Luipy56/laravel-ecommerce",
+      "description": null,
+      "stargazers_count": 0,
+      "language": "JavaScript",
+      "pushed_at": "2026-03-18T02:12:44Z"
+    },
+    {
+      "name": "mc-texture-viewer",
+      "html_url": "https://github.com/Luipy56/mc-texture-viewer",
+      "description": null,
+      "stargazers_count": 0,
+      "language": "TypeScript",
+      "pushed_at": "2026-03-13T10:15:49Z"
+    },
+    {
+      "name": "portfolio-mc",
+      "html_url": "https://github.com/Luipy56/portfolio-mc",
+      "description": null,
+      "stargazers_count": 0,
+      "language": "TypeScript",
+      "pushed_at": "2026-03-11T01:01:05Z"
+    },
+    {
+      "name": "screen-mirror-vr",
+      "html_url": "https://github.com/Luipy56/screen-mirror-vr",
+      "description": null,
+      "stargazers_count": 0,
+      "language": "JavaScript",
+      "pushed_at": "2026-03-10T19:07:45Z"
+    },
+    {
+      "name": "betterclip",
+      "html_url": "https://github.com/Luipy56/betterclip",
+      "description": null,
+      "stargazers_count": 0,
+      "language": "Python",
+      "pushed_at": "2026-03-07T17:41:33Z"
+    },
+    {
+      "name": "blog",
+      "html_url": "https://github.com/Luipy56/blog",
+      "description": null,
+      "stargazers_count": 0,
+      "language": null,
+      "pushed_at": "2026-03-11T16:19:41Z"
+    },
+    {
+      "name": "service-stats-ui",
+      "html_url": "https://github.com/Luipy56/service-stats-ui",
+      "description": "Web UI for server system info and systemd service control",
+      "stargazers_count": 0,
+      "language": "JavaScript",
+      "pushed_at": "2026-02-28T12:51:28Z"
+    },
+    {
+      "name": "LdeLuipy",
+      "html_url": "https://github.com/Luipy56/LdeLuipy",
+      "description": null,
+      "stargazers_count": 0,
+      "language": "HTML",
+      "pushed_at": "2026-02-27T16:51:42Z"
+    },
+    {
+      "name": "vallminigames",
+      "html_url": "https://github.com/Luipy56/vallminigames",
+      "description": null,
+      "stargazers_count": 0,
+      "language": "JavaScript",
+      "pushed_at": "2026-02-27T16:52:33Z"
+    },
+    {
+      "name": "LuipyUtils",
+      "html_url": "https://github.com/Luipy56/LuipyUtils",
+      "description": null,
+      "stargazers_count": 0,
+      "language": "Shell",
+      "pushed_at": "2026-02-27T16:52:14Z"
+    },
+    {
+      "name": "LuipyCRP",
+      "html_url": "https://github.com/Luipy56/LuipyCRP",
+      "description": "Hangar de los Resource/texture packs creados por Luipy",
+      "stargazers_count": 0,
+      "language": "GLSL",
+      "pushed_at": "2025-11-23T14:57:00Z"
+    },
+    {
+      "name": "Fabric-Endalite-1.21",
+      "html_url": "https://github.com/Luipy56/Fabric-Endalite-1.21",
+      "description": null,
+      "stargazers_count": 0,
+      "language": "Java",
+      "pushed_at": "2025-03-27T21:07:18Z"
+    },
+    {
+      "name": "ProjectMC",
+      "html_url": "https://github.com/Luipy56/ProjectMC",
+      "description": null,
+      "stargazers_count": 0,
+      "language": "PHP",
+      "pushed_at": "2026-02-27T16:52:23Z"
+    },
+    {
+      "name": "ProyectoLujo",
+      "html_url": "https://github.com/Luipy56/ProyectoLujo",
+      "description": null,
+      "stargazers_count": 0,
+      "language": "PHP",
+      "pushed_at": "2024-05-23T17:06:07Z"
+    },
+    {
+      "name": "Luipy56",
+      "html_url": "https://github.com/Luipy56/Luipy56",
+      "description": "Config files for my GitHub profile.",
+      "stargazers_count": 0,
+      "language": null,
+      "pushed_at": "2024-01-11T05:46:41Z"
+    }
+  ],
+  "githubReposFetchedAt": "2026-03-22T16:51:13Z",
+  "githubCacheMaxAgeHours": 24,
+  "flagshipProjects": [
+    {
+      "title": "BeerFinder",
+      "blurb": "Stack tipo SPA + API: catálogo y panel enlazados al dominio beer.ldeluipy.es.",
+      "stack": [
+        "TypeScript",
+        "Django",
+        "Apache"
+      ],
+      "demoUrl": "https://beer.ldeluipy.es/",
+      "repoUrl": "https://github.com/Luipy56/BeerFinder"
+    },
+    {
+      "title": "mc-texture-viewer",
+      "blurb": "Visor de texturas con enfoque web; expuesto en mtv.ldeluipy.es.",
+      "stack": [
+        "TypeScript"
+      ],
+      "demoUrl": "https://mtv.ldeluipy.es/",
+      "repoUrl": "https://github.com/Luipy56/mc-texture-viewer"
+    },
+    {
+      "title": "service-stats-ui",
+      "blurb": "UI para ver info del sistema y servicios; complementa stats.ldeluipy.es.",
+      "stack": [
+        "JavaScript"
+      ],
+      "demoUrl": "https://stats.ldeluipy.es/",
+      "repoUrl": "https://github.com/Luipy56/service-stats-ui"
+    },
+    {
+      "title": "portfolio-mc",
+      "blurb": "Portfolio Minecraft enlazado desde portfolio.ldeluipy.es.",
+      "stack": [
+        "TypeScript"
+      ],
+      "demoUrl": "https://portfolio.ldeluipy.es/",
+      "repoUrl": "https://github.com/Luipy56/portfolio-mc"
+    }
+  ],
+  "siteChangelog": [
+    {
+      "date": "2026-03-22",
+      "text": "Plan sci-fi: CRT/vignette, aberración al cambiar tema, glitch al revelar, holocartas, fondos matrix|stars|grid, terminal ficticia, boot skipeable, atajos g/1-9/`, misión y estado desde hub.json, eggs neonflux/void/mono."
+    },
+    {
+      "date": "2026-03-22",
+      "text": "Proyectos destacados, changelog en hub.json; caché GitHub en JSON; página /uses; sitemap y JSON-LD."
+    },
+    {
+      "date": "2026-03-21",
+      "text": "Ajustes de hub, datos en hub.json y sección Ahora."
+    },
+    {
+      "date": "2026-03-13",
+      "text": "Iteración de estilos, PWA y atajos de teclado en la portada."
+    }
+  ],
+  "uses": {
+    "pageTitle": "Qué uso",
+    "intro": "Listado de hardware y software que uso de verdad en el taller (servidor y día a día).",
+    "sections": [
+      {
+        "title": "Hosting y servidor",
+        "items": [
+          "Ubuntu en VPS, Apache (vhosts por subdominio), Let's Encrypt",
+          "Servicios propios bajo *.ldeluipy.es (blog, note, check, stats, …)"
+        ]
+      },
+      {
+        "title": "Desarrollo",
+        "items": [
+          "Cursor / VS Code, git, terminal bash",
+          "TypeScript y JavaScript para front; Python, PHP, Java según el proyecto",
+          "Docker solo cuando el proyecto lo pide"
+        ]
+      },
+      {
+        "title": "Diseño del hub",
+        "items": [
+          "HTML/CSS estáticos, primordial.css compartido en /var/www/primordial.css",
+          "Temas con data-theme y PWA (manifest + service worker)"
+        ]
+      }
+    ]
+  }
+}

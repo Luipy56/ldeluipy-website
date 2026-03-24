@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<script>(function(){ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('reduce-motion'); var t = localStorage.getItem('checkTheme') || 'verde'; if (t === 'system') t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'oscuro' : 'verde'; document.documentElement.setAttribute('data-theme', t); })();</script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Hub de LdeLuipy: subdominios, proyectos, documentación, ecomunidad y repositorios.">
+	<meta name="theme-color" content="#0c100e">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://ldeluipy.es/">
+	<meta property="og:title" content="LdeLuipy">
+	<meta property="og:description" content="Desarrollo web, documentación, herramientas y demos en este dominio.">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="LdeLuipy">
+	<meta name="twitter:description" content="Desarrollo web, documentación, herramientas y demos en este dominio.">
+	<script type="application/ld+json">
+	{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"LdeLuipy","url":"https://ldeluipy.es/","description":"Hub de subdominios, proyectos y repositorios de LdeLuipy."},{"@type":"Person","name":"LdeLuipy","url":"https://ldeluipy.es/","sameAs":["https://github.com/Luipy56"]}]}
+	</script>
+	<link rel="canonical" href="https://ldeluipy.es/">
+	<link rel="manifest" href="/manifest.webmanifest">
+	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+	<title>LdeLuipy — prueba iframe</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/primordial.css">
+	<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+	<div id="boot-overlay" class="boot-overlay" hidden>
+		<div class="boot-overlay-inner">
+			<p class="boot-line">ldeluipy.es // arranque del hub</p>
+			<p class="boot-line" id="boot-msg">Inicializando interfaz…</p>
+			<div class="boot-bar-wrap" aria-hidden="true"><div class="boot-bar" id="boot-bar"></div></div>
+			<div class="boot-actions">
+				<button type="button" class="boot-skip" id="boot-skip">Saltar</button>
+				<button type="button" class="boot-go" id="boot-go" hidden>Entrar</button>
+			</div>
+		</div>
+	</div>
+	<canvas id="matrix-rain" aria-hidden="true" hidden></canvas>
+	<canvas id="starfield-canvas" class="hub-bg-layer" aria-hidden="true" hidden></canvas>
+	<svg id="hub-grid-layer" class="hub-bg-layer hub-grid-svg" aria-hidden="true" hidden viewBox="0 0 100 100" preserveAspectRatio="none">
+		<defs>
+			<pattern id="hubGridPat" width="8" height="8" patternUnits="userSpaceOnUse">
+				<path d="M 8 0 L 0 0 0 8" fill="none" stroke="currentColor" stroke-width="0.15" opacity="0.4"/>
+			</pattern>
+		</defs>
+		<rect width="100" height="100" fill="url(#hubGridPat)"/>
+	</svg>
+	<div class="crt-vignette" aria-hidden="true"></div>
+	<div class="scroll-frost" aria-hidden="true"></div>
+
+	<div id="shortcuts-modal" class="modal" hidden role="dialog" aria-labelledby="shortcuts-title" aria-modal="true">
+		<div class="modal-backdrop" data-close-modal tabindex="-1"></div>
+		<div class="modal-panel" role="document">
+			<h2 id="shortcuts-title" class="modal-title">Atajos de teclado</h2>
+			<dl class="shortcut-list">
+				<dt><kbd>/</kbd></dt><dd>Enfocar búsqueda</dd>
+				<dt><kbd>?</kbd></dt><dd>Mostrar esta ayuda</dd>
+				<dt><kbd>j</kbd> / <kbd>k</kbd></dt><dd>Sección siguiente / anterior</dd>
+				<dt><kbd>Esc</kbd></dt><dd>Cerrar ayuda / limpiar búsqueda</dd>
+				<dt>URL <code>?q=</code></dt><dd>Compartir el filtro de búsqueda</dd>
+				<dt><kbd>g</kbd></dt><dd>Ir a repositorios GitHub</dd>
+				<dt><kbd>1</kbd>–<kbd>9</kbd></dt><dd>Ir a sección por orden (nav)</dd>
+				<dt><kbd>`</kbd> (backtick)</dt><dd>Abrir/cerrar terminal ficticia</dd>
+			</dl>
+			<button type="button" class="btn-modal-close" data-close-modal>Cerrar</button>
+		</div>
+	</div>
+
+	<div class="container">
+		<header>
+			<div class="header-title">
+				<h1 class="glitch" data-text="LdeLuipy">LdeLuipy</h1>
+				<p class="sub"><span class="typewriter">Bienvenido</span></p>
+				<div class="hub-ascii-banner-wrap">
+					<div class="hub-ascii-banner-scroll">
+						<pre id="hub-ascii-banner" class="hub-ascii-banner" hidden></pre>
+					</div>
+				</div>
+			</div>
+			<div class="header-actions">
+				<label class="hub-search-label" for="hub-filter">
+					<span class="visually-hidden">Filtrar enlaces</span>
+					<input type="search" id="hub-filter" class="hub-search" placeholder="Buscar enlaces…" autocomplete="off" spellcheck="false" enterkeyhint="search">
+				</label>
+				<label class="theme-switcher" aria-label="Modo de color">
+					<select id="theme-select" title="Modo de color">
+						<option value="system">Sistema</option>
+						<option value="verde">Verde</option>
+						<option value="oscuro">Oscuro</option>
+						<option value="matrix">Matrix</option>
+					</select>
+				</label>
+			</div>
+		</header>
+
+		<section class="nav-section" id="section-mc-iframe-test" aria-label="Prueba visor 3D embebido" style="margin:1.25rem 0 2rem;padding:1rem 1.1rem;border:1px solid rgba(120, 200, 160, 0.25);border-radius:12px;background:rgba(0, 24, 16, 0.35);">
+			<h2 style="margin-top:0;font-size:1.05rem;letter-spacing:0.02em;">Prueba <code>mc-texture-viewer</code></h2>
+			<iframe src="https://ldeluipy.es/testing/viewer-demo.html" title="Visor 3D mc-texture-viewer (prueba)" style="width:100%;min-height:720px;border:none;border-radius:8px;background:#111;display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		</section>
+
+		<nav class="hub-top-nav nav-section" id="section-nav" aria-label="Atajos del hub">
+			<a href="#section-flagship">Destacados</a>
+			<a href="#section-now">Ahora</a>
+			<a href="#section-changelog">Historial</a>
+			<a href="/uses.html">Uses</a>
+		</nav>
+
+		<section class="status-strip nav-section" id="section-status" aria-label="Herramientas de estado">
+			<a href="https://check.ldeluipy.es/" target="_blank" rel="noopener" class="status-pill">check.ldeluipy.es</a>
+			<a href="https://stats.ldeluipy.es/" target="_blank" rel="noopener" class="status-pill">stats.ldeluipy.es</a>
+			<span class="status-hint">Monitorización y métricas</span>
+		</section>
+
+		<section class="terminal nav-section" id="section-about" data-reveal>
+			<div class="terminal-bar">
+				<span class="terminal-dot" style="background:#ff5f56"></span>
+				<span class="terminal-dot" style="background:#ffbd2e"></span>
+				<span class="terminal-dot" style="background:#27c93f"></span>
+				<span class="terminal-title">luipy@server:~$</span>
+			</div>
+			<div class="terminal-body">
+				<p><span class="prompt">$ </span>cat about.txt</p>
+				<p class="terminal-output">Para mí este dominio es un taller: un sitio donde pruebo cosas de verdad, no vitrinas vacías. Monté servicios que uso, documentación que voy reescribiendo cuando aprendo otra vuelta, y espacio para lo lúdico —sobre todo alrededor de Minecraft, donde me gusta bajar la idea hasta código que otros pueden tocar.</p>
+				<p class="terminal-output">En GitHub se ve el mismo impulso en otros tonos: TypeScript o Laravel cuando pinta web, Python o Java cuando el problema lo pide, y siempre ese hábito de dejar herramientas pequeñas cuando algo del día a día merece quedar resuelto una vez por todas. Lo que comparto en el blog, Discord o YouTube no es marketing; es el mismo proceso, contado para quien quiera acompañar el viaje.</p>
+				<p><span class="prompt">$ </span><span class="cursor-blink">_</span></p>
+			</div>
+		</section>
+
+		<section class="section-links nav-section" id="section-now" data-reveal>
+			<h2>Ahora</h2>
+			<p id="hub-now-loading" class="hub-muted">Cargando…</p>
+			<ul id="hub-now-bullets" class="hub-now-bullets" hidden></ul>
+			<p id="hub-now-text" class="hub-now-text" hidden></p>
+			<p id="hub-now-updated" class="hub-now-meta" hidden></p>
+			<div id="hub-mission-wrap" class="hub-mission-block" hidden>
+				<h3>Línea de misión</h3>
+				<ul id="hub-mission-list" class="hub-mission-list"></ul>
+			</div>
+			<div id="hub-system-wrap" class="hub-system-block" hidden>
+				<h3>Estado del sistema</h3>
+				<p id="hub-system-intro" class="hub-muted"></p>
+				<ul id="hub-system-list" class="hub-system-list"></ul>
+			</div>
+		</section>
+
+		<section class="section-links nav-section" id="section-flagship" data-reveal>
+			<h2>Proyectos destacados</h2>
+			<p id="hub-flagship-empty" class="hub-muted" hidden>No hay proyectos destacados en hub.json.</p>
+			<ul id="hub-flagship-list" class="flagship-grid"></ul>
+		</section>
+
+		<section class="section-links nav-section" id="section-blog" data-reveal>
+			<h2>Último en el blog</h2>
+			<p id="hub-blog-loading" class="hub-muted">Cargando…</p>
+			<p id="hub-blog-error" class="hub-blog-error" style="display:none;"></p>
+			<ul id="hub-blog-list" class="blog-list" style="display:none;"></ul>
+		</section>
+
+		<section class="section-links nav-section" id="section-subdomains" data-reveal>
+			<h2>Subdominios</h2>
+			<ul class="links-grid">
+				<li><a href="https://blog.ldeluipy.es/" target="_blank" rel="noopener">blog.ldeluipy.es</a></li>
+				<li><a href="https://abp.ldeluipy.es/" target="_blank" rel="noopener">abp.ldeluipy.es</a></li>
+				<li><a href="https://stage.abp.ldeluipy.es/" target="_blank" rel="noopener">stage.abp.ldeluipy.es</a></li>
+				<li><a href="https://beer.ldeluipy.es/" target="_blank" rel="noopener">beer.ldeluipy.es</a></li>
+				<li><a href="https://doc.ldeluipy.es/" target="_blank" rel="noopener">doc.ldeluipy.es</a></li>
+				<li><a href="https://wiki.ldeluipy.es/" target="_blank" rel="noopener">wiki.ldeluipy.es</a></li>
+				<li><a href="https://stats.ldeluipy.es/" target="_blank" rel="noopener">stats.ldeluipy.es</a></li>
+				<li><a href="https://mc.ldeluipy.es/" target="_blank" rel="noopener">mc.ldeluipy.es</a></li>
+				<li><a href="https://mtv.ldeluipy.es/" target="_blank" rel="noopener">mtv.ldeluipy.es</a></li>
+				<li><a href="https://coc.ldeluipy.es/" target="_blank" rel="noopener">coc.ldeluipy.es</a></li>
+				<li><a href="https://check.ldeluipy.es/" target="_blank" rel="noopener">check.ldeluipy.es</a></li>
+				<li><a href="https://copy.ldeluipy.es/" target="_blank" rel="noopener">copy.ldeluipy.es</a></li>
+				<li><a href="https://tam.ldeluipy.es/" target="_blank" rel="noopener">tam.ldeluipy.es</a></li>
+				<li><a href="https://note.ldeluipy.es/" target="_blank" rel="noopener">note.ldeluipy.es</a></li>
+				<li><a href="https://md.ldeluipy.es/" target="_blank" rel="noopener">md.ldeluipy.es</a></li>
+				<li><a href="https://dir.ldeluipy.es/" target="_blank" rel="noopener">dir.ldeluipy.es</a></li>
+				<li><a href="https://portfolio.ldeluipy.es/" target="_blank" rel="noopener">portfolio.ldeluipy.es</a></li>
+				<li><a href="https://serra.ldeluipy.es/" target="_blank" rel="noopener">serra.ldeluipy.es</a></li>
+			</ul>
+		</section>
+
+		<section class="section-links nav-section" id="section-community" data-reveal>
+			<h2>Ecomunidad</h2>
+			<ul class="links-grid">
+				<li><a href="https://discord.com/invite/6ExMmZM6rK" target="_blank" rel="noopener">Discord</a></li>
+				<li><a href="https://www.youtube.com/channel/UC5VnQnxseYH5folERXLqxiA" target="_blank" rel="noopener">YouTube</a></li>
+				<li><a href="https://sites.google.com/view/luipyofficialweb/inicio" target="_blank" rel="noopener">Site Google</a></li>
+			</ul>
+		</section>
+
+		<section class="section-links nav-section" id="section-projects" data-reveal>
+			<h2>Proyectos</h2>
+			<ul class="links-grid">
+				<li><a href="https://doc.ldeluipy.es/lujohotelcopy/" target="_blank" rel="noopener">lujohotelcopy</a></li>
+				<li><a href="https://doc.ldeluipy.es/presentacionlujo/" target="_blank" rel="noopener">Presentación Proyecto Final CM</a></li>
+				<li><a href="https://doc.ldeluipy.es/CalculadoraSOST/" target="_blank" rel="noopener">Calculadora Proyecto SOST</a></li>
+				<li><a href="http://vmg.ldeluipy.es/" target="_blank" rel="noopener">Vall Minigames</a></li>
+				<li><a href="https://doc.ldeluipy.es/GreenRealms/" target="_blank" rel="noopener">Green Realms</a></li>
+				<li><a href="https://doc.ldeluipy.es/Sample/" target="_blank" rel="noopener">Tkinter Projects</a></li>
+				<li><a href="https://doc.ldeluipy.es/Site/" target="_blank" rel="noopener">Site</a></li>
+				<li><a href="https://doc.ldeluipy.es/dysonProject/" target="_blank" rel="noopener">Dyson Project</a></li>
+				<li><a href="https://ldeluipy.es/ldeluipy/ProjectMC-main/" target="_blank" rel="noopener">Mc Status</a></li>
+				<li><a href="https://doc.ldeluipy.es/DocProject/" target="_blank" rel="noopener">DocProject</a></li>
+			</ul>
+		</section>
+
+		<section class="section-links nav-section" id="section-github" data-reveal>
+			<h2>Repositorios GitHub</h2>
+			<p id="github-repos-loading">Cargando repositorios de Luipy…</p>
+			<p id="github-repos-error" style="display:none;"></p>
+			<ul id="github-repos-list" class="links-grid github-repo-grid" style="display:none;"></ul>
+		</section>
+
+		<section class="section-links nav-section hub-changelog-end" id="section-changelog" data-reveal>
+			<details class="changelog-details">
+				<summary class="changelog-summary"><span class="changelog-summary-text">Historial del sitio</span></summary>
+				<div class="changelog-panel">
+					<p id="hub-changelog-empty" class="hub-muted" hidden>Sin entradas de historial.</p>
+					<ul id="hub-changelog-list" class="changelog-list"></ul>
+				</div>
+			</details>
+		</section>
+
+		<footer class="site-footer nav-section" id="section-footer">
+			<p class="footer-line"><span id="footer-updated">Actualizado: —</span> · <a href="/humans.txt">humans.txt</a> · <a href="/sitemap.xml">sitemap</a> · <a href="https://ldeluipy.es/.well-known/security.txt" rel="noopener">security.txt</a></p>
+		</footer>
+	</div>
+
+	<div id="hub-terminal" class="hub-terminal" hidden role="dialog" aria-label="Terminal ficticia">
+		<div class="hub-terminal-bar">
+			<span class="hub-terminal-title">guest@ldeluipy.es</span>
+			<button type="button" class="hub-terminal-close" id="hub-terminal-close" aria-label="Cerrar terminal">×</button>
+		</div>
+		<div class="hub-terminal-out" id="hub-terminal-out"></div>
+		<form class="hub-terminal-form" id="hub-terminal-form" autocomplete="off">
+			<span>$</span>
+			<input type="text" class="hub-terminal-input" id="hub-terminal-input" spellcheck="false" aria-label="Comando" />
+		</form>
+	</div>
+	<button type="button" class="hub-terminal-launcher" id="hub-terminal-launcher" aria-expanded="false" aria-controls="hub-terminal" title="Terminal (tecla `)">&gt;_</button>
+
+	<script>
+	(function() {
+		window.ldeluipyMatrixSpeed = 1;
+		var matrixRaf = null;
+		var matrixRunning = false;
+
+		window.addEventListener('ldeluipy-konami', function() {
+			window.ldeluipyMatrixSpeed = 4;
+			setTimeout(function() { window.ldeluipyMatrixSpeed = 1; }, 12000);
+		});
+		window.addEventListener('ldeluipy-matrix-turbo', function() {
+			window.ldeluipyMatrixSpeed = 3.5;
+			setTimeout(function() { window.ldeluipyMatrixSpeed = 1; }, 10000);
+		});
+
+		window.ldeluipyStopMatrix = function() {
+			matrixRunning = false;
+			if (matrixRaf) cancelAnimationFrame(matrixRaf);
+			matrixRaf = null;
+		};
+
+		window.ldeluipyStartMatrix = function() {
+			var canvas = document.getElementById('matrix-rain');
+			if (!canvas) return;
+			if (document.documentElement.classList.contains('reduce-motion')) return;
+			window.ldeluipyStopMatrix();
+			canvas.removeAttribute('hidden');
+			var ctx = canvas.getContext('2d');
+			var chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン01010011001101003141592653589793238462643383279502884197169399375105820974944592307816406286';
+			var fontSize = 14;
+			var columns, drops;
+
+			function init() {
+				canvas.width = window.innerWidth;
+				canvas.height = window.innerHeight;
+				columns = Math.floor(canvas.width / fontSize);
+				drops = [];
+				for (var i = 0; i < columns; i++) drops[i] = Math.random() * -100;
+			}
+			init();
+			window.addEventListener('resize', init);
+			matrixRunning = true;
+
+			function draw() {
+				if (!matrixRunning) return;
+				ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+				ctx.fillRect(0, 0, canvas.width, canvas.height);
+				ctx.font = fontSize + 'px "JetBrains Mono", monospace';
+				var spd = window.ldeluipyMatrixSpeed || 1;
+				for (var i = 0; i < drops.length; i++) {
+					var char = chars[Math.floor(Math.random() * chars.length)];
+					var x = i * fontSize;
+					var y = drops[i] * fontSize;
+					if (Math.random() > 0.9) {
+						ctx.fillStyle = '#fff';
+						ctx.globalAlpha = 0.9;
+					} else {
+						ctx.fillStyle = '#00ffa6';
+						ctx.globalAlpha = 0.25 + Math.random() * 0.35;
+					}
+					ctx.fillText(char, x, y);
+					if (y > canvas.height && Math.random() > 0.975) drops[i] = 0;
+					drops[i] += spd;
+				}
+				ctx.globalAlpha = 1;
+				matrixRaf = requestAnimationFrame(draw);
+			}
+			draw();
+		};
+
+		var starsRaf = null;
+		var starsRunning = false;
+		window.ldeluipyStopStars = function() {
+			starsRunning = false;
+			if (starsRaf) cancelAnimationFrame(starsRaf);
+			starsRaf = null;
+		};
+		window.ldeluipyStartStars = function() {
+			var canvas = document.getElementById('starfield-canvas');
+			if (!canvas) return;
+			if (document.documentElement.classList.contains('reduce-motion')) return;
+			window.ldeluipyStopStars();
+			canvas.removeAttribute('hidden');
+			var ctx = canvas.getContext('2d');
+			var stars = [];
+			function init() {
+				canvas.width = window.innerWidth;
+				canvas.height = window.innerHeight;
+				var n = Math.min(140, Math.floor((canvas.width * canvas.height) / 18000));
+				stars = [];
+				for (var i = 0; i < n; i++) {
+					stars.push({
+						x: Math.random() * canvas.width,
+						y: Math.random() * canvas.height,
+						z: Math.random() * 0.85 + 0.15,
+						v: Math.random() * 0.15 + 0.02
+					});
+				}
+			}
+			init();
+			window.addEventListener('resize', init);
+			starsRunning = true;
+			function draw() {
+				if (!starsRunning) return;
+				ctx.fillStyle = 'rgba(0, 0, 0, 0.35)';
+				ctx.fillRect(0, 0, canvas.width, canvas.height);
+				for (var j = 0; j < stars.length; j++) {
+					var s = stars[j];
+					s.y += s.v * (1 + s.z);
+					if (s.y > canvas.height) s.y = 0;
+					ctx.fillStyle = 'rgba(0, 255, 166, ' + (0.15 + s.z * 0.5) + ')';
+					ctx.fillRect(s.x, s.y, 1 + s.z, 1 + s.z);
+				}
+				starsRaf = requestAnimationFrame(draw);
+			}
+			draw();
+		};
+
+		window.ldeluipyApplyBackgroundMode = function(mode) {
+			var m = (mode || 'matrix').toLowerCase();
+			var matrixEl = document.getElementById('matrix-rain');
+			var starEl = document.getElementById('starfield-canvas');
+			var gridEl = document.getElementById('hub-grid-layer');
+			window.ldeluipyStopMatrix();
+			window.ldeluipyStopStars();
+			if (matrixEl) {
+				matrixEl.setAttribute('hidden', '');
+				matrixEl.style.display = '';
+			}
+			if (starEl) starEl.setAttribute('hidden', '');
+			if (gridEl) gridEl.setAttribute('hidden', '');
+			if (document.documentElement.classList.contains('reduce-motion')) return;
+			function go() {
+				if (m === 'stars') {
+					if (starEl) starEl.removeAttribute('hidden');
+					window.ldeluipyStartStars();
+				} else if (m === 'grid') {
+					if (gridEl) gridEl.removeAttribute('hidden');
+				} else {
+					if (matrixEl) matrixEl.removeAttribute('hidden');
+					window.ldeluipyStartMatrix();
+				}
+			}
+			if ('requestIdleCallback' in window) requestIdleCallback(go, { timeout: 2400 });
+			else setTimeout(go, 400);
+		};
+	})();
+	</script>
+
+	<script>
+	(function() {
+		var sel = document.getElementById('theme-select');
+		if (!sel) return;
+
+		function resolveSystem() {
+			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'oscuro' : 'verde';
+		}
+
+		function applyDataTheme(t) {
+			document.documentElement.setAttribute('data-theme', t === 'system' ? resolveSystem() : t);
+		}
+
+		var stored = localStorage.getItem('checkTheme');
+		if (!stored || !['system', 'verde', 'oscuro', 'matrix'].includes(stored)) stored = 'verde';
+		sel.value = stored;
+		applyDataTheme(stored);
+
+		function chromaticFlash() {
+			if (document.documentElement.classList.contains('reduce-motion')) return;
+			document.documentElement.classList.add('chromatic-flash');
+			setTimeout(function() {
+				document.documentElement.classList.remove('chromatic-flash');
+			}, 280);
+		}
+
+		sel.addEventListener('change', function() {
+			var t = this.value;
+			localStorage.setItem('checkTheme', t);
+			applyDataTheme(t);
+			chromaticFlash();
+		});
+
+		var mq = window.matchMedia('(prefers-color-scheme: dark)');
+		function onScheme() {
+			if (sel.value === 'system') applyDataTheme('system');
+		}
+		if (mq.addEventListener) mq.addEventListener('change', onScheme);
+		else if (mq.addListener) mq.addListener(onScheme);
+	})();
+	</script>
+
+	<script>
+	(function() {
+		var reveals = document.querySelectorAll('[data-reveal]');
+		var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		if (reduceMotion) {
+			reveals.forEach(function(el) { el.classList.add('revealed'); });
+		} else {
+			var observer = new IntersectionObserver(function(entries) {
+				entries.forEach(function(entry) {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('revealed');
+						if (!document.documentElement.classList.contains('reduce-motion')) {
+							entry.target.classList.add('hub-glitch-once');
+							setTimeout(function() {
+								entry.target.classList.remove('hub-glitch-once');
+							}, 500);
+						}
+						observer.unobserve(entry.target);
+					}
+				});
+			}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+			reveals.forEach(function(el) { observer.observe(el); });
+		}
+
+		document.querySelectorAll('.links-grid').forEach(function(grid) {
+			grid.querySelectorAll('li').forEach(function(li, i) {
+				li.style.setProperty('--i', i);
+			});
+		});
+
+		if (!reduceMotion) {
+			document.addEventListener('mousemove', function(e) {
+				document.body.style.setProperty('--mx', e.clientX + 'px');
+				document.body.style.setProperty('--my', e.clientY + 'px');
+			});
+		}
+	})();
+	</script>
+
+	<script>
+	(function() {
+		var input = document.getElementById('hub-filter');
+		if (!input) return;
+
+		function norm(s) {
+			return (s || '').toLowerCase();
+		}
+
+		function applyFilter() {
+			var q = norm(input.value.trim());
+			document.querySelectorAll('.section-links').forEach(function(sec) {
+				sec.style.display = '';
+				var anyOverall = !q;
+				sec.querySelectorAll('.links-grid li').forEach(function(li) {
+					var show = !q || norm(li.textContent).indexOf(q) !== -1;
+					li.style.display = show ? '' : 'none';
+					if (show) anyOverall = true;
+				});
+				sec.querySelectorAll('.blog-list li').forEach(function(li) {
+					var show = !q || norm(li.textContent).indexOf(q) !== -1;
+					li.style.display = show ? '' : 'none';
+					if (show) anyOverall = true;
+				});
+				sec.querySelectorAll('.flagship-grid li').forEach(function(li) {
+					var show = !q || norm(li.textContent).indexOf(q) !== -1;
+					li.style.display = show ? '' : 'none';
+					if (show) anyOverall = true;
+				});
+				sec.querySelectorAll('.changelog-list li').forEach(function(li) {
+					var show = !q || norm(li.textContent).indexOf(q) !== -1;
+					li.style.display = show ? '' : 'none';
+					if (show) anyOverall = true;
+				});
+				if (sec.id === 'section-now') {
+					var nt = document.getElementById('hub-now-text');
+					var nb = document.getElementById('hub-now-bullets');
+					if (nt && !nt.hidden) {
+						if (!q || norm(nt.textContent).indexOf(q) !== -1) anyOverall = true;
+					}
+					if (nb && !nb.hidden) {
+						nb.querySelectorAll('li').forEach(function(li) {
+							var show = !q || norm(li.textContent).indexOf(q) !== -1;
+							li.style.display = show ? '' : 'none';
+							if (show) anyOverall = true;
+						});
+					}
+					var hm = document.getElementById('hub-mission-list');
+					var hmw = document.getElementById('hub-mission-wrap');
+					if (hm && hmw && !hmw.hidden) {
+						hm.querySelectorAll('li').forEach(function(li) {
+							var show = !q || norm(li.textContent).indexOf(q) !== -1;
+							li.style.display = show ? '' : 'none';
+							if (show) anyOverall = true;
+						});
+					}
+					var hs = document.getElementById('hub-system-list');
+					var hsw = document.getElementById('hub-system-wrap');
+					if (hs && hsw && !hsw.hidden) {
+						hs.querySelectorAll('li').forEach(function(li) {
+							var show = !q || norm(li.textContent).indexOf(q) !== -1;
+							li.style.display = show ? '' : 'none';
+							if (show) anyOverall = true;
+						});
+						var intro = document.getElementById('hub-system-intro');
+						if (intro && intro.textContent && (!q || norm(intro.textContent).indexOf(q) !== -1)) anyOverall = true;
+					}
+					if (!q) anyOverall = true;
+				}
+				if (q && !anyOverall) sec.style.display = 'none';
+			});
+
+			var ghSec = document.getElementById('section-github');
+			var gh = document.getElementById('github-repos-list');
+			if (ghSec) ghSec.style.display = '';
+			if (gh && gh.style.display !== 'none' && gh.querySelectorAll('li').length) {
+				var ghAny = !q;
+				gh.querySelectorAll('li').forEach(function(li) {
+					var show = !q || norm(li.textContent).indexOf(q) !== -1;
+					li.style.display = show ? '' : 'none';
+					if (show) ghAny = true;
+				});
+				if (q && !ghAny) ghSec.style.display = 'none';
+			}
+		}
+
+		function syncSearchQuery() {
+			var q = input.value.trim();
+			var u = new URL(window.location.href);
+			if (q) u.searchParams.set('q', q);
+			else u.searchParams.delete('q');
+			var next = u.pathname + (u.search || '') + u.hash;
+			var cur = window.location.pathname + window.location.search + window.location.hash;
+			if (next !== cur) window.history.replaceState({}, '', next);
+		}
+
+		var params = new URLSearchParams(window.location.search);
+		var initialQ = params.get('q');
+		if (initialQ) input.value = initialQ;
+
+		input.addEventListener('input', function() {
+			applyFilter();
+			syncSearchQuery();
+		});
+		window.applyHubFilter = applyFilter;
+		applyFilter();
+		syncSearchQuery();
+	})();
+	</script>
+
+	<script>
+	(function() {
+		var sections = Array.prototype.slice.call(document.querySelectorAll('.nav-section'));
+		var idx = 0;
+		var scrollBehavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+
+		function isTypingTarget(el) {
+			if (!el) return false;
+			var tag = el.tagName;
+			return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || el.isContentEditable;
+		}
+
+		function openModal() {
+			var m = document.getElementById('shortcuts-modal');
+			if (!m) return;
+			m.hidden = false;
+			var btn = m.querySelector('.btn-modal-close');
+			if (btn) btn.focus();
+		}
+
+		function closeModal() {
+			var m = document.getElementById('shortcuts-modal');
+			if (!m) return;
+			m.hidden = true;
+		}
+
+		document.querySelectorAll('[data-close-modal]').forEach(function(el) {
+			el.addEventListener('click', closeModal);
+		});
+
+		document.addEventListener('keydown', function(e) {
+			var modal = document.getElementById('shortcuts-modal');
+			var modalOpen = modal && !modal.hidden;
+
+			if (e.key === 'Escape') {
+				if (modalOpen) {
+					e.preventDefault();
+					closeModal();
+					return;
+				}
+				var inp = document.getElementById('hub-filter');
+				if (inp && inp.value) {
+					inp.value = '';
+					if (window.applyHubFilter) window.applyHubFilter();
+					e.preventDefault();
+				}
+				return;
+			}
+
+			if (modalOpen) return;
+
+			var ae = document.activeElement;
+			if (isTypingTarget(ae)) return;
+
+			if (e.key === '?' || (e.shiftKey && e.key === '/')) {
+				e.preventDefault();
+				openModal();
+				return;
+			}
+
+			if (e.key === '/' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+				e.preventDefault();
+				var search = document.getElementById('hub-filter');
+				if (search) search.focus();
+				return;
+			}
+
+			if (e.key === 'j' || e.key === 'J') {
+				e.preventDefault();
+				idx = Math.min(sections.length - 1, idx + 1);
+				sections[idx].scrollIntoView({ behavior: scrollBehavior, block: 'start' });
+				return;
+			}
+			if (e.key === 'k' || e.key === 'K') {
+				e.preventDefault();
+				idx = Math.max(0, idx - 1);
+				sections[idx].scrollIntoView({ behavior: scrollBehavior, block: 'start' });
+				return;
+			}
+			if ((e.key === 'g' || e.key === 'G') && !e.ctrlKey && !e.metaKey && !e.altKey) {
+				e.preventDefault();
+				var gh = document.getElementById('section-github');
+				if (gh) gh.scrollIntoView({ behavior: scrollBehavior, block: 'start' });
+				return;
+			}
+			if (/^[1-9]$/.test(e.key) && !e.ctrlKey && !e.metaKey && !e.altKey) {
+				var n = parseInt(e.key, 10) - 1;
+				if (sections[n]) {
+					e.preventDefault();
+					idx = n;
+					sections[n].scrollIntoView({ behavior: scrollBehavior, block: 'start' });
+				}
+				return;
+			}
+			if (e.key === '`' || e.code === 'Backquote') {
+				e.preventDefault();
+				var term = document.getElementById('hub-terminal');
+				var launch = document.getElementById('hub-terminal-launcher');
+				if (!term || !launch) return;
+				var open = term.hasAttribute('hidden');
+				if (open) {
+					term.removeAttribute('hidden');
+					launch.setAttribute('aria-expanded', 'true');
+					var inp = document.getElementById('hub-terminal-input');
+					if (inp) inp.focus();
+				} else {
+					term.setAttribute('hidden', '');
+					launch.setAttribute('aria-expanded', 'false');
+				}
+			}
+		});
+	})();
+	</script>
+
+	<script>
+	(function() {
+		var seq = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+		var pos = 0;
+		function typingTarget(el) {
+			if (!el) return false;
+			var tag = el.tagName;
+			return tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || el.isContentEditable;
+		}
+		document.addEventListener('keydown', function(e) {
+			if (typingTarget(document.activeElement)) return;
+			var key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+			var expected = seq[pos];
+			var exp = expected.length === 1 ? expected.toLowerCase() : expected;
+			if (key === exp || e.key === expected) {
+				pos++;
+				if (pos === seq.length) {
+					pos = 0;
+					document.documentElement.classList.add('konami-active');
+					window.dispatchEvent(new CustomEvent('ldeluipy-konami'));
+					setTimeout(function() {
+						document.documentElement.classList.remove('konami-active');
+					}, 12000);
+				}
+			} else {
+				pos = e.key === 'ArrowUp' ? 1 : 0;
+			}
+		});
+	})();
+	</script>
+
+	<script>
+	(function() {
+		var inp = document.getElementById('hub-filter');
+		if (!inp) return;
+		var egged = false;
+		inp.addEventListener('input', function() {
+			if (egged) return;
+			if (inp.value.trim().toLowerCase() === 'neonflux') {
+				egged = true;
+				window.dispatchEvent(new CustomEvent('ldeluipy-matrix-turbo'));
+				inp.value = '';
+				if (window.applyHubFilter) window.applyHubFilter();
+			}
+		});
+	})();
+	</script>
+
+	<script>
+	(function() {
+		if (document.documentElement.classList.contains('reduce-motion')) return;
+		try {
+			if (localStorage.getItem('hubBootSeen') === '1') return;
+		} catch (e) {}
+		var ov = document.getElementById('boot-overlay');
+		var bar = document.getElementById('boot-bar');
+		var msg = document.getElementById('boot-msg');
+		var skip = document.getElementById('boot-skip');
+		var go = document.getElementById('boot-go');
+		if (!ov || !bar || !msg || !skip || !go) return;
+		ov.removeAttribute('hidden');
+		var lines = [
+			'Montando volúmenes virtuales…',
+			'Enlazando subdominios…',
+			'Cargando primordial.css…',
+			'Listo.'
+		];
+		var i = 0;
+		var pct = 0;
+		var t = null;
+		t = setInterval(function() {
+			pct = Math.min(100, pct + 9);
+			bar.style.width = pct + '%';
+			if (pct % 27 < 9 && i < lines.length) {
+				msg.textContent = lines[i++];
+			}
+			if (pct >= 100) {
+				if (t) clearInterval(t);
+				t = null;
+				go.hidden = false;
+				msg.textContent = 'Interfaz lista. Bienvenido.';
+			}
+		}, 120);
+		function finish() {
+			if (t) clearInterval(t);
+			t = null;
+			ov.setAttribute('hidden', '');
+			try { localStorage.setItem('hubBootSeen', '1'); } catch (e2) {}
+		}
+		skip.addEventListener('click', finish);
+		go.addEventListener('click', finish);
+	})();
+	</script>
+
+	<script>
+	(function() {
+		var term = document.getElementById('hub-terminal');
+		var out = document.getElementById('hub-terminal-out');
+		var form = document.getElementById('hub-terminal-form');
+		var input = document.getElementById('hub-terminal-input');
+		var launch = document.getElementById('hub-terminal-launcher');
+		var closeBtn = document.getElementById('hub-terminal-close');
+		if (!term || !out || !form || !input) return;
+
+		function line(text, err) {
+			var p = document.createElement('p');
+			p.className = 'term-line' + (err ? ' term-err' : '');
+			p.textContent = text;
+			out.appendChild(p);
+			out.scrollTop = out.scrollHeight;
+		}
+
+		function openUrls() {
+			return {
+				blog: 'https://blog.ldeluipy.es/',
+				github: 'https://github.com/Luipy56',
+				check: 'https://check.ldeluipy.es/',
+				stats: 'https://stats.ldeluipy.es/'
+			};
+		}
+
+		function run(cmd) {
+			var parts = cmd.trim().split(/\s+/);
+			var c = (parts[0] || '').toLowerCase();
+			if (!c) return;
+			if (c === 'help') {
+				line('Comandos: help | theme <verde|oscuro|matrix|system> | open <blog|github|check|stats> | clear | home | bg <matrix|stars|grid> | void | egg mono');
+				return;
+			}
+			if (c === 'void') {
+				window.dispatchEvent(new CustomEvent('ldeluipy-matrix-turbo'));
+				line('Señal void: Matrix acelerada temporalmente.');
+				return;
+			}
+			if (c === 'clear') {
+				out.innerHTML = '';
+				return;
+			}
+			if (c === 'home') {
+				window.scrollTo({ top: 0, behavior: 'smooth' });
+				return;
+			}
+			if (c === 'theme' && parts[1]) {
+				var v = parts[1].toLowerCase();
+				if (['verde', 'oscuro', 'matrix', 'system'].indexOf(v) === -1) {
+					line('Tema no válido.', true);
+					return;
+				}
+				var sel = document.getElementById('theme-select');
+				if (sel) {
+					sel.value = v;
+					sel.dispatchEvent(new Event('change', { bubbles: true }));
+				}
+				line('Tema: ' + v);
+				return;
+			}
+			if (c === 'open' && parts[1]) {
+				var u = openUrls()[parts[1].toLowerCase()];
+				if (!u) {
+					line('Destino desconocido. Usa blog, github, check o stats.', true);
+					return;
+				}
+				window.open(u, '_blank', 'noopener');
+				line('Abriendo ' + parts[1] + '…');
+				return;
+			}
+			if (c === 'bg' && parts[1]) {
+				var m = parts[1].toLowerCase();
+				if (['matrix', 'stars', 'grid'].indexOf(m) === -1) {
+					line('Modo: matrix | stars | grid', true);
+					return;
+				}
+				window.__ldeluipyBgMode = m;
+				if (window.ldeluipyApplyBackgroundMode) window.ldeluipyApplyBackgroundMode(m);
+				line('Fondo: ' + m);
+				return;
+			}
+			if (c === 'egg' && parts[1] === 'mono') {
+				if (document.documentElement.classList.contains('reduce-motion')) {
+					line('Reduce motion activo.', true);
+					return;
+				}
+				document.documentElement.classList.add('ldeluipy-mono-temp');
+				line('Modo monocromo 8s…');
+				setTimeout(function() {
+					document.documentElement.classList.remove('ldeluipy-mono-temp');
+				}, 8000);
+				return;
+			}
+			line('Comando desconocido. Escribe help.', true);
+		}
+
+		form.addEventListener('submit', function(ev) {
+			ev.preventDefault();
+			var raw = input.value;
+			line('$ ' + raw);
+			try {
+				var hist = JSON.parse(localStorage.getItem('ldeluipyTermHist') || '[]');
+				hist.push(raw);
+				if (hist.length > 40) hist = hist.slice(-40);
+				localStorage.setItem('ldeluipyTermHist', JSON.stringify(hist));
+			} catch (e) {}
+			run(raw);
+			input.value = '';
+		});
+
+		function toggleTerm() {
+			var hidden = term.hasAttribute('hidden');
+			if (hidden) {
+				term.removeAttribute('hidden');
+				if (launch) launch.setAttribute('aria-expanded', 'true');
+				input.focus();
+				if (!out.textContent.trim()) line('Escribe help para ver comandos.');
+			} else {
+				term.setAttribute('hidden', '');
+				if (launch) launch.setAttribute('aria-expanded', 'false');
+			}
+		}
+		if (launch) launch.addEventListener('click', toggleTerm);
+		if (closeBtn) closeBtn.addEventListener('click', function() {
+			term.setAttribute('hidden', '');
+			if (launch) launch.setAttribute('aria-expanded', 'false');
+		});
+	})();
+	</script>
+
+	<script>
+	(function() {
+		function parseRssItems(xmlText, limit) {
+			var parser = new DOMParser();
+			var doc = parser.parseFromString(xmlText, 'application/xml');
+			if (doc.querySelector('parsererror')) return [];
+			var items = doc.querySelectorAll('item');
+			var out = [];
+			for (var i = 0; i < items.length && out.length < limit; i++) {
+				var it = items[i];
+				var titleEl = it.querySelector('title');
+				var linkEl = it.querySelector('link');
+				var pub = it.querySelector('pubDate');
+				var title = titleEl ? titleEl.textContent.trim() : '';
+				var link = '';
+				if (linkEl) {
+					link = linkEl.textContent ? linkEl.textContent.trim() : '';
+					if (!link && linkEl.getAttribute) link = linkEl.getAttribute('href') || '';
+				}
+				if (title && link) {
+					out.push({
+						title: title,
+						url: link,
+						date: pub ? pub.textContent.trim() : ''
+					});
+				}
+			}
+			return out;
+		}
+
+		var loading = document.getElementById('hub-blog-loading');
+		var errEl = document.getElementById('hub-blog-error');
+		var listEl = document.getElementById('hub-blog-list');
+		var nowLoad = document.getElementById('hub-now-loading');
+		var nowText = document.getElementById('hub-now-text');
+		var nowBulletsEl = document.getElementById('hub-now-bullets');
+		var nowUp = document.getElementById('hub-now-updated');
+		var footerUp = document.getElementById('footer-updated');
+
+		var GH_LS = 'ldeluipy-github-cache-v1';
+
+		function showBlogError(msg) {
+			if (loading) loading.style.display = 'none';
+			if (listEl) listEl.style.display = 'none';
+			if (errEl) {
+				errEl.textContent = msg;
+				errEl.style.display = 'block';
+			}
+		}
+
+		function renderBlog(posts) {
+			if (loading) loading.style.display = 'none';
+			if (errEl) errEl.style.display = 'none';
+			if (!listEl) return;
+			listEl.innerHTML = '';
+			posts.slice(0, 5).forEach(function(p, i) {
+				var li = document.createElement('li');
+				li.style.setProperty('--i', i);
+				var a = document.createElement('a');
+				a.href = p.url;
+				a.target = '_blank';
+				a.rel = 'noopener';
+				a.textContent = p.title;
+				if (p.date) a.title = p.date;
+				li.appendChild(a);
+				if (p.date) {
+					var span = document.createElement('span');
+					span.className = 'blog-date';
+					span.textContent = p.date;
+					li.appendChild(span);
+				}
+				listEl.appendChild(li);
+			});
+			listEl.style.display = 'flex';
+			if (window.applyHubFilter) window.applyHubFilter();
+		}
+
+		function renderNow(hub) {
+			if (nowLoad) nowLoad.style.display = 'none';
+			if (nowBulletsEl) {
+				nowBulletsEl.innerHTML = '';
+				var bullets = hub.nowBullets;
+				if (bullets && bullets.length) {
+					bullets.forEach(function(b) {
+						var li = document.createElement('li');
+						li.textContent = b;
+						nowBulletsEl.appendChild(li);
+					});
+					nowBulletsEl.hidden = false;
+				} else {
+					nowBulletsEl.hidden = true;
+				}
+			}
+			if (nowText) {
+				nowText.textContent = hub.now || '—';
+				nowText.hidden = false;
+			}
+			if (nowUp) {
+				nowUp.textContent = hub.nowUpdated ? 'Actualizado: ' + hub.nowUpdated : '';
+				nowUp.hidden = !hub.nowUpdated;
+			}
+			if (footerUp && hub.siteUpdated) {
+				footerUp.textContent = 'Actualizado: ' + hub.siteUpdated;
+			}
+			if (window.applyHubFilter) window.applyHubFilter();
+		}
+
+		function renderFlagship(items) {
+			var list = document.getElementById('hub-flagship-list');
+			var empty = document.getElementById('hub-flagship-empty');
+			if (!list) return;
+			list.innerHTML = '';
+			if (!items || !items.length) {
+				if (empty) empty.hidden = false;
+				if (window.applyHubFilter) window.applyHubFilter();
+				return;
+			}
+			if (empty) empty.hidden = true;
+			items.forEach(function(p, i) {
+				var li = document.createElement('li');
+				li.style.setProperty('--i', i);
+				li.className = 'flagship-card flagship-holo';
+				var h3 = document.createElement('h3');
+				h3.textContent = p.title || 'Proyecto';
+				li.appendChild(h3);
+				if (p.blurb) {
+					var blurb = document.createElement('p');
+					blurb.className = 'flagship-blurb';
+					blurb.textContent = p.blurb;
+					li.appendChild(blurb);
+				}
+				if (p.stack && p.stack.length) {
+					var st = document.createElement('p');
+					st.className = 'flagship-stack';
+					st.textContent = p.stack.join(' · ');
+					li.appendChild(st);
+				}
+				var links = document.createElement('p');
+				links.className = 'flagship-links';
+				if (p.demoUrl) {
+					var a = document.createElement('a');
+					a.href = p.demoUrl;
+					a.target = '_blank';
+					a.rel = 'noopener';
+					a.textContent = 'Demo';
+					links.appendChild(a);
+				}
+				if (p.repoUrl) {
+					if (p.demoUrl) links.appendChild(document.createTextNode(' · '));
+					var b = document.createElement('a');
+					b.href = p.repoUrl;
+					b.target = '_blank';
+					b.rel = 'noopener';
+					b.textContent = 'Código';
+					links.appendChild(b);
+				}
+				li.appendChild(links);
+				list.appendChild(li);
+			});
+			if (window.applyHubFilter) window.applyHubFilter();
+		}
+
+		function renderAscii(hub) {
+			var pre = document.getElementById('hub-ascii-banner');
+			if (!pre) return;
+			var s = hub.asciiBanner && String(hub.asciiBanner).trim();
+			if (s) {
+				pre.textContent = s;
+				pre.setAttribute('data-text', s);
+				pre.classList.add('hub-ascii-glitch');
+				pre.hidden = false;
+			} else {
+				pre.removeAttribute('data-text');
+				pre.classList.remove('hub-ascii-glitch');
+				pre.hidden = true;
+			}
+		}
+
+		function renderMission(hub) {
+			var wrap = document.getElementById('hub-mission-wrap');
+			var list = document.getElementById('hub-mission-list');
+			if (!wrap || !list) return;
+			var items = hub.missionTimeline;
+			if (!items || !items.length) {
+				wrap.hidden = true;
+				return;
+			}
+			wrap.hidden = false;
+			list.innerHTML = '';
+			items.forEach(function(it) {
+				var li = document.createElement('li');
+				var meta = document.createElement('span');
+				meta.className = 'hub-mission-meta';
+				meta.textContent = (it.date || '') + (it.title ? ' — ' + it.title : '');
+				li.appendChild(meta);
+				li.appendChild(document.createTextNode(it.text || ''));
+				list.appendChild(li);
+			});
+		}
+
+		function renderSystemStatus(hub) {
+			var wrap = document.getElementById('hub-system-wrap');
+			var intro = document.getElementById('hub-system-intro');
+			var list = document.getElementById('hub-system-list');
+			if (!wrap || !intro || !list) return;
+			var st = hub.systemStatus;
+			if (!st || (!st.lines || !st.lines.length)) {
+				wrap.hidden = true;
+				return;
+			}
+			wrap.hidden = false;
+			intro.textContent = st.intro || '';
+			list.innerHTML = '';
+			st.lines.forEach(function(line) {
+				var li = document.createElement('li');
+				var t = String(line);
+				if (/^https?:\/\//i.test(t)) {
+					var a = document.createElement('a');
+					a.href = t;
+					a.target = '_blank';
+					a.rel = 'noopener';
+					a.textContent = t;
+					li.appendChild(a);
+				} else {
+					li.textContent = t;
+				}
+				list.appendChild(li);
+			});
+		}
+
+		function renderChangelog(items) {
+			var list = document.getElementById('hub-changelog-list');
+			var empty = document.getElementById('hub-changelog-empty');
+			if (!list) return;
+			list.innerHTML = '';
+			if (!items || !items.length) {
+				if (empty) empty.hidden = false;
+				if (window.applyHubFilter) window.applyHubFilter();
+				return;
+			}
+			if (empty) empty.hidden = true;
+			items.forEach(function(entry, i) {
+				var li = document.createElement('li');
+				li.style.setProperty('--i', i);
+				var dt = document.createElement('span');
+				dt.className = 'changelog-date';
+				dt.textContent = entry.date || '';
+				var tx = document.createElement('span');
+				tx.className = 'changelog-text';
+				tx.textContent = entry.text || '';
+				li.appendChild(dt);
+				li.appendChild(tx);
+				list.appendChild(li);
+			});
+			if (window.applyHubFilter) window.applyHubFilter();
+		}
+
+		function isFresh(iso, maxH) {
+			if (!iso || maxH == null) return false;
+			var t = new Date(iso).getTime();
+			if (isNaN(t)) return false;
+			return (Date.now() - t) < maxH * 3600000;
+		}
+
+		function initGithubRepos(hub) {
+			var list = document.getElementById('github-repos-list');
+			var loading = document.getElementById('github-repos-loading');
+			var errorEl = document.getElementById('github-repos-error');
+			if (!list || !loading || !errorEl) return;
+
+			function showError(msg) {
+				loading.style.display = 'none';
+				list.style.display = 'none';
+				errorEl.textContent = msg;
+				errorEl.style.display = 'block';
+			}
+
+			function formatDate(iso) {
+				if (!iso) return '';
+				try {
+					var d = new Date(iso);
+					return d.toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' });
+				} catch (e) {
+					return '';
+				}
+			}
+
+			function render(repos) {
+				loading.style.display = 'none';
+				errorEl.style.display = 'none';
+				list.innerHTML = '';
+				repos.forEach(function(repo, index) {
+					var li = document.createElement('li');
+					li.style.setProperty('--i', index);
+					var a = document.createElement('a');
+					a.href = repo.html_url;
+					a.target = '_blank';
+					a.rel = 'noopener';
+					var title = document.createElement('span');
+					title.className = 'repo-card-title';
+					title.textContent = repo.name;
+					a.appendChild(title);
+					var parts = [];
+					parts.push('★ ' + (repo.stargazers_count != null ? repo.stargazers_count : 0));
+					if (repo.language) parts.push(repo.language);
+					var pushed = formatDate(repo.pushed_at);
+					if (pushed) parts.push('act. ' + pushed);
+					var meta = document.createElement('span');
+					meta.className = 'repo-card-meta';
+					meta.textContent = parts.join(' · ');
+					a.appendChild(meta);
+					if (repo.description) a.title = repo.description;
+					li.appendChild(a);
+					list.appendChild(li);
+				});
+				list.style.display = 'grid';
+				if (window.applyHubFilter) window.applyHubFilter();
+			}
+
+			var maxH = hub.githubCacheMaxAgeHours != null ? hub.githubCacheMaxAgeHours : 24;
+			var fromHub = hub.githubRepos && hub.githubRepos.length;
+			var cached = null;
+			try {
+				cached = JSON.parse(localStorage.getItem(GH_LS) || 'null');
+			} catch (e1) {}
+
+			if (fromHub) {
+				render(hub.githubRepos);
+			} else if (cached && cached.repos && cached.repos.length && isFresh(cached.fetchedAt, maxH)) {
+				render(cached.repos);
+			} else {
+				loading.style.display = 'block';
+				errorEl.style.display = 'none';
+				list.style.display = 'none';
+			}
+
+			fetch('https://api.github.com/users/Luipy56/repos?per_page=100&sort=updated', {
+				headers: { 'Accept': 'application/vnd.github.v3+json' }
+			})
+				.then(function(r) {
+					if (!r.ok) throw new Error('GitHub: ' + r.status);
+					return r.json();
+				})
+				.then(function(repos) {
+					repos = repos.filter(function(r) { return !r.fork; });
+					render(repos);
+					try {
+						localStorage.setItem(GH_LS, JSON.stringify({
+							repos: repos.map(function(r) {
+								return {
+									name: r.name,
+									html_url: r.html_url,
+									description: r.description,
+									stargazers_count: r.stargazers_count,
+									language: r.language,
+									pushed_at: r.pushed_at
+								};
+							}),
+							fetchedAt: new Date().toISOString()
+						}));
+					} catch (e2) {}
+				})
+				.catch(function(err) {
+					if (fromHub) return;
+					if (cached && cached.repos && cached.repos.length) {
+						render(cached.repos);
+						errorEl.textContent = 'Mostrando caché local: ' + err.message;
+						errorEl.style.display = 'block';
+						loading.style.display = 'none';
+						return;
+					}
+					if (hub.githubRepos && hub.githubRepos.length) {
+						render(hub.githubRepos);
+						errorEl.textContent = 'GitHub no disponible; copia de hub.json. ' + err.message;
+						errorEl.style.display = 'block';
+						loading.style.display = 'none';
+						return;
+					}
+					showError('No se pudieron cargar los repositorios. ' + err.message);
+				});
+		}
+
+		fetch('/data/hub.json', { cache: 'no-store' })
+			.then(function(r) {
+				if (!r.ok) throw new Error('hub.json: ' + r.status);
+				return r.json();
+			})
+			.then(function(hub) {
+				renderNow(hub);
+				renderAscii(hub);
+				renderMission(hub);
+				renderSystemStatus(hub);
+				renderFlagship(hub.flagshipProjects);
+				renderChangelog(hub.siteChangelog);
+				window.__ldeluipyBgMode = (hub.backgroundMode && String(hub.backgroundMode).toLowerCase()) || 'matrix';
+				if (window.ldeluipyApplyBackgroundMode) {
+					window.ldeluipyApplyBackgroundMode(window.__ldeluipyBgMode);
+				}
+				initGithubRepos(hub);
+				var posts = hub.blog || [];
+				var feedUrl = hub.blogFeedUrl && String(hub.blogFeedUrl).trim();
+				if (feedUrl) {
+					return fetch(feedUrl, { mode: 'cors' })
+						.then(function(r) {
+							if (!r.ok) throw new Error('feed');
+							return r.text();
+						})
+						.then(function(xml) {
+							var parsed = parseRssItems(xml, 5);
+							if (parsed.length) renderBlog(parsed);
+							else renderBlog(posts);
+						})
+						.catch(function() {
+							renderBlog(posts);
+						});
+				}
+				renderBlog(posts);
+			})
+			.catch(function() {
+				if (nowLoad) nowLoad.textContent = 'No se pudo cargar la información.';
+				showBlogError('No se pudo cargar el blog.');
+			});
+	})();
+	</script>
+
+	<script>
+	(function() {
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+		var el = document.querySelector('.scroll-frost');
+		if (!el) return;
+
+		var lastY = window.scrollY || 0;
+		var skewTarget = 0;
+		var skewDisplay = 0;
+		var yParallax = lastY * 0.038;
+		var rafOn = false;
+		var lastTs = 0;
+
+		function pushRaf() {
+			if (rafOn) return;
+			rafOn = true;
+			lastTs = performance.now();
+			requestAnimationFrame(step);
+		}
+
+		function step(ts) {
+			var dt = Math.min(0.055, (ts - lastTs) / 1000);
+			lastTs = ts;
+
+			// Impulso del scroll se acumula en skewTarget; decae solo (sensación de inercia)
+			skewTarget *= Math.exp(-9.2 * dt);
+			var kSkew = 1 - Math.exp(-20 * dt);
+			skewDisplay += (skewTarget - skewDisplay) * kSkew;
+
+			var y = window.scrollY || 0;
+			var yGoal = y * 0.038;
+			var kY = 1 - Math.exp(-14 * dt);
+			yParallax += (yGoal - yParallax) * kY;
+
+			el.style.setProperty('--scroll-frost-y', yParallax.toFixed(2) + 'px');
+			el.style.setProperty('--scroll-frost-skew', skewDisplay.toFixed(4) + 'deg');
+
+			var skewIdle = Math.abs(skewTarget) < 0.003 && Math.abs(skewDisplay) < 0.025;
+			var yIdle = Math.abs(yGoal - yParallax) < 0.25;
+			if (skewIdle && yIdle) {
+				rafOn = false;
+				el.style.setProperty('--scroll-frost-skew', '0deg');
+				el.style.setProperty('--scroll-frost-y', yGoal.toFixed(2) + 'px');
+				skewTarget = 0;
+				skewDisplay = 0;
+				yParallax = yGoal;
+				return;
+			}
+			requestAnimationFrame(step);
+		}
+
+		function onScroll() {
+			var y = window.scrollY || 0;
+			var dy = y - lastY;
+			lastY = y;
+			skewTarget += dy * 0.013;
+			if (skewTarget > 2.35) skewTarget = 2.35;
+			if (skewTarget < -2.35) skewTarget = -2.35;
+			pushRaf();
+		}
+
+		window.addEventListener('scroll', onScroll, { passive: true });
+		el.style.setProperty('--scroll-frost-y', yParallax.toFixed(2) + 'px');
+	})();
+	</script>
+
+	<script>
+	(function() {
+		if (!('serviceWorker' in navigator)) return;
+		if (location.protocol !== 'https:' && location.hostname !== 'localhost') return;
+		navigator.serviceWorker.register('/sw.js').catch(function() {});
+	})();
+	</script>
+</body>
+</html>
