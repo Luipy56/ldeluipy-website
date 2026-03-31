@@ -2,7 +2,7 @@
   "backgroundMode": "matrix",
   "now": "Estoy cerrando circuitos en casa: mantener el hub y los servicios del dominio en orden, seguir iterando en lo que tengo abierto en GitHub —desde piezas web hasta el bloque de Minecraft y minijuegos— y convertir fricciones cotidianas en repos o notas cuando merece la pena fijarlas por escrito.",
   "nowUpdated": "2026-03-22",
-  "siteUpdated": "2026-03-22",
+  "siteUpdated": "2026-03-25",
   "asciiBanner": "   ══ LdeLuipy ══\n   ██╗     ██████╗ ███████╗██╗     ██╗   ██╗██╗██████╗ ██╗   ██╗\n   ██║     ██╔══██╗██╔════╝██║     ██║   ██║██║██╔══██╗╚██╗ ██╔╝\n   ██║     ██║  ██║█████╗  ██║     ██║   ██║██║██████╔╝ ╚████╔╝\n   ██║     ██║  ██║██╔══╝  ██║     ██║   ██║██║██╔═══╝   ╚██╔╝\n   ███████╗██████╔╝███████╗███████╗╚██████╔╝██║██║        ██║\n   ╚══════╝╚═════╝ ╚══════╝╚══════╝ ╚═════╝ ╚═╝╚═╝        ╚═╝",
   "missionTimeline": [
     {
@@ -21,7 +21,8 @@
     "lines": [
       "Monitor: check.ldeluipy.es",
       "Métricas: stats.ldeluipy.es",
-      "Notas rápidas: note.ldeluipy.es"
+      "Notas rápidas: note.ldeluipy.es",
+      "Sudoku: sk.ldeluipy.es"
     ]
   },
   "blogFeedUrl": "",
@@ -221,6 +222,10 @@
     }
   ],
   "siteChangelog": [
+    {
+      "date": "2026-03-25",
+      "text": "Nuevo subdominio sk.ldeluipy.es (Sudoku) enlazado desde el hub y la terminal (open sk)."
+    },
     {
       "date": "2026-03-22",
       "text": "Plan sci-fi: CRT/vignette, aberración al cambiar tema, glitch al revelar, holocartas, fondos matrix|stars|grid, terminal ficticia, boot skipeable, atajos g/1-9/`, misión y estado desde hub.json, eggs neonflux/void/mono."

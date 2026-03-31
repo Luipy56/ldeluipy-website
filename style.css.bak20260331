@@ -499,29 +499,6 @@ html.konami-active .hub-ascii-banner.hub-ascii-glitch::after {
 	margin: 0 0 0.5rem;
 }
 
-.hub-muted a {
-	color: var(--accent);
-	font-weight: 500;
-	text-decoration: none;
-	border-bottom: 1px solid transparent;
-	transition: color 0.2s, border-color 0.2s;
-}
-
-.hub-muted a:visited {
-	color: var(--accent);
-}
-
-.hub-muted a:hover {
-	color: var(--accent-hover);
-	border-bottom-color: rgba(0, 255, 166, 0.4);
-}
-
-.hub-muted a[target="_blank"]::after {
-	content: " ↗";
-	opacity: 0.5;
-	font-size: 0.85em;
-}
-
 .hub-now-text {
 	font-family: 'JetBrains Mono', monospace;
 	font-size: 0.9rem;
@@ -821,6 +798,7 @@ kbd {
 	.section-links h2 { animation: none; }
 	.changelog-summary-text { animation: none; text-shadow: 0 0 8px var(--accent); }
 	.changelog-summary::after { transition: none; }
+	.hub-mtv-summary-text { animation: none; text-shadow: 0 0 8px var(--accent); }
 	.hub-mtv-summary::after { transition: none; }
 	.chromatic-flash body { animation: none !important; }
 	[data-reveal] { opacity: 1; transform: none; transition: none; }
@@ -843,6 +821,7 @@ html.reduce-motion .typewriter { animation: none; width: auto; border-right: non
 html.reduce-motion .section-links h2 { animation: none; }
 html.reduce-motion .changelog-summary-text { animation: none; text-shadow: 0 0 8px var(--accent); }
 html.reduce-motion .changelog-summary::after { transition: none; }
+html.reduce-motion .hub-mtv-summary-text { animation: none; text-shadow: 0 0 8px var(--accent); }
 html.reduce-motion .hub-mtv-summary::after { transition: none; }
 html.reduce-motion [data-reveal] { opacity: 1; transform: none; transition: none; }
 html.reduce-motion .links-grid li { opacity: 1; transform: none; animation: none !important; }
@@ -1015,7 +994,7 @@ details.changelog-details[open] > .changelog-summary::after {
 	border-top: 1px solid rgba(0, 255, 166, 0.12);
 }
 
-/* MTV: iframe perezoso — summary como control clicable, no como h2 neón */
+/* MTV: iframe perezoso (solo carga al abrir <details>) */
 .hub-mtv-details {
 	margin: 0.75rem 0 0;
 }
@@ -1026,28 +1005,10 @@ details.changelog-details[open] > .changelog-summary::after {
 	align-items: center;
 	justify-content: space-between;
 	gap: 0.75rem;
-	padding: 0.65rem 1rem;
+	padding: 0;
 	margin: 0;
 	width: 100%;
 	box-sizing: border-box;
-	background: var(--gris-card);
-	border: 1px solid var(--gris-borde);
-	border-radius: var(--radius-sm);
-	user-select: none;
-	transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
-}
-.hub-mtv-summary:hover {
-	border-color: rgba(0, 255, 166, 0.35);
-	background: rgba(0, 255, 166, 0.07);
-	box-shadow: 0 0 20px rgba(0, 255, 166, 0.06);
-}
-.hub-mtv-summary:focus-visible {
-	outline: 2px solid var(--accent);
-	outline-offset: 2px;
-}
-details.hub-mtv-details[open] > .hub-mtv-summary {
-	border-color: rgba(0, 255, 166, 0.4);
-	background: rgba(0, 255, 166, 0.09);
 }
 .hub-mtv-summary::-webkit-details-marker {
 	display: none;
@@ -1056,31 +1017,31 @@ details.hub-mtv-details[open] > .hub-mtv-summary {
 	content: '';
 }
 .hub-mtv-summary-text {
-	font-family: 'JetBrains Mono', monospace;
-	font-size: 0.82rem;
-	font-weight: 500;
-	color: var(--blanco-muted);
-	text-transform: none;
-	letter-spacing: 0.02em;
-	line-height: 1.4;
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: var(--accent);
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	text-shadow:
+		0 0 7px var(--accent),
+		0 0 10px var(--accent),
+		0 0 21px var(--accent),
+		0 0 42px rgba(0, 255, 166, 0.3);
+	animation: neon-flicker 8s infinite;
 }
 .hub-mtv-summary:hover .hub-mtv-summary-text {
-	color: var(--blanco);
-}
-details.hub-mtv-details[open] > .hub-mtv-summary .hub-mtv-summary-text {
-	color: var(--accent);
+	color: var(--accent-hover);
 }
 .hub-mtv-summary::after {
 	content: '▸';
 	flex-shrink: 0;
-	font-size: 0.75rem;
+	font-size: 0.7rem;
 	color: var(--accent);
-	opacity: 0.85;
-	transition: transform 0.2s ease, color 0.2s ease;
+	opacity: 0.9;
+	transition: transform 0.2s ease;
 }
 details.hub-mtv-details[open] > .hub-mtv-summary::after {
 	transform: rotate(90deg);
-	color: var(--accent-hover);
 }
 .hub-mtv-panel {
 	padding-top: 1rem;

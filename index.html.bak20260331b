@@ -143,7 +143,7 @@
 
 		<section class="section-links nav-section" id="section-mtv" data-reveal>
 			<h2>MTV</h2>
-			<p class="hub-muted">Visor de texturas Minecraft en <a href="https://mtv.ldeluipy.es/" target="_blank" rel="noopener">mtv.ldeluipy.es</a>.</p>
+			<p class="hub-muted">Visor de texturas Minecraft en <a href="https://mtv.ldeluipy.es/" target="_blank" rel="noopener">mtv.ldeluipy.es</a>. La vista previa solo se pide al abrir el desplegable de abajo (carga diferida).</p>
 			<details class="hub-mtv-details" id="hub-mtv-details">
 				<summary class="hub-mtv-summary"><span class="hub-mtv-summary-text">Cargar vista previa embebida</span></summary>
 				<div class="hub-mtv-panel">

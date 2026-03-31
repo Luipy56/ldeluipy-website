@@ -22,7 +22,7 @@
 	<title>LdeLuipy</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+Mono:wght@400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="/primordial.css">
 	<link rel="stylesheet" href="/style.css">
 </head>
@@ -139,17 +139,6 @@
 				<p id="hub-system-intro" class="hub-muted"></p>
 				<ul id="hub-system-list" class="hub-system-list"></ul>
 			</div>
-		</section>
-
-		<section class="section-links nav-section" id="section-mtv" data-reveal>
-			<h2>MTV</h2>
-			<p class="hub-muted">Visor de texturas Minecraft en <a href="https://mtv.ldeluipy.es/" target="_blank" rel="noopener">mtv.ldeluipy.es</a>.</p>
-			<details class="hub-mtv-details" id="hub-mtv-details">
-				<summary class="hub-mtv-summary"><span class="hub-mtv-summary-text">Cargar vista previa embebida</span></summary>
-				<div class="hub-mtv-panel">
-					<iframe id="hub-mtv-iframe" class="hub-mtv-iframe" title="mtv.ldeluipy.es — visor de texturas" data-src="https://mtv.ldeluipy.es/" tabindex="-1"></iframe>
-				</div>
-			</details>
 		</section>
 
 		<section class="section-links nav-section" id="section-flagship" data-reveal>
@@ -550,9 +539,6 @@
 					}
 					if (!q) anyOverall = true;
 				}
-				if (sec.id === 'section-mtv') {
-					if (!q || norm(sec.textContent).indexOf(q) !== -1) anyOverall = true;
-				}
 				if (q && !anyOverall) sec.style.display = 'none';
 			});
 
@@ -591,28 +577,6 @@
 		window.applyHubFilter = applyFilter;
 		applyFilter();
 		syncSearchQuery();
-	})();
-	</script>
-
-	<script>
-	(function() {
-		var det = document.getElementById('hub-mtv-details');
-		var frame = document.getElementById('hub-mtv-iframe');
-		var sec = document.getElementById('section-mtv');
-		if (!det || !frame) return;
-		det.addEventListener('toggle', function() {
-			if (!det.open) return;
-			/* Si la sección aún no está revelada (scroll), el iframe quedaba en opacity:0 y algunos navegadores retrasan la carga hasta otro reflow (p. ej. al pasar a la siguiente sección). */
-			if (sec) sec.classList.add('revealed');
-			var url = frame.getAttribute('data-src');
-			if (!url || frame.getAttribute('src')) return;
-			requestAnimationFrame(function() {
-				requestAnimationFrame(function() {
-					frame.setAttribute('src', url);
-					frame.removeAttribute('tabindex');
-				});
-			});
-		});
 	})();
 	</script>
 
