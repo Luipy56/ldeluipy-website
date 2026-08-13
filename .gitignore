@@ -1,0 +1,6 @@
+.hallmark/
+.DS_Store
+*.log
+*~
+.env
+.env.*

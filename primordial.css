@@ -1,0 +1,272 @@
+/*
+ * primordial.css - design tokens + base UI for ldeluipy.es apps
+ *
+ * Canon: Hallmark (vault.ldeluipy.es) · accent signal = #0f0 (not the old #00ffa6 mint)
+ * Physical: /var/www/primordial.css - sites symlink into their DocumentRoot.
+ *
+ * Prefer Hallmark names (--paper, --ink, --accent…). Legacy aliases (--negro, --blanco…)
+ * remain so older pages keep working.
+ */
+
+:root {
+	/* Hallmark · Terminal / vault dark */
+	--paper: oklch(14% 0.014 150);
+	--paper-2: oklch(18% 0.016 150);
+	--paper-3: oklch(22% 0.018 150);
+	--rule: oklch(28% 0.02 150);
+	--ink: oklch(94% 0.01 150);
+	--muted: oklch(70% 0.02 150);
+	--accent: #0f0;
+	--accent-dim: oklch(72% 0.18 145);
+	--accent-soft: oklch(70% 0.18 145 / .14);
+	--focus: #0f0;
+	--danger: oklch(68% 0.14 25);
+	--danger-soft: oklch(68% 0.14 25 / .18);
+
+	--font-display: "Space Grotesk", "Outfit", system-ui, sans-serif;
+	--font-body: "IBM Plex Sans", "Outfit", system-ui, sans-serif;
+	--font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+	--radius: 10px;
+	--radius-sm: 6px;
+	--ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+	--dur: 280ms;
+
+	/* Legacy aliases (pre-Hallmark pages) */
+	--negro: var(--paper);
+	--gris-oscuro: var(--paper-2);
+	--gris-card: var(--paper-3);
+	--gris-borde: var(--rule);
+	--blanco: var(--ink);
+	--blanco-muted: var(--muted);
+	--accent-hover: var(--accent-dim);
+	--accent-glow: var(--accent-soft);
+	--danger-hover: var(--danger-soft);
+}
+
+[data-theme="verde"],
+[data-theme="vault"] {
+	--paper: oklch(14% 0.014 150);
+	--paper-2: oklch(18% 0.016 150);
+	--paper-3: oklch(22% 0.018 150);
+	--rule: oklch(28% 0.02 150);
+	--ink: oklch(94% 0.01 150);
+	--muted: oklch(70% 0.02 150);
+	--accent: #0f0;
+	--accent-dim: oklch(72% 0.18 145);
+	--accent-soft: oklch(70% 0.18 145 / .14);
+	--focus: #0f0;
+}
+
+[data-theme="oscuro"] {
+	--paper: oklch(13% 0.006 150);
+	--paper-2: oklch(17% 0.008 150);
+	--paper-3: oklch(21% 0.01 150);
+	--rule: oklch(30% 0.012 150);
+	--ink: oklch(94% 0.008 150);
+	--muted: oklch(68% 0.015 150);
+	--accent: #0f0;
+	--accent-dim: oklch(70% 0.16 145);
+	--accent-soft: oklch(70% 0.16 145 / .12);
+	--focus: #0f0;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { overflow-x: clip; }
+
+body {
+	margin: 0;
+	min-height: 100dvh;
+	padding: 1.5rem;
+	font-family: var(--font-body);
+	line-height: 1.55;
+	background: var(--paper);
+	color: var(--ink);
+	-webkit-font-smoothing: antialiased;
+	overflow-x: clip;
+}
+
+::selection {
+	background: var(--accent);
+	color: var(--paper);
+}
+
+a { color: inherit; }
+
+.wrap {
+	width: min(720px, 100%);
+	margin-inline: auto;
+}
+
+header {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 1rem;
+	margin-bottom: 2rem;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid var(--rule);
+}
+
+header h1 {
+	margin: 0;
+	font-family: var(--font-mono);
+	font-size: 1.35rem;
+	font-weight: 600;
+	font-style: normal;
+	letter-spacing: -0.03em;
+	color: var(--accent);
+	overflow-wrap: anywhere;
+	min-width: 0;
+}
+
+header h1 a {
+	color: var(--accent);
+	text-decoration: none;
+	transition: color var(--dur) var(--ease-out);
+}
+header h1 a:hover { color: var(--accent-dim); }
+header h1 a:focus-visible {
+	outline: 2px solid var(--focus);
+	outline-offset: 3px;
+}
+header .btn-sm { margin-left: auto; }
+
+.theme-switcher { margin-left: auto; }
+.theme-switcher select {
+	padding: 0.3rem 0.55rem;
+	font: inherit;
+	font-size: 0.8rem;
+	border-radius: var(--radius-sm);
+	border: 1px solid var(--rule);
+	background: var(--paper-3);
+	color: var(--ink);
+	cursor: pointer;
+}
+.theme-switcher select:hover { border-color: var(--accent-dim); }
+.theme-switcher select:focus-visible {
+	outline: 2px solid var(--focus);
+	outline-offset: 2px;
+}
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.4rem;
+	padding: 0.55rem 1rem;
+	border-radius: var(--radius-sm);
+	border: 1px solid var(--rule);
+	background: var(--paper-3);
+	color: var(--ink);
+	font: inherit;
+	font-size: 0.9rem;
+	text-decoration: none;
+	cursor: pointer;
+	transition:
+		background var(--dur) var(--ease-out),
+		border-color var(--dur) var(--ease-out),
+		color var(--dur) var(--ease-out),
+		box-shadow var(--dur) var(--ease-out),
+		transform var(--dur) var(--ease-out);
+}
+.btn:hover {
+	background: var(--paper-2);
+	border-color: var(--accent-dim);
+}
+.btn:focus-visible {
+	outline: 2px solid var(--focus);
+	outline-offset: 3px;
+}
+.btn:active { transform: translateY(1px); }
+.btn:disabled,
+.btn[aria-disabled="true"] {
+	opacity: 0.45;
+	cursor: not-allowed;
+	transform: none;
+}
+
+.btn.primary {
+	background: var(--accent);
+	border-color: var(--accent);
+	color: var(--paper);
+}
+.btn.primary:hover {
+	background: var(--accent-dim);
+	border-color: var(--accent-dim);
+	box-shadow: 0 0 24px var(--accent-soft);
+}
+
+.btn.danger {
+	color: var(--danger);
+	border-color: var(--danger);
+	background: transparent;
+}
+.btn.danger:hover { background: var(--danger-soft); }
+
+.btn-sm {
+	padding: 0.28rem 0.55rem;
+	font-size: 0.8rem;
+}
+
+.empty {
+	color: var(--muted);
+	font-style: italic;
+}
+
+main.form {
+	background: var(--paper-3);
+	border: 1px solid var(--rule);
+	border-radius: var(--radius);
+	padding: 1.5rem;
+}
+main.form h2 {
+	margin: 0 0 1rem;
+	font-family: var(--font-display);
+	font-size: 1.25rem;
+	font-style: normal;
+	font-weight: 600;
+	color: var(--accent);
+}
+main.form label {
+	display: block;
+	margin-bottom: 0.25rem;
+	color: var(--muted);
+	font-size: 0.9rem;
+}
+main.form input[type="text"],
+main.form input[type="email"],
+main.form input[type="password"],
+main.form textarea,
+main.form select {
+	width: 100%;
+	padding: 0.65rem 0.75rem;
+	border: 1px solid var(--rule);
+	border-radius: var(--radius-sm);
+	background: var(--paper);
+	color: var(--ink);
+	font: inherit;
+	font-size: 1rem;
+	transition: border-color var(--dur) var(--ease-out);
+}
+main.form input:hover,
+main.form textarea:hover,
+main.form select:hover { border-color: var(--accent-dim); }
+main.form input:focus-visible,
+main.form textarea:focus-visible,
+main.form select:focus-visible {
+	outline: 2px solid var(--focus);
+	outline-offset: 2px;
+	border-color: var(--accent);
+}
+main.form textarea { resize: vertical; min-height: 120px; }
+main.form p { margin-bottom: 1rem; }
+main.form .error { color: var(--danger); margin-bottom: 1rem; }
+
+code, kbd, samp {
+	font-family: var(--font-mono);
+	font-size: 0.92em;
+}

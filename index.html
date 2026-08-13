@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luipy · construyo y enciendo</title>
+<meta name="description" content="Luipy, desarrollador full-stack y sysadmin. Webs, APIs, bots y la infraestructura Linux que los sostiene. Disponible para proyectos.">
+<meta name="theme-color" content="#0a1410">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Merge: Photographic cover + Atmospheric marquee/glow + Map diagram
+ * display: Sora · body: IBM Plex Sans · mono: JetBrains Mono
+ * dark aurora · green #0f0 */
+:root{
+  --paper:oklch(14% 0.02 160);--paper-2:oklch(18% 0.024 160);--paper-3:oklch(23% 0.03 160);
+  --rule:oklch(30% 0.03 160);--ink:oklch(96% 0.02 155);--muted:oklch(78% 0.035 155);--neutral:oklch(62% 0.03 155);
+  --accent:#0f0;--accent2:oklch(82% 0.2 155);--glow:oklch(86% 0.28 150/.35);--focus:#0f0;
+  --fd:"Sora",system-ui,sans-serif;--fb:"IBM Plex Sans",system-ui,sans-serif;--fm:"JetBrains Mono",monospace;
+  --s2:.5rem;--s3:.75rem;--s4:1rem;--s6:1.5rem;--s8:2rem;--s10:2.5rem;--s12:3rem;--s16:4rem;--s20:5rem;--s24:6rem;
+  --eo:cubic-bezier(0.16,1,0.3,1);
+  --radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--fb);font-size:1.02rem;line-height:1.62;-webkit-font-smoothing:antialiased;position:relative}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(50% 40% at 78% 8%, oklch(60% 0.22 155/.18), transparent 70%),
+    radial-gradient(45% 45% at 10% 90%, oklch(55% 0.2 175/.14), transparent 70%);}
+main,.banner,.mfoot{position:relative;z-index:1}
+a{color:var(--accent2);text-decoration:none}
+a:hover{color:var(--accent)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:6px}
+::selection{background:var(--accent);color:var(--paper)}
+h1,h2,h3{font-family:var(--fd);font-weight:700;letter-spacing:-0.03em;line-height:1.06;overflow-wrap:anywhere;min-width:0}
+.wrap{width:min(1160px,92vw);margin-inline:auto}
+.eyebrow{font-family:var(--fm);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent2);display:inline-flex;align-items:center;gap:.6ch}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+
+.btn{display:inline-flex;align-items:center;gap:.6ch;font-family:var(--fb);font-weight:500;font-size:.9rem;padding:.65rem 1.25rem;border-radius:999px;cursor:pointer;transition:transform .12s var(--eo),background .12s var(--eo),color .12s var(--eo)}
+.btn.primary{background:var(--accent);color:var(--paper);border:1px solid var(--accent)}
+.btn.primary:hover{transform:translateY(-2px)}
+.btn.ghost{background:oklch(23% 0.03 165/.6);color:var(--ink);border:1px solid var(--rule)}
+.btn.ghost:hover{transform:translateY(-2px);border-color:var(--accent2)}
+
+/* N12 · banner + retract */
+.banner{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;justify-content:space-between;align-items:center;padding:var(--s4) max(4vw,var(--s6));
+  background:oklch(14% 0.02 160/.5);backdrop-filter:blur(8px);transition:transform .3s var(--eo)}
+.banner.hide{transform:translateY(-100%)}
+.banner .b{font-family:var(--fm);font-weight:500;display:flex;align-items:center;gap:.5ch}
+.banner .b .d{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.banner a.cta{font-family:var(--fm);font-size:.85rem;border:1px solid var(--rule);border-radius:999px;padding:.4rem 1rem;color:var(--ink)}
+.banner a.cta:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Photographic cover */
+.cover{min-height:100svh;position:relative;display:flex;align-items:flex-end;padding:max(6vw,var(--s16)) max(4vw,var(--s8)) var(--s16);overflow:hidden}
+.cover .art{position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(70% 90% at 80% 15%,oklch(55% 0.22 155/.5),transparent 60%),
+    radial-gradient(60% 70% at 12% 95%,oklch(45% 0.2 185/.4),transparent 60%),
+    linear-gradient(160deg,oklch(20% 0.04 160),oklch(11% 0.02 160));}
+.cover .art::after{content:"";position:absolute;inset:0;opacity:.5;mix-blend-mode:overlay;
+  background:repeating-linear-gradient(115deg,oklch(100% 0 0/.04) 0 2px,transparent 2px 7px)}
+.cover .grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.25;
+  background:radial-gradient(oklch(100% 0 0/.5) 0.5px,transparent 0.6px);background-size:3px 3px}
+.cover .c{position:relative;z-index:2;max-width:min(52rem,92vw)}
+.cover .k{font-family:var(--fm);font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2)}
+.cover h1{font-size:clamp(2.8rem,8vw,6.5rem);margin-top:var(--s4);max-width:14ch;letter-spacing:-0.01em;word-break:normal;overflow-wrap:normal;text-shadow:0 4px 40px oklch(10% 0.02 160/.6)}
+.cover h1 .g{color:var(--accent);text-shadow:0 0 40px oklch(86% 0.28 150/.4)}
+.cover p{color:var(--muted);font-size:1.2rem;max-width:44ch;margin-top:var(--s6)}
+.cover .a{display:flex;gap:var(--s3);flex-wrap:wrap;margin-top:var(--s8)}
+
+/* Atmospheric marquee band */
+.marquee{margin-top:var(--s16);border-block:1px solid var(--rule);overflow:hidden;padding-block:var(--s4);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee .track{display:inline-flex;white-space:nowrap;will-change:transform}
+.marquee span{font-family:var(--fd);font-weight:700;font-size:2rem;letter-spacing:-0.02em;color:var(--neutral)}
+.marquee span em{font-style:normal;color:var(--accent);text-shadow:0 0 20px var(--glow)}
+/* sections */
+.section{padding-block:var(--s24)}
+.section .head{max-width:52ch;margin-bottom:var(--s12)}
+.section .head h2{font-size:2.7rem}
+.section .head p{color:var(--muted);margin-top:var(--s4);font-size:1.2rem}
+
+/* capabilities */
+.caps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4)}
+@media(max-width:820px){.caps{grid-template-columns:1fr}}
+.cap{padding:var(--s6);border:1px solid var(--rule);border-radius:var(--radius);background:oklch(18.5% 0.026 165/.55)}
+.cap .i{font-family:var(--fm);color:var(--accent);font-size:.9rem}
+.cap h3{font-size:1.5rem;margin:var(--s3) 0 var(--s3)}
+.cap p{color:var(--muted);font-size:.9rem}
+
+/* map diagram */
+.map{position:relative;margin-block:var(--s8) var(--s12)}
+.diagram{width:100%;height:auto;display:block}
+.node-label{font-family:var(--fm);font-size:12px;fill:var(--ink)}
+.node-sub{font-family:var(--fm);font-size:9px;fill:var(--neutral)}
+.edge{stroke:oklch(45% 0.05 190);stroke-width:1.5;fill:none}
+.edge.flow{stroke:var(--accent);stroke-width:1.5;stroke-dasharray:5 7;animation:dash 1.4s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-24}}
+.n-box{fill:var(--paper-2);stroke:var(--rule);stroke-width:1.5;rx:10}
+.n-box.core{stroke:var(--accent)}
+.n-box.pulse{fill:none;stroke:var(--accent);transform-box:fill-box;transform-origin:center;animation:pulse 2.8s var(--eo) infinite;pointer-events:none}
+@keyframes pulse{0%{transform:scale(1);opacity:.5}70%,100%{transform:scale(1.14);opacity:0}}
+.diagram g:hover .n-box:not(.pulse){stroke:var(--accent2)}
+.legend{display:flex;flex-wrap:wrap;gap:var(--s4) var(--s8);font-family:var(--fm);font-size:.8rem;color:var(--muted);border-top:1px solid var(--rule);padding-block:var(--s6)}
+.legend .k{display:inline-flex;align-items:center;gap:.5ch}
+.legend .sw{width:22px;height:0;border-top:2px solid oklch(45% 0.05 190)}
+.legend .sw.flow{border-top:2px dashed var(--accent)}
+.legend .sw.core{width:12px;height:12px;border:2px solid var(--accent);border-radius:3px}
+
+/* work strip — Photographic frames */
+.strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4)}
+@media(max-width:820px){.strip{grid-template-columns:1fr}}
+.frame{position:relative;border:1px solid var(--rule);border-radius:16px;overflow:hidden;min-height:220px;display:flex;flex-direction:column;justify-content:flex-end;padding:var(--s6);
+  transition:transform .25s var(--eo);opacity:0;transform:translateY(14px)}
+.frame.in{opacity:1;transform:none}
+.frame:hover{transform:translateY(-4px)}
+.frame .bg{position:absolute;inset:0;z-index:0}
+.frame:nth-child(1) .bg{background:linear-gradient(150deg,oklch(30% 0.1 155),oklch(15% 0.03 160))}
+.frame:nth-child(2) .bg{background:linear-gradient(150deg,oklch(30% 0.09 185),oklch(15% 0.03 160))}
+.frame:nth-child(3) .bg{background:linear-gradient(150deg,oklch(32% 0.11 140),oklch(15% 0.03 160))}
+.frame:nth-child(4) .bg{background:linear-gradient(150deg,oklch(30% 0.1 280),oklch(15% 0.03 260))}
+.frame:nth-child(5) .bg{background:linear-gradient(150deg,oklch(32% 0.11 130),oklch(15% 0.03 150))}
+.frame:nth-child(6) .bg{background:linear-gradient(150deg,oklch(30% 0.1 60),oklch(15% 0.03 80))}
+.frame .bg::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(120deg,oklch(100% 0 0/.04) 0 2px,transparent 2px 8px)}
+.frame .in-c{position:relative;z-index:1}
+.frame .st{font-family:var(--fm);font-size:.72rem;color:var(--accent);display:inline-flex;align-items:center;gap:.5ch}
+.frame .st::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}
+.frame .st.repo{color:var(--neutral)}
+.frame h3{font-family:var(--fd);font-weight:600;font-size:1.4rem;margin:var(--s2) 0}
+.frame a{font-family:var(--fm);font-size:.78rem}
+
+/* hire */
+.hire .box{border:1px solid var(--rule);border-radius:calc(var(--radius) + 6px);padding:var(--s20) var(--s8);text-align:center;
+  background:radial-gradient(80% 120% at 50% 0,oklch(24% 0.05 155/.8),oklch(16% 0.02 165/.4))}
+.hire h2{font-size:2.7rem;max-width:20ch;margin-inline:auto}
+.hire h2 .glow{color:var(--accent);text-shadow:0 0 30px var(--glow)}
+.hire p{color:var(--muted);max-width:52ch;margin:var(--s4) auto 0}
+.hire .actions{display:flex;flex-wrap:wrap;gap:var(--s3);justify-content:center;margin-top:var(--s8)}
+
+/* Ft8 · marquee footer */
+.mfoot{border-top:1px solid var(--rule);margin-top:var(--s12)}
+.mfoot .fmarq{--gap:2.5rem;overflow:hidden;padding-block:var(--s8)}
+.mfoot .fmarq .track{display:inline-flex;gap:var(--gap);white-space:nowrap;will-change:transform}
+.mfoot .fmarq a,.mfoot .fmarq span{font-family:var(--fd);font-weight:700;font-size:clamp(1.6rem,4vw,2.6rem);letter-spacing:-0.02em}
+.mfoot .fmarq span{color:var(--neutral)}
+.mfoot .fmarq a{color:var(--ink)}
+.mfoot .fmarq a:hover{color:var(--accent)}
+.mfoot .fmarq .dot{color:var(--accent)}
+.mfoot .base{border-top:1px solid var(--rule);padding-block:var(--s4);font-family:var(--fm);font-size:.78rem;color:var(--neutral);display:flex;flex-wrap:wrap;gap:var(--s4);justify-content:space-between}
+.mfoot .base a{color:var(--neutral)}
+.mfoot .base a:hover{color:var(--accent)}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .52s var(--eo),transform .52s var(--eo)}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  body::before{opacity:.5}
+  .marquee .track,.mfoot .fmarq .track{transform:none}
+  .edge.flow,.n-box.pulse{animation:none}
+  .frame{opacity:1;transform:none;transition:none}
+  .reveal{opacity:1;transform:none;transition:none}
+  *{transition-duration:1ms!important}
+}
+</style>
+</head>
+<body>
+
+  <header class="banner" id="banner">
+    <span class="b"><span class="d" aria-hidden="true"></span>luipy</span>
+    <a class="cta" href="#contacto">Contactar</a>
+  </header>
+
+  <main>
+    <!-- Photographic cover -->
+    <section class="cover">
+      <div class="art" aria-hidden="true"></div>
+      <div class="grain" aria-hidden="true"></div>
+      <div class="c">
+        <span class="k">Desarrollador full-stack &amp; sysadmin</span>
+        <h1>Construyo el software <span class="g">y enciendo</span> el servidor.</h1>
+        <p>Soy Luipy. Del navegador al kernel: webs, APIs, bots y la infraestructura que los mantiene despiertos.</p>
+        <div class="a">
+          <a class="btn primary" href="#contacto">Contáctame</a>
+          <a class="btn ghost" href="https://github.com/Luipy56" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Atmospheric marquee -->
+    <div class="marquee" aria-hidden="true">
+      <div class="track" id="marq">
+        <span>TypeScript&nbsp;&nbsp;<em>✦</em>&nbsp;&nbsp;JavaScript&nbsp;&nbsp;<em>✦</em>&nbsp;&nbsp;Python&nbsp;&nbsp;<em>✦</em>&nbsp;&nbsp;PHP&nbsp;&nbsp;<em>✦</em>&nbsp;&nbsp;Java&nbsp;&nbsp;<em>✦</em>&nbsp;&nbsp;Angular&nbsp;&nbsp;<em>✦</em>&nbsp;&nbsp;Astro&nbsp;&nbsp;<em>✦</em>&nbsp;&nbsp;Laravel&nbsp;&nbsp;<em>✦</em>&nbsp;&nbsp;Node&nbsp;&nbsp;<em>✦</em>&nbsp;&nbsp;Docker&nbsp;&nbsp;<em>✦</em>&nbsp;&nbsp;Linux&nbsp;&nbsp;<em>✦</em>&nbsp;&nbsp;Apache&nbsp;&nbsp;<em>✦</em>&nbsp;&nbsp;Bash&nbsp;&nbsp;<em>✦</em>&nbsp;&nbsp;SQL&nbsp;&nbsp;<em>✦</em>&nbsp;&nbsp;Minecraft&nbsp;&nbsp;<em>✦</em>&nbsp;&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- About -->
+    <section class="section wrap" id="sobre">
+      <div class="head reveal">
+        <span class="eyebrow">Qué hago</span>
+        <h2>Un perfil que va del navegador al kernel.</h2>
+        <p>Me muevo cómodo en las tres capas del stack. Por eso puedo llevar un proyecto entero sin repartir el marrón entre cinco equipos.</p>
+      </div>
+      <div class="caps">
+        <article class="cap reveal">
+          <span class="i">01</span>
+          <h3>Producto web</h3>
+          <p>Webs y aplicaciones completas, de la interfaz a la base de datos. Ningún stack es sagrado: estudio el problema y uso la tecnología que mejor encaje, o me adapto a la que ya tengas.</p>
+        </article>
+        <article class="cap reveal">
+          <span class="i">02</span>
+          <h3>Automatización</h3>
+          <p>Bots y herramientas que quitan trabajo repetitivo. Lo conecto con la herramienta que ya uses: Discord, tu gestor de proyectos o cualquier sistema con API.</p>
+        </article>
+        <article class="cap reveal">
+          <span class="i">03</span>
+          <h3>Infraestructura</h3>
+          <p>Servidores Linux propios: despliegue, dominios, seguridad y monitorización. Lo que construyo queda encendido y en vivo, no en una demo olvidada.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Map diagram -->
+    <section class="section wrap" id="mapa">
+      <div class="head reveal">
+        <span class="eyebrow">Mapa del ecosistema</span>
+        <h2>Todo lo que hago, <span style="color:var(--accent)">conectado y corriendo</span>.</h2>
+        <p>No trabajo en piezas sueltas: código, servicios e infraestructura forman un mismo sistema.</p>
+      </div>
+      <div class="map reveal">
+        <svg class="diagram" viewBox="0 0 900 460" role="img" aria-label="Diagrama del ecosistema de Luipy: el nodo Luipy conecta con producto web, automatización e infraestructura, que alimentan los proyectos en vivo.">
+          <path class="edge" d="M400 106 C400 148,180 152,180 200"/>
+          <path class="edge" d="M450 106 L450 200"/>
+          <path class="edge" d="M500 106 C500 148,720 152,720 200"/>
+          <path class="edge flow" d="M180 244 L180 330"/>
+          <path class="edge flow" d="M450 244 L450 330"/>
+          <path class="edge flow" d="M720 244 L720 330"/>
+          <path class="edge flow" d="M180 374 C180 398,380 378,400 400"/>
+          <path class="edge flow" d="M450 374 L450 400"/>
+          <path class="edge flow" d="M720 374 C720 398,520 378,500 400"/>
+          <g><rect class="n-box core pulse" x="360" y="50" width="180" height="56" rx="10"/><rect class="n-box core" x="360" y="50" width="180" height="56" rx="10"/><text class="node-label" x="450" y="76" text-anchor="middle" style="fill:#0f0;font-weight:500">LUIPY</text><text class="node-sub" x="450" y="92" text-anchor="middle">full-stack &amp; sysadmin</text></g>
+          <g><rect class="n-box" x="95" y="200" width="170" height="44" rx="10"/><text class="node-label" x="180" y="227" text-anchor="middle">PRODUCTO WEB</text></g>
+          <g><rect class="n-box" x="365" y="200" width="170" height="44" rx="10"/><text class="node-label" x="450" y="227" text-anchor="middle">AUTOMATIZACIÓN</text></g>
+          <g><rect class="n-box" x="635" y="200" width="170" height="44" rx="10"/><text class="node-label" x="720" y="227" text-anchor="middle">INFRAESTRUCTURA</text></g>
+          <g><rect class="n-box" x="95" y="330" width="170" height="44" rx="10"/><text class="node-label" x="180" y="357" text-anchor="middle">KM0 Digital</text></g>
+          <g><rect class="n-box" x="365" y="330" width="170" height="44" rx="10"/><text class="node-label" x="450" y="357" text-anchor="middle">ultron-redmine</text></g>
+          <g><rect class="n-box" x="635" y="330" width="170" height="44" rx="10"/><text class="node-label" x="720" y="357" text-anchor="middle">WITHERED Nexus</text></g>
+          <g><rect class="n-box" x="300" y="400" width="300" height="40" rx="10"/><text class="node-label" x="450" y="425" text-anchor="middle" style="fill:#0f0">ecosistema *.ldeluipy.es · en vivo</text></g>
+        </svg>
+      </div>
+      <div class="legend reveal">
+        <span class="k"><span class="sw core"></span> nodo raíz</span>
+        <span class="k"><span class="sw"></span> capa técnica</span>
+        <span class="k"><span class="sw flow"></span> despliegue en producción</span>
+      </div>
+    </section>
+
+    <!-- Work strip -->
+    <section class="section wrap" id="trabajo">
+      <div class="head reveal">
+        <span class="eyebrow">Casos reales</span>
+        <h2>Casos reales, con URL y repositorio.</h2>
+        <p>Nada de maquetas: tienen web pública o código abierto.</p>
+      </div>
+      <div class="strip" id="strip">
+        <article class="frame"><div class="bg" aria-hidden="true"></div><div class="in-c"><span class="st">en vivo</span><h3>WITHERED Nexus</h3><a href="https://mc.ldeluipy.es/" rel="noopener">mc.ldeluipy.es ↗</a></div></article>
+        <article class="frame"><div class="bg" aria-hidden="true"></div><div class="in-c"><span class="st">en vivo</span><h3>KM0 Digital</h3><a href="https://km0digital.com/" rel="noopener">km0digital.com ↗</a></div></article>
+        <article class="frame"><div class="bg" aria-hidden="true"></div><div class="in-c"><span class="st repo">repo</span><h3>ultron-redmine</h3><a href="https://github.com/AMVARA-CONSULTING/ultron-redmine" rel="noopener">github ↗</a></div></article>
+        <article class="frame"><div class="bg" aria-hidden="true"></div><div class="in-c"><span class="st repo">repo</span><h3>betterclip</h3><a href="https://github.com/Luipy56/betterclip" rel="noopener">github ↗</a></div></article>
+        <article class="frame"><div class="bg" aria-hidden="true"></div><div class="in-c"><span class="st">en vivo</span><h3>Serralleria Solidària</h3><a href="https://serra.ldeluipy.es/" rel="noopener">serra.ldeluipy.es ↗</a></div></article>
+        <article class="frame"><div class="bg" aria-hidden="true"></div><div class="in-c"><span class="st">en vivo</span><h3>mc-texture-viewer</h3><a href="https://mtv.ldeluipy.es/" rel="noopener">mtv.ldeluipy.es ↗</a></div></article>
+      </div>
+    </section>
+
+    <!-- Hire -->
+    <section class="section wrap hire" id="contacto">
+      <div class="box reveal">
+        <span class="eyebrow" style="justify-content:center">Disponible para proyectos</span>
+        <h2 style="margin-top:var(--s4)">¿Encendemos algo <span class="glow">juntos</span>?</h2>
+        <p>Si necesitas construir, automatizar o desplegar · o las tres cosas · escríbeme y lo montamos.</p>
+        <div class="actions">
+          <button class="btn primary" type="button" id="copymail" data-mail="yoelberjaga@gmail.com">yoelberjaga@gmail.com</button>
+          <a class="btn ghost" href="https://discord.com/invite/6ExMmZM6rK" rel="noopener">Discord</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Ft8 marquee footer -->
+  <footer class="mfoot">
+    <div class="fmarq" aria-hidden="true">
+      <div class="track" id="fmarq">
+        <span>Hablemos</span><span class="dot">✦</span><span>yoelberjaga@gmail.com</span><span class="dot">✦</span><a href="https://github.com/Luipy56" rel="noopener">github.com/Luipy56</a><span class="dot">✦</span><span>Disponible</span><span class="dot">✦</span>
+      </div>
+    </div>
+    <div class="wrap base">
+      <span>© 2026 Luipy · desarrollador full-stack &amp; sysadmin</span>
+      <a href="/">Ver todas las versiones</a>
+    </div>
+  </footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function smoothMarquee(id, pxPerSec){
+    var track = document.getElementById(id);
+    if(!track) return;
+    track.innerHTML += track.innerHTML;
+    if(reduce) return;
+    var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    var half, pos = 0, vel = 1, target = 1, lastT = -1;
+    function measure(){ half = (track.scrollWidth + gap) / 2; }
+    measure();
+    var box = track.parentElement;
+    box.addEventListener("mouseenter", function(){ target = 0; });
+    box.addEventListener("mouseleave", function(){ target = 1; });
+    addEventListener("resize", measure);
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+    requestAnimationFrame(function tick(now){
+      if(lastT < 0) lastT = now;
+      var dt = Math.min((now - lastT) / 1000, 0.05); lastT = now;
+      vel += (target - vel) * Math.min(1, dt * 2.6);
+      pos -= pxPerSec * dt * vel;
+      if(-pos >= half) pos += half;
+      track.style.transform = "translate3d(" + pos + "px,0,0)";
+      requestAnimationFrame(tick);
+    });
+  }
+
+  var io;
+  function observeReveal(){
+    var items = Array.prototype.slice.call(document.querySelectorAll(".reveal:not(.in)"));
+    if(reduce || !("IntersectionObserver" in window)){ items.forEach(function(x){x.classList.add("in");}); return; }
+    if(!io) io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    items.forEach(function(x){ io.observe(x); });
+  }
+
+  var frames = Array.prototype.slice.call(document.querySelectorAll(".frame"));
+  if(reduce || !("IntersectionObserver" in window)){ frames.forEach(function(x){x.classList.add("in");}); }
+  else{
+    var io2 = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add("in"); io2.unobserve(en.target); } });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    frames.forEach(function(x){ io2.observe(x); });
+  }
+
+  var ban = document.getElementById("banner"), last = 0;
+  addEventListener("scroll", function(){ var y = scrollY; ban.classList.toggle("hide", y > last && y > 120); last = y; }, { passive: true });
+
+  smoothMarquee("marq", 85);
+  smoothMarquee("fmarq", 65);
+
+  var cm = document.getElementById("copymail");
+  if(cm) cm.addEventListener("click", function(){
+    var mail = cm.getAttribute("data-mail");
+    function done(){ cm.textContent = "Copiado ✓"; setTimeout(function(){ cm.textContent = mail; }, 1600); }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(mail).then(done, done); }
+    else{
+      var i = document.createElement("input"); i.value = mail; document.body.appendChild(i);
+      i.select(); try{ document.execCommand("copy"); }catch(e){} document.body.removeChild(i); done();
+    }
+  });
+
+  observeReveal();
+})();
+</script>
+</body>
+</html>

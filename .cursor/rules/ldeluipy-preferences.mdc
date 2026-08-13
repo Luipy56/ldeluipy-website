@@ -1,0 +1,37 @@
+---
+description: Luipy personal site preferences — tone, copy, contact, stack, and deploy
+alwaysApply: true
+---
+
+# ldeluipy.es — project preferences
+
+Live at `https://ldeluipy.es`. Pure HTML/CSS/JS (no frameworks, no Node/npm build). Accent `#0f0`. Design follows Hallmark (anti-AI-slop); respect existing tokens and `primordial.css` when present.
+
+## Tone & CTAs
+
+- Prefer **Contáctame / Contactar**, never **Contrátame / Contratar** (too aggressive).
+- No `mailto:` links. Contact section uses copy-to-clipboard for the email (or Discord / other non-mailto CTAs).
+- Copy stays honest: no invented metrics, fake testimonials, or static headcounts that go stale (e.g. avoid “20+ services”).
+
+## Capability / “Qué hago” copy
+
+Keep **generic and adaptable**, not a stack laundry list:
+
+- Product: study the problem; pick or adapt to the best tech — no sacred stack.
+- Automation: bots that remove busywork; connect to whatever tool they already use (Discord, their tracker, any API) — avoid locking copy to one product name (e.g. Redmine) unless the case study is that product.
+- Infra: Linux servers, deploy, domains, security, monitoring — stay high-level. Skip Ubuntu/Apache/Let’s Encrypt jargon for a general audience; HTTPS-as-product-detail is redundant.
+
+Tech marquee can list tools (and light easter eggs like Minecraft). Space words generously; hover must **ease** speed down/up, never hard-pause.
+
+## Cases / map
+
+- Section framing: **Casos reales**, not “Cosas reales”.
+- Prefer live URLs when a project is up (e.g. Serra over dead/archived stand-ins).
+- Ultron lives at `https://github.com/AMVARA-CONSULTING/ultron-redmine` (repo moved off Luipy56).
+- Ecosystem map: capability layers (web / automation / infra), not a tech-name dump; no brittle static service counts on the hub node.
+
+## Deploy & sync
+
+- DocumentRoot for the apex is `/var/www/ldeluipy.es`. After edits here, keep `vault.ldeluipy.es/ldeluipy.es/` in sync if that mirror still exists.
+- Do not expose tooling dirs (`.cursor`, `.hallmark`, `.git`) via Apache.
+- Commits: author **Luipy56**; commit messages must not mention AI tooling.
