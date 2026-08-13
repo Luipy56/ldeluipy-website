@@ -101,6 +101,7 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;letter-spacing:-0.03em;line-heigh
 .node-sub{font-family:var(--fm);font-size:9px;fill:var(--neutral)}
 .edge{stroke:oklch(45% 0.05 190);stroke-width:1.5;fill:none}
 .edge.flow{stroke:var(--accent);stroke-width:1.5;stroke-dasharray:5 7;animation:dash 1.4s linear infinite}
+.edge.loop{stroke:oklch(72% 0.12 155);stroke-width:1.5;stroke-dasharray:3 6;animation:dash 2.2s linear infinite}
 @keyframes dash{to{stroke-dashoffset:-24}}
 .n-box{fill:var(--paper-2);stroke:var(--rule);stroke-width:1.5;rx:10}
 .n-box.core{stroke:var(--accent)}
@@ -109,11 +110,12 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;letter-spacing:-0.03em;line-heigh
 .diagram g:hover .n-box:not(.pulse){stroke:var(--accent2)}
 .map{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
 .map .diagram{min-width:620px;max-width:none}
-@media(max-width:820px){.map .diagram{min-width:760px}}
+@media(max-width:820px){.map .diagram{min-width:900px}}
 .legend{display:flex;flex-wrap:wrap;gap:var(--s4) var(--s8);font-family:var(--fm);font-size:.8rem;color:var(--muted);border-top:1px solid var(--rule);padding-block:var(--s6)}
 .legend .k{display:inline-flex;align-items:center;gap:.5ch}
 .legend .sw{width:22px;height:0;border-top:2px solid oklch(45% 0.05 190)}
 .legend .sw.flow{border-top:2px dashed var(--accent)}
+.legend .sw.loop{border-top:2px dashed oklch(72% 0.12 155)}
 .legend .sw.core{width:12px;height:12px;border:2px solid var(--accent);border-radius:3px}
 
 /* work strip — Photographic frames */
@@ -168,7 +170,7 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;letter-spacing:-0.03em;line-heigh
   html{scroll-behavior:auto}
   body::before{opacity:.5}
   .marquee .track,.mfoot .fmarq .track{transform:none}
-  .edge.flow,.n-box.pulse{animation:none}
+  .edge.flow,.edge.loop,.n-box.pulse{animation:none}
   .frame{opacity:1;transform:none;transition:none}
   .reveal{opacity:1;transform:none;transition:none}
   *{transition-duration:1ms!important}
@@ -239,7 +241,7 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;letter-spacing:-0.03em;line-heigh
         <p>No trabajo en piezas sueltas: código, servicios e infraestructura forman un mismo sistema.</p>
       </div>
       <div class="map reveal">
-        <svg class="diagram" viewBox="0 0 900 530" role="img" aria-label="Diagrama del ecosistema de Luipy: el nodo Luipy conecta con producto web, automatización e infraestructura, que alimentan los proyectos en vivo.">
+        <svg class="diagram" viewBox="-130 0 1160 530" role="img" aria-label="Diagrama del ecosistema de Luipy: capas, casos en vivo y un agente que cierra el ciclo de TODO EN VIVO hacia LUIPY.">
           <path class="edge" d="M400 106 C400 148,180 152,180 200"/>
           <path class="edge" d="M450 106 L450 200"/>
           <path class="edge" d="M500 106 C500 148,720 152,720 200"/>
@@ -249,20 +251,24 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;letter-spacing:-0.03em;line-heigh
           <path class="edge flow" d="M180 374 C180 416,400 412,400 468"/>
           <path class="edge flow" d="M450 374 L450 468"/>
           <path class="edge flow" d="M720 374 C720 416,500 412,500 468"/>
+          <path class="edge loop" d="M600 488 C760 488,915 400,915 315"/>
+          <path class="edge loop" d="M915 259 C915 140,700 78,540 78"/>
           <g><rect class="n-box core pulse" x="360" y="50" width="180" height="56" rx="10"/><rect class="n-box core" x="360" y="50" width="180" height="56" rx="10"/><text class="node-label" x="450" y="76" text-anchor="middle" style="fill:#0f0;font-weight:500">LUIPY</text><text class="node-sub" x="450" y="92" text-anchor="middle">full-stack &amp; sysadmin</text></g>
           <g><rect class="n-box" x="95" y="200" width="170" height="44" rx="10"/><text class="node-label" x="180" y="227" text-anchor="middle">PRODUCTO WEB</text></g>
           <g><rect class="n-box" x="365" y="200" width="170" height="44" rx="10"/><text class="node-label" x="450" y="227" text-anchor="middle">AUTOMATIZACIÓN</text></g>
           <g><rect class="n-box" x="635" y="200" width="170" height="44" rx="10"/><text class="node-label" x="720" y="227" text-anchor="middle">INFRAESTRUCTURA</text></g>
-          <g><rect class="n-box" x="95" y="330" width="170" height="44" rx="10"/><text class="node-label" x="180" y="357" text-anchor="middle">KM0 · web en producción</text></g>
+          <g><rect class="n-box" x="95" y="330" width="170" height="44" rx="10"/><text class="node-label" x="180" y="357" text-anchor="middle">KM0 Digital</text></g>
           <g><rect class="n-box" x="365" y="330" width="170" height="44" rx="10"/><text class="node-label" x="450" y="357" text-anchor="middle">Ultron · bot ↔ tracker</text></g>
           <g><rect class="n-box" x="635" y="330" width="170" height="44" rx="10"/><text class="node-label" x="720" y="357" text-anchor="middle">WITHERED Nexus</text></g>
           <g><rect class="n-box core pulse" x="300" y="468" width="300" height="40" rx="10"/><rect class="n-box core" x="300" y="468" width="300" height="40" rx="10"/><text class="node-label" x="450" y="493" text-anchor="middle" style="fill:#0f0;font-weight:500">TODO EN VIVO</text></g>
+          <g><rect class="n-box" x="820" y="259" width="190" height="56" rx="10"/><text class="node-label" x="915" y="285" text-anchor="middle" style="fill:#0f0;font-weight:500">AGENTE</text><text class="node-sub" x="915" y="301" text-anchor="middle">revisa y mejora</text></g>
         </svg>
       </div>
       <div class="legend reveal">
         <span class="k"><span class="sw core"></span> Luipy</span>
         <span class="k"><span class="sw"></span> área de trabajo</span>
         <span class="k"><span class="sw flow"></span> en producción</span>
+        <span class="k"><span class="sw loop"></span> mejora / feedback</span>
       </div>
     </section>
 
