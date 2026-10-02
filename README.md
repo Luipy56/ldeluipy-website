@@ -4,7 +4,7 @@ Personal site for **Luipy** — full-stack developer and sysadmin. Live at [ldel
 
 ## What this is
 
-A single-page presentation: who I am, what I build, how the pieces connect, and real cases with public URLs or repositories. Designed to be clear for hiring and collaboration without sounding like a sales pitch.
+A single-page presentation in two languages: Spanish at `/`, English at `/en/`. Who I am, what I build, how the pieces connect, and real cases with public URLs or repositories. Designed to be clear for hiring and collaboration without sounding like a sales pitch.
 
 Accent color: `#0f0`. Stack on the site itself: **plain HTML, CSS, and JavaScript** — no frameworks and no Node build step.
 
@@ -12,7 +12,10 @@ Accent color: `#0f0`. Stack on the site itself: **plain HTML, CSS, and JavaScrip
 
 ```
 .
-├── index.html       # Full page (markup, styles, and scripts)
+├── index.html       # Spanish page
+├── en/index.html    # English page
+├── site.css         # Shared styles
+├── site.js          # Shared behaviour (marquees, copy-to-clipboard)
 ├── favicon.svg
 ├── primordial.css   # Shared design tokens (paper / ink / accent)
 └── README.md

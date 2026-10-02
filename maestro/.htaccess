@@ -1,0 +1,4 @@
+# Do not expose Archify source JSON on the public site.
+<FilesMatch "\.json$">
+  Require all denied
+</FilesMatch>
