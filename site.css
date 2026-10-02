@@ -173,6 +173,7 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;letter-spacing:-0.03em;line-heigh
 .diagram.eco .s-security{color:var(--eco-security-stroke)}
 .diagram.eco .sigil-fill{fill:currentColor}
 .diagram.eco .semantic-sigil{opacity:.9}
+.diagram.eco [data-detail="fine"]{display:none}
 .diagram.eco g[data-node-id]:hover .c-frontend,
 .diagram.eco g[data-node-id]:hover .c-backend,
 .diagram.eco g[data-node-id]:hover .c-messagebus,

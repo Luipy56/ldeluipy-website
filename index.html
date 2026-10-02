@@ -85,8 +85,42 @@
         <p>No trabajo en piezas sueltas: código, servicios e infraestructura forman un mismo sistema.</p>
       </div>
       <div class="map reveal" style="--reveal-delay:100ms">
-        <svg class="diagram eco" viewBox="0 0 1200 520" role="img" aria-label="Diagrama del ecosistema de Luipy: capas, casos en vivo y un agente que cierra el ciclo de TODO EN VIVO hacia LUIPY.">
-        
+        <svg class="diagram eco eco-root" viewBox="0 0 1170 530" role="img" aria-label="Diagrama del ecosistema de Luipy: capas, casos en vivo y un agente que cierra el ciclo de TODO EN VIVO hacia LUIPY."><style>
+  .eco-root { font-family: "JetBrains Mono", ui-monospace, monospace; }
+  .eco-root .c-grid { stroke: #1e332c; fill: none; opacity: .45; }
+  .eco-root .c-mask { fill: #0a1410; stroke: none; }
+  .eco-root .c-frontend { fill: rgba(0,200,160,.14); stroke: #5eead4; }
+  .eco-root .c-backend { fill: rgba(0,255,0,.12); stroke: #00ff00; }
+  .eco-root .c-messagebus { fill: rgba(0,220,120,.12); stroke: #86efac; }
+  .eco-root .c-cloud { fill: rgba(40,180,120,.14); stroke: #4ade80; }
+  .eco-root .c-security { fill: rgba(0,255,100,.10); stroke: #bbf7d0; }
+  .eco-root .c-region { fill: none; stroke: #2a443a; stroke-width: 1.25; stroke-dasharray: 4 5; }
+  .eco-root .a-default { stroke: #6f8579; fill: none; stroke-width: 1.5; }
+  .eco-root .a-emphasis { stroke: #00ff00; fill: none; stroke-width: 2; }
+  .eco-root .a-dashed { stroke: #6ee7b7; fill: none; stroke-width: 1.5; stroke-dasharray: 4 6; }
+  .eco-root .a-security { stroke: #bbf7d0; fill: none; }
+  .eco-root .m-default { fill: #6f8579; }
+  .eco-root .m-emphasis { fill: #00ff00; }
+  .eco-root .m-dashed { fill: #6ee7b7; }
+  .eco-root .m-security { fill: #bbf7d0; }
+  .eco-root .t-primary { fill: #f2f7f3; }
+  .eco-root .t-muted { fill: #b8c9bd; }
+  .eco-root .t-frontend { fill: #5eead4; }
+  .eco-root .t-backend { fill: #00ff00; }
+  .eco-root .t-messagebus { fill: #86efac; }
+  .eco-root .t-cloud { fill: #4ade80; }
+  .eco-root .t-security { fill: #bbf7d0; }
+  .eco-root .t-edge-default, .eco-root .t-edge-dashed { fill: #8aa396; }
+  .eco-root .t-edge-emphasis { fill: #00ff00; }
+  .eco-root .s-frontend { color: #5eead4; }
+  .eco-root .s-backend { color: #00ff00; }
+  .eco-root .s-messagebus { color: #86efac; }
+  .eco-root .s-cloud { color: #4ade80; }
+  .eco-root .s-security { color: #bbf7d0; }
+  .eco-root .sigil-fill { fill: currentColor; }
+  .eco-root .semantic-sigil { opacity: .9; }
+  .eco-root [data-detail="fine"] { display: none; }
+</style>
         <!-- Definitions -->
         <defs>
           <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
@@ -110,59 +144,59 @@
         <rect width="100%" height="100%" fill="url(#grid)" />
 
         <!-- Boundaries (behind everything) -->
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="region" data-composition-frame-id="0" data-composition-frame-label="Capas de capacidad" x="50" y="146" width="880" height="102" rx="12" class="c-region" stroke-width="1"/>
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="region" data-composition-frame-id="0" data-composition-frame-label="Capas de capacidad" x="50" y="146" width="880" height="106" rx="12" class="c-region" stroke-width="1"/>
 
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="region" data-composition-frame-id="1" data-composition-frame-label="Casos reales" x="50" y="280" width="880" height="102" rx="12" class="c-region" stroke-width="1"/>
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="region" data-composition-frame-id="1" data-composition-frame-label="Casos reales" x="50" y="280" width="880" height="106" rx="12" class="c-region" stroke-width="1"/>
 
         <!-- Connection paths (before components for correct z-order) -->
         <g data-graph-role="automatic-crossover" style="--step:0">
-          <path data-graph-role="automatic-crossover-underlay" d="M 476 100 L 476 116 Q 476 124 468 124 L 173 124 Q 165 124 165 132 L 165 176" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 476 100 L 476 116 Q 476 124 468 124 L 173 124 Q 165 124 165 132 L 165 176" fill="none" stroke="#0a1410" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
           <path data-edge-from="luipy" data-edge-to="web" data-edge-label="producto" data-edge-key="0" data-edge-id="luipy-web" data-composition-points="476,100;476,124;165,124;165,176" data-composition-crossover="halo" data-composition-independent="true" d="M 476 100 L 476 116 Q 476 124 468 124 L 173 124 Q 165 124 165 132 L 165 176" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:1">
-          <path data-graph-role="automatic-crossover-underlay" d="M 490 100 L 490 176" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 490 366 L 490 450" fill="none" stroke="#0a1410" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
           <path data-edge-from="luipy" data-edge-to="auto" data-edge-label="automatiza" data-edge-key="1" data-edge-id="luipy-auto" data-composition-points="490,100;490,176" data-composition-crossover="halo" data-composition-independent="true" d="M 490 100 L 490 176" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:2">
-          <path data-graph-role="automatic-crossover-underlay" d="M 504 100 L 504 130 Q 504 138 512 138 L 807 138 Q 815 138 815 146 L 815 176" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 504 100 L 504 130 Q 504 138 512 138 L 807 138 Q 815 138 815 146 L 815 176" fill="none" stroke="#0a1410" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
           <path data-edge-from="luipy" data-edge-to="infra" data-edge-label="infra" data-edge-key="2" data-edge-id="luipy-infra" data-composition-points="504,100;504,138;815,138;815,176" data-composition-crossover="halo" data-composition-independent="true" d="M 504 100 L 504 130 Q 504 138 512 138 L 807 138 Q 815 138 815 146 L 815 176" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:3">
-          <path data-graph-role="automatic-crossover-underlay" d="M 165 228 L 165 310" fill="none" stroke="var(--mask)" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="web" data-edge-to="km0" data-edge-label="en produccion" data-edge-key="3" data-edge-id="web-km0" data-composition-points="165,228;165,310" data-composition-crossover="halo" data-composition-independent="true" d="M 165 228 L 165 310" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 165 366 L 165 450" fill="none" stroke="#0a1410" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="web" data-edge-to="km0" data-edge-label="en produccion" data-edge-key="3" data-edge-id="web-km0" data-composition-points="165,232;165,310" data-composition-crossover="halo" data-composition-independent="true" d="M 165 232 L 165 310" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:4">
-          <path data-graph-role="automatic-crossover-underlay" d="M 490 228 L 490 310" fill="none" stroke="var(--mask)" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="auto" data-edge-to="ultron" data-edge-label="en produccion" data-edge-key="4" data-edge-id="auto-ultron" data-composition-points="490,228;490,310" data-composition-crossover="halo" data-composition-independent="true" d="M 490 228 L 490 310" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 490 366 L 490 450" fill="none" stroke="#0a1410" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="auto" data-edge-to="ultron" data-edge-label="en produccion" data-edge-key="4" data-edge-id="auto-ultron" data-composition-points="490,232;490,310" data-composition-crossover="halo" data-composition-independent="true" d="M 490 232 L 490 310" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:5">
-          <path data-graph-role="automatic-crossover-underlay" d="M 815 228 L 815 310" fill="none" stroke="var(--mask)" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="infra" data-edge-to="nexus" data-edge-label="en produccion" data-edge-key="5" data-edge-id="infra-nexus" data-composition-points="815,228;815,310" data-composition-crossover="halo" data-composition-independent="true" d="M 815 228 L 815 310" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 815 366 L 815 450" fill="none" stroke="#0a1410" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="infra" data-edge-to="nexus" data-edge-label="en produccion" data-edge-key="5" data-edge-id="infra-nexus" data-composition-points="815,232;815,310" data-composition-crossover="halo" data-composition-independent="true" d="M 815 232 L 815 310" class="a-emphasis" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:6">
-          <path data-graph-role="automatic-crossover-underlay" d="M 165 362 L 165 412 Q 165 420 173 420 L 468 420 Q 476 420 476 428 L 476 444" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="km0" data-edge-to="live" data-edge-label="suministra" data-edge-key="6" data-edge-id="km0-live" data-composition-points="165,362;165,420;476,420;476,444" data-composition-crossover="halo" data-composition-independent="true" d="M 165 362 L 165 412 Q 165 420 173 420 L 468 420 Q 476 420 476 428 L 476 444" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 165 366 L 165 450" fill="none" stroke="#0a1410" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="km0" data-edge-to="live" data-edge-label="suministra" data-edge-key="6" data-edge-id="km0-live" data-composition-points="165,366;165,426;476,426;476,450" data-composition-crossover="halo" data-composition-independent="true" d="M 165 366 L 165 450" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:7">
-          <path data-graph-role="automatic-crossover-underlay" d="M 490 362 L 490 444" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="ultron" data-edge-to="live" data-edge-label="suministra" data-edge-key="7" data-edge-id="ultron-live" data-composition-points="490,362;490,444" data-composition-crossover="halo" data-composition-independent="true" d="M 490 362 L 490 444" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 490 366 L 490 450" fill="none" stroke="#0a1410" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="ultron" data-edge-to="live" data-edge-label="suministra" data-edge-key="7" data-edge-id="ultron-live" data-composition-points="490,366;490,450" data-composition-crossover="halo" data-composition-independent="true" d="M 490 366 L 490 450" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:8">
-          <path data-graph-role="automatic-crossover-underlay" d="M 815 362 L 815 395 Q 815 403 807 403 L 512 403 Q 504 403 504 411 L 504 444" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="nexus" data-edge-to="live" data-edge-label="suministra" data-edge-key="8" data-edge-id="nexus-live" data-composition-points="815,362;815,403;504,403;504,444" data-composition-crossover="halo" data-composition-independent="true" d="M 815 362 L 815 395 Q 815 403 807 403 L 512 403 Q 504 403 504 411 L 504 444" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 815 366 L 815 450" fill="none" stroke="#0a1410" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="nexus" data-edge-to="live" data-edge-label="suministra" data-edge-key="8" data-edge-id="nexus-live" data-composition-points="815,366;815,408;504,408;504,450" data-composition-crossover="halo" data-composition-independent="true" d="M 815 366 L 815 450" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:9">
-          <path data-graph-role="automatic-crossover-underlay" d="M 640 468 L 1062 468 Q 1070 468 1070 460 L 1070 294" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="live" data-edge-to="agent" data-edge-label="feedback" data-edge-key="9" data-edge-id="live-agent" data-composition-points="640,468;1070,468;1070,294" data-composition-crossover="halo" data-composition-independent="true" d="M 640 468 L 1062 468 Q 1070 468 1070 460 L 1070 294" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 900 474 L 1037 474 Q 1045 474 1045 466 L 1045 310" fill="none" stroke="#0a1410" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="live" data-edge-to="agent" data-edge-label="feedback" data-edge-key="9" data-edge-id="live-agent" data-composition-points="900,474;1045,474;1045,310" data-composition-crossover="halo" data-composition-independent="true" d="M 900 474 L 1037 474 Q 1045 474 1045 466 L 1045 310" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
         </g>
         <g data-graph-role="automatic-crossover" style="--step:10">
-          <path data-graph-role="automatic-crossover-underlay" d="M 1070 230 L 1070 76 Q 1070 68 1062 68 L 580 68" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="agent" data-edge-to="luipy" data-edge-label="mejora" data-edge-key="10" data-edge-id="agent-luipy" data-composition-points="1070,230;1070,68;580,68" data-composition-crossover="halo" data-composition-independent="true" d="M 1070 230 L 1070 76 Q 1070 68 1062 68 L 580 68" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 1045 250 L 1045 76 Q 1045 68 1037 68 L 580 68" fill="none" stroke="#0a1410" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="agent" data-edge-to="luipy" data-edge-label="mejora" data-edge-key="10" data-edge-id="agent-luipy" data-composition-points="1045,250;1045,68;580,68" data-composition-crossover="halo" data-composition-independent="true" d="M 1045 250 L 1045 76 Q 1045 68 1037 68 L 580 68" class="a-dashed" stroke-width="1.5" marker-end="url(#arrowhead-dashed)"/>
         </g>
 
         <!-- Components -->
-        <g id="node-luipy" data-node-id="luipy" data-node-label="LUIPY" data-node-kind="backend" data-node-sublabel="full-stack &amp; sysadmin" data-node-tag="hub" data-node-context="Architecture component">
-          <title>LUIPY · full-stack &amp; sysadmin · Architecture component · hub</title>
+        <g id="node-luipy" data-node-id="luipy" data-node-label="LUIPY" data-node-kind="backend" data-node-sublabel="full-stack &amp; sysadmin" data-node-context="Architecture component">
+          <title>LUIPY · full-stack &amp; sysadmin · Architecture component</title>
           <rect x="400" y="36" width="180" height="64" rx="6" class="c-mask"/>
           <rect x="400" y="36" width="180" height="64" rx="6" class="c-backend" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(406 42) scale(0.6875)">
@@ -170,113 +204,107 @@
           </g>
           <text data-node-label="" data-detail-anchor="" x="490" y="66" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">LUIPY</text>
         <text data-detail="context" x="490" y="82" class="t-muted" font-size="9" text-anchor="middle">full-stack &amp; sysadmin</text>
-        <text data-detail="fine" x="490" y="92" class="t-backend" font-size="7" text-anchor="middle">hub</text>
         </g>
 
         <g id="node-web" data-node-id="web" data-node-label="PRODUCTO WEB" data-node-kind="frontend" data-node-sublabel="sites &amp; apps" data-node-context="Capas de capacidad">
           <title>PRODUCTO WEB · sites &amp; apps · Capas de capacidad</title>
-          <rect x="80" y="176" width="170" height="52" rx="6" class="c-mask"/>
-          <rect x="80" y="176" width="170" height="52" rx="6" class="c-frontend" stroke-width="1.5"/>
+          <rect x="80" y="176" width="170" height="56" rx="6" class="c-mask"/>
+          <rect x="80" y="176" width="170" height="56" rx="6" class="c-frontend" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="frontend" class="semantic-sigil s-frontend" transform="translate(86 182) scale(0.6875)">
             <rect x="2" y="3" width="12" height="10" rx="2"/>
             <path d="M2 6.5h12"/>
             <circle cx="4.1" cy="4.8" r=".7" class="sigil-fill"/>
             <circle cx="6.3" cy="4.8" r=".7" class="sigil-fill"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="165" y="200" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">PRODUCTO WEB</text>
-        <text data-detail="context" x="165" y="216" class="t-muted" font-size="9" text-anchor="middle">sites &amp; apps</text>
+          <text data-node-label="" data-detail-anchor="" x="165" y="202" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">PRODUCTO WEB</text>
+        <text data-detail="context" x="165" y="218" class="t-muted" font-size="9" text-anchor="middle">sites &amp; apps</text>
         </g>
 
         <g id="node-auto" data-node-id="auto" data-node-label="AUTOMATIZACION" data-node-kind="messagebus" data-node-sublabel="bots &amp; glue" data-node-context="Capas de capacidad">
           <title>AUTOMATIZACION · bots &amp; glue · Capas de capacidad</title>
-          <rect x="405" y="176" width="170" height="52" rx="6" class="c-mask"/>
-          <rect x="405" y="176" width="170" height="52" rx="6" class="c-messagebus" stroke-width="1.5"/>
+          <rect x="405" y="176" width="170" height="56" rx="6" class="c-mask"/>
+          <rect x="405" y="176" width="170" height="56" rx="6" class="c-messagebus" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="messagebus" class="semantic-sigil s-messagebus" transform="translate(411 182) scale(0.6875)">
             <path d="M2.5 4.5h11M2.5 8h11M2.5 11.5h11"/>
             <circle cx="5" cy="4.5" r="1" class="sigil-fill"/>
             <circle cx="10.5" cy="8" r="1" class="sigil-fill"/>
             <circle cx="7" cy="11.5" r="1" class="sigil-fill"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="490" y="200" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">AUTOMATIZACION</text>
-        <text data-detail="context" x="490" y="216" class="t-muted" font-size="9" text-anchor="middle">bots &amp; glue</text>
+          <text data-node-label="" data-detail-anchor="" x="490" y="202" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">AUTOMATIZACION</text>
+        <text data-detail="context" x="490" y="218" class="t-muted" font-size="9" text-anchor="middle">bots &amp; glue</text>
         </g>
 
         <g id="node-infra" data-node-id="infra" data-node-label="INFRAESTRUCTURA" data-node-kind="cloud" data-node-sublabel="servers &amp; ops" data-node-context="Capas de capacidad">
           <title>INFRAESTRUCTURA · servers &amp; ops · Capas de capacidad</title>
-          <rect x="730" y="176" width="170" height="52" rx="6" class="c-mask"/>
-          <rect x="730" y="176" width="170" height="52" rx="6" class="c-cloud" stroke-width="1.5"/>
+          <rect x="730" y="176" width="170" height="56" rx="6" class="c-mask"/>
+          <rect x="730" y="176" width="170" height="56" rx="6" class="c-cloud" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="cloud" class="semantic-sigil s-cloud" transform="translate(736 182) scale(0.6875)">
             <path d="M4.3 12.5h7.3a2.4 2.4 0 0 0 .2-4.8 4 4 0 0 0-7.5-1.3A3.1 3.1 0 0 0 4.3 12.5Z"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="815" y="200" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">INFRAESTRUCTURA</text>
-        <text data-detail="context" x="815" y="216" class="t-muted" font-size="9" text-anchor="middle">servers &amp; ops</text>
+          <text data-node-label="" data-detail-anchor="" x="815" y="202" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">INFRAESTRUCTURA</text>
+        <text data-detail="context" x="815" y="218" class="t-muted" font-size="9" text-anchor="middle">servers &amp; ops</text>
         </g>
 
-        <g id="node-km0" data-node-id="km0" data-node-label="KM0 Digital" data-node-kind="frontend" data-node-sublabel="en vivo" data-node-tag="live" data-node-context="Casos reales">
-          <title>KM0 Digital · en vivo · Casos reales · live</title>
-          <rect x="80" y="310" width="170" height="52" rx="6" class="c-mask"/>
-          <rect x="80" y="310" width="170" height="52" rx="6" class="c-frontend" stroke-width="1.5"/>
+        <g id="node-km0" data-node-id="km0" data-node-label="KM0 Digital" data-node-kind="frontend" data-node-sublabel="en vivo" data-node-context="Casos reales">
+          <title>KM0 Digital · en vivo · Casos reales</title>
+          <rect x="80" y="310" width="170" height="56" rx="6" class="c-mask"/>
+          <rect x="80" y="310" width="170" height="56" rx="6" class="c-frontend" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="frontend" class="semantic-sigil s-frontend" transform="translate(86 316) scale(0.6875)">
             <rect x="2" y="3" width="12" height="10" rx="2"/>
             <path d="M2 6.5h12"/>
             <circle cx="4.1" cy="4.8" r=".7" class="sigil-fill"/>
             <circle cx="6.3" cy="4.8" r=".7" class="sigil-fill"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="165" y="334" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">KM0 Digital</text>
-        <text data-detail="context" x="165" y="350" class="t-muted" font-size="9" text-anchor="middle">en vivo</text>
-        <text data-detail="fine" x="165" y="354" class="t-frontend" font-size="7" text-anchor="middle">live</text>
+          <text data-node-label="" data-detail-anchor="" x="165" y="336" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">KM0 Digital</text>
+        <text data-detail="context" x="165" y="352" class="t-muted" font-size="9" text-anchor="middle">en vivo</text>
         </g>
 
-        <g id="node-ultron" data-node-id="ultron" data-node-label="Ultron" data-node-kind="messagebus" data-node-sublabel="bot ↔ tracker" data-node-tag="live" data-node-context="Casos reales">
-          <title>Ultron · bot ↔ tracker · Casos reales · live</title>
-          <rect x="405" y="310" width="170" height="52" rx="6" class="c-mask"/>
-          <rect x="405" y="310" width="170" height="52" rx="6" class="c-messagebus" stroke-width="1.5"/>
+        <g id="node-ultron" data-node-id="ultron" data-node-label="Ultron" data-node-kind="messagebus" data-node-sublabel="bot ↔ tracker" data-node-context="Casos reales">
+          <title>Ultron · bot ↔ tracker · Casos reales</title>
+          <rect x="405" y="310" width="170" height="56" rx="6" class="c-mask"/>
+          <rect x="405" y="310" width="170" height="56" rx="6" class="c-messagebus" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="messagebus" class="semantic-sigil s-messagebus" transform="translate(411 316) scale(0.6875)">
             <path d="M2.5 4.5h11M2.5 8h11M2.5 11.5h11"/>
             <circle cx="5" cy="4.5" r="1" class="sigil-fill"/>
             <circle cx="10.5" cy="8" r="1" class="sigil-fill"/>
             <circle cx="7" cy="11.5" r="1" class="sigil-fill"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="490" y="334" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Ultron</text>
-        <text data-detail="context" x="490" y="350" class="t-muted" font-size="9" text-anchor="middle">bot ↔ tracker</text>
-        <text data-detail="fine" x="490" y="354" class="t-messagebus" font-size="7" text-anchor="middle">live</text>
+          <text data-node-label="" data-detail-anchor="" x="490" y="336" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Ultron</text>
+        <text data-detail="context" x="490" y="352" class="t-muted" font-size="9" text-anchor="middle">bot ↔ tracker</text>
         </g>
 
-        <g id="node-nexus" data-node-id="nexus" data-node-label="WITHERED Nexus" data-node-kind="cloud" data-node-sublabel="en vivo" data-node-tag="live" data-node-context="Casos reales">
-          <title>WITHERED Nexus · en vivo · Casos reales · live</title>
-          <rect x="730" y="310" width="170" height="52" rx="6" class="c-mask"/>
-          <rect x="730" y="310" width="170" height="52" rx="6" class="c-cloud" stroke-width="1.5"/>
+        <g id="node-nexus" data-node-id="nexus" data-node-label="WITHERED Nexus" data-node-kind="cloud" data-node-sublabel="en vivo" data-node-context="Casos reales">
+          <title>WITHERED Nexus · en vivo · Casos reales</title>
+          <rect x="730" y="310" width="170" height="56" rx="6" class="c-mask"/>
+          <rect x="730" y="310" width="170" height="56" rx="6" class="c-cloud" stroke-width="1.5"/>
           <g aria-hidden="true" data-semantic-sigil="cloud" class="semantic-sigil s-cloud" transform="translate(736 316) scale(0.6875)">
             <path d="M4.3 12.5h7.3a2.4 2.4 0 0 0 .2-4.8 4 4 0 0 0-7.5-1.3A3.1 3.1 0 0 0 4.3 12.5Z"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="815" y="334" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">WITHERED Nexus</text>
-        <text data-detail="context" x="815" y="350" class="t-muted" font-size="9" text-anchor="middle">en vivo</text>
-        <text data-detail="fine" x="815" y="354" class="t-cloud" font-size="7" text-anchor="middle">live</text>
+          <text data-node-label="" data-detail-anchor="" x="815" y="336" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">WITHERED Nexus</text>
+        <text data-detail="context" x="815" y="352" class="t-muted" font-size="9" text-anchor="middle">en vivo</text>
         </g>
 
-        <g id="node-live" data-node-id="live" data-node-label="TODO EN VIVO" data-node-kind="backend" data-node-sublabel="production surface" data-node-tag="live" data-node-context="Architecture component">
-          <title>TODO EN VIVO · production surface · Architecture component · live</title>
-          <rect x="340" y="444" width="300" height="48" rx="6" class="c-mask"/>
-          <rect x="340" y="444" width="300" height="48" rx="6" class="c-backend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(346 450) scale(0.6875)">
+        <g id="node-live" data-node-id="live" data-node-label="TODO EN VIVO" data-node-kind="backend" data-node-sublabel="en produccion" data-node-context="Architecture component">
+          <title>TODO EN VIVO · en produccion · Architecture component</title>
+          <rect x="80" y="450" width="820" height="48" rx="6" class="c-mask"/>
+          <rect x="80" y="450" width="820" height="48" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(86 456) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="490" y="466" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">TODO EN VIVO</text>
-        <text data-detail="context" x="490" y="482" class="t-muted" font-size="9" text-anchor="middle">production surface</text>
-        <text data-detail="fine" x="490" y="484" class="t-backend" font-size="7" text-anchor="middle">live</text>
+          <text data-node-label="" data-detail-anchor="" x="490" y="472" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">TODO EN VIVO</text>
+        <text data-detail="context" x="490" y="488" class="t-muted" font-size="9" text-anchor="middle">en produccion</text>
         </g>
 
-        <g id="node-agent" data-node-id="agent" data-node-label="AGENTE" data-node-kind="security" data-node-sublabel="revisa y mejora" data-node-tag="loop" data-node-context="Architecture component">
-          <title>AGENTE · revisa y mejora · Architecture component · loop</title>
-          <rect x="980" y="230" width="180" height="64" rx="6" class="c-mask"/>
-          <rect x="980" y="230" width="180" height="64" rx="6" class="c-security" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(986 236) scale(0.6875)">
+        <g id="node-agent" data-node-id="agent" data-node-label="AGENTE" data-node-kind="security" data-node-sublabel="revisa y mejora" data-node-context="Architecture component">
+          <title>AGENTE · revisa y mejora · Architecture component</title>
+          <rect x="960" y="250" width="170" height="60" rx="6" class="c-mask"/>
+          <rect x="960" y="250" width="170" height="60" rx="6" class="c-security" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(966 256) scale(0.6875)">
             <path d="M8 2.2 13 4v3.5c0 3.1-1.8 5.4-5 6.5-3.2-1.1-5-3.4-5-6.5V4Z"/>
             <path d="m5.8 8 1.5 1.5 3-3"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="1070" y="260" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">AGENTE</text>
-        <text data-detail="context" x="1070" y="276" class="t-muted" font-size="9" text-anchor="middle">revisa y mejora</text>
-        <text data-detail="fine" x="1070" y="286" class="t-security" font-size="7" text-anchor="middle">loop</text>
+          <text data-node-label="" data-detail-anchor="" x="1045" y="278" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">AGENTE</text>
+        <text data-detail="context" x="1045" y="294" class="t-muted" font-size="9" text-anchor="middle">revisa y mejora</text>
         </g>
 
         <!-- Connection labels -->
@@ -293,36 +321,36 @@
           <text x="659.5" y="128" class="t-edge-default" font-size="8" text-anchor="middle">infra</text>
         </g>
         <g data-detail="context" data-edge-from="web" data-edge-to="km0" data-edge-label="en produccion" data-edge-key="3" data-edge-id="web-km0">
-          <rect x="86.60000000000001" y="262" width="72.4" height="14" rx="3" class="c-mask"/>
-          <text x="122.80000000000001" y="272" class="t-edge-emphasis" font-size="8" text-anchor="middle">en produccion</text>
+          <rect x="86.60000000000001" y="264" width="72.4" height="14" rx="3" class="c-mask"/>
+          <text x="122.80000000000001" y="274" class="t-edge-emphasis" font-size="8" text-anchor="middle">en produccion</text>
         </g>
         <g data-detail="context" data-edge-from="auto" data-edge-to="ultron" data-edge-label="en produccion" data-edge-key="4" data-edge-id="auto-ultron">
-          <rect x="411.6" y="262" width="72.4" height="14" rx="3" class="c-mask"/>
-          <text x="447.8" y="272" class="t-edge-emphasis" font-size="8" text-anchor="middle">en produccion</text>
+          <rect x="411.6" y="264" width="72.4" height="14" rx="3" class="c-mask"/>
+          <text x="447.8" y="274" class="t-edge-emphasis" font-size="8" text-anchor="middle">en produccion</text>
         </g>
         <g data-detail="context" data-edge-from="infra" data-edge-to="nexus" data-edge-label="en produccion" data-edge-key="5" data-edge-id="infra-nexus">
-          <rect x="736.5999999999999" y="262" width="72.4" height="14" rx="3" class="c-mask"/>
-          <text x="772.8" y="272" class="t-edge-emphasis" font-size="8" text-anchor="middle">en produccion</text>
+          <rect x="736.5999999999999" y="264" width="72.4" height="14" rx="3" class="c-mask"/>
+          <text x="772.8" y="274" class="t-edge-emphasis" font-size="8" text-anchor="middle">en produccion</text>
         </g>
         <g data-detail="context" data-edge-from="km0" data-edge-to="live" data-edge-label="suministra" data-edge-key="6" data-edge-id="km0-live">
-          <rect x="291.5" y="400" width="58" height="14" rx="3" class="c-mask"/>
-          <text x="320.5" y="410" class="t-edge-dashed" font-size="8" text-anchor="middle">suministra</text>
+          <rect x="291.5" y="406" width="58" height="14" rx="3" class="c-mask"/>
+          <text x="320.5" y="416" class="t-edge-dashed" font-size="8" text-anchor="middle">suministra</text>
         </g>
         <g data-detail="context" data-edge-from="ultron" data-edge-to="live" data-edge-label="suministra" data-edge-key="7" data-edge-id="ultron-live">
-          <rect x="426" y="396" width="58" height="14" rx="3" class="c-mask"/>
-          <text x="455" y="406" class="t-edge-dashed" font-size="8" text-anchor="middle">suministra</text>
+          <rect x="426" y="401" width="58" height="14" rx="3" class="c-mask"/>
+          <text x="455" y="411" class="t-edge-dashed" font-size="8" text-anchor="middle">suministra</text>
         </g>
         <g data-detail="context" data-edge-from="nexus" data-edge-to="live" data-edge-label="suministra" data-edge-key="8" data-edge-id="nexus-live">
-          <rect x="630.5" y="383" width="58" height="14" rx="3" class="c-mask"/>
-          <text x="659.5" y="393" class="t-edge-dashed" font-size="8" text-anchor="middle">suministra</text>
+          <rect x="630.5" y="388" width="58" height="14" rx="3" class="c-mask"/>
+          <text x="659.5" y="398" class="t-edge-dashed" font-size="8" text-anchor="middle">suministra</text>
         </g>
         <g data-detail="context" data-edge-from="live" data-edge-to="agent" data-edge-label="feedback" data-edge-key="9" data-edge-id="live-agent">
-          <rect x="1045.8" y="361" width="48.4" height="14" rx="3" class="c-mask"/>
-          <text x="1070" y="371" class="t-edge-dashed" font-size="8" text-anchor="middle">feedback</text>
+          <rect x="1020.8" y="372" width="48.4" height="14" rx="3" class="c-mask"/>
+          <text x="1045" y="382" class="t-edge-dashed" font-size="8" text-anchor="middle">feedback</text>
         </g>
         <g data-detail="context" data-edge-from="agent" data-edge-to="luipy" data-edge-label="mejora" data-edge-key="10" data-edge-id="agent-luipy">
-          <rect x="805.6" y="48" width="38.8" height="14" rx="3" class="c-mask"/>
-          <text x="825" y="58" class="t-edge-dashed" font-size="8" text-anchor="middle">mejora</text>
+          <rect x="793.1" y="48" width="38.8" height="14" rx="3" class="c-mask"/>
+          <text x="812.5" y="58" class="t-edge-dashed" font-size="8" text-anchor="middle">mejora</text>
         </g>
 
         <!-- Boundary labels (foreground masks keep routes out of titles) -->
@@ -335,7 +363,24 @@
           <rect data-graph-role="structural-frame-label-mask" x="54" y="290" width="74.8" height="16" rx="3" class="c-mask"/>
           <text data-boundary-label="" x="58" y="303" class="t-cloud" font-size="9" font-weight="600">Casos reales</text>
         </g>
-</svg>
+<g data-legend-semantic-kind="backend" data-legend-kind="backend" data-legend-label="Backend" data-legend-x="145" data-legend-baseline="550" data-legend-width="78">
+            <rect x="145" y="541" width="16" height="10" rx="2.5" class="c-backend" stroke-width="1"/>
+            <text x="167" y="550" class="t-muted" font-size="10" font-weight="500">Backend</text>
+          </g>
+          <g data-legend-semantic-kind="cloud" data-legend-kind="cloud" data-legend-label="Cloud" data-legend-x="245" data-legend-baseline="550" data-legend-width="68">
+            <rect x="245" y="541" width="16" height="10" rx="2.5" class="c-cloud" stroke-width="1"/>
+            <text x="267" y="550" class="t-muted" font-size="10" font-weight="500">Cloud</text>
+          </g>
+          <g data-legend-semantic-kind="security" data-legend-kind="security" data-legend-label="Security" data-legend-x="335" data-legend-baseline="550" data-legend-width="83">
+            <rect x="335" y="541" width="16" height="10" rx="2.5" class="c-security" stroke-width="1"/>
+            <text x="357" y="550" class="t-muted" font-size="10" font-weight="500">Security</text>
+          </g>
+          <g data-legend-semantic-kind="messagebus" data-legend-kind="messagebus" data-legend-label="Message bus" data-legend-x="440" data-legend-baseline="550" data-legend-width="98">
+            <rect x="440" y="541" width="16" height="10" rx="2.5" class="c-messagebus" stroke-width="1"/>
+            <text x="462" y="550" class="t-muted" font-size="10" font-weight="500">Message bus</text>
+          </g>
+        </g>
+      </svg>
       </div>
       <div class="legend reveal" style="--reveal-delay:180ms">
         <span class="k"><span class="sw core"></span> Luipy</span>
