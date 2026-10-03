@@ -120,48 +120,28 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;letter-spacing:-0.03em;line-heigh
 .map-cta .hint{font-family:var(--fm);font-size:.82rem;color:var(--muted);margin-right:var(--s2)}
 .map-cta .btn{text-decoration:none}
 
-/* Ecosystem map: preview opens full Archify viewer (zoom + legend) */
-a.map-open{
-  display:block;position:relative;margin-top:var(--s5);
-  border:1px solid var(--rule);border-radius:16px;overflow:hidden;
-  background:oklch(12% 0.02 160 / .5);text-decoration:none;color:inherit;
-  transition:border-color .22s var(--eo),box-shadow .22s var(--eo),transform .22s var(--eo)
-}
-a.map-open:is(:hover,:focus-visible){
-  border-color:var(--accent2);
-  box-shadow:0 16px 34px oklch(0% 0 0 / .45);
-  transform:translateY(-3px)
-}
-.map-open-img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:center top}
-.map-open-bar{
-  display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:var(--s3);
-  padding:var(--s4) var(--s5);border-top:1px solid var(--rule);
-  background:oklch(10% 0.02 160 / .92)
-}
-.map-open-title{font-family:var(--fd);font-weight:700;letter-spacing:-0.02em}
-.map-open-meta{font-family:var(--fm);font-size:.82rem;color:var(--muted)}
-
-
 /* Embedded Archify ecosystem map (no HUD) — dark aurora */
 .diagram.eco{
-  --mask:#0a1410;
-  --eco-grid:#1e332c;
+  /* Node fills match site paper so the page background shows through */
+  --mask:var(--paper);
+  --eco-grid:oklch(30% 0.03 160);
   --eco-text:var(--ink);
   --eco-muted:var(--muted);
   --eco-dim:var(--neutral);
   --eco-arrow:oklch(45% 0.05 190);
   --eco-emphasis:var(--accent);
-  --eco-frontend-fill:rgba(0,200,160,.12);
-  --eco-frontend-stroke:#5eead4;
-  --eco-backend-fill:rgba(0,255,0,.1);
-  --eco-backend-stroke:var(--accent);
-  --eco-messagebus-fill:rgba(0,220,120,.1);
-  --eco-messagebus-stroke:#86efac;
-  --eco-cloud-fill:rgba(40,180,120,.12);
-  --eco-cloud-stroke:#4ade80;
-  --eco-security-fill:rgba(0,255,100,.08);
-  --eco-security-stroke:#bbf7d0;
-  --eco-region:#2a443a;
+  /* New Archify classic type colors (kept) */
+  --eco-frontend-fill:rgba(34,211,238,.15);
+  --eco-frontend-stroke:#22d3ee;
+  --eco-backend-fill:rgba(52,211,153,.16);
+  --eco-backend-stroke:#34d399;
+  --eco-messagebus-fill:rgba(251,146,60,.15);
+  --eco-messagebus-stroke:#fb923c;
+  --eco-cloud-fill:rgba(251,191,36,.16);
+  --eco-cloud-stroke:#fbbf24;
+  --eco-security-fill:rgba(251,113,133,.15);
+  --eco-security-stroke:#fb7185;
+  --eco-region:oklch(35% 0.04 160);
 }
 .diagram.eco .c-grid{stroke:var(--eco-grid);opacity:.5}
 .diagram.eco .c-mask{fill:var(--mask)}
@@ -173,11 +153,11 @@ a.map-open:is(:hover,:focus-visible){
 .diagram.eco .c-region{fill:none;stroke:var(--eco-region);stroke-width:1.25;stroke-dasharray:4 5}
 .diagram.eco .a-default{stroke:var(--eco-arrow);fill:none;stroke-width:1.5}
 .diagram.eco .a-emphasis{stroke:var(--eco-emphasis);fill:none;stroke-width:2}
-.diagram.eco .a-dashed{stroke:oklch(72% 0.12 155);fill:none;stroke-width:1.5;stroke-dasharray:4 6}
+.diagram.eco .a-dashed{stroke:#c084fc;fill:none;stroke-width:1.5;stroke-dasharray:4 6}
 .diagram.eco .a-security{stroke:var(--eco-security-stroke);fill:none}
 .diagram.eco .m-default{fill:var(--eco-arrow)}
 .diagram.eco .m-emphasis{fill:var(--eco-emphasis)}
-.diagram.eco .m-dashed{fill:oklch(72% 0.12 155)}
+.diagram.eco .m-dashed{fill:#c084fc}
 .diagram.eco .m-security{fill:var(--eco-security-stroke)}
 .diagram.eco .t-primary{fill:var(--eco-text);font-family:var(--fm)}
 .diagram.eco .t-muted{fill:var(--eco-muted);font-family:var(--fm)}
