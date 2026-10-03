@@ -84,24 +84,16 @@
         <h2>Todo lo que hago, <span style="color:var(--accent)">conectado y corriendo</span>.</h2>
         <p>No trabajo en piezas sueltas: código, servicios e infraestructura forman un mismo sistema.</p>
       </div>
-      <div class="map map-frame reveal" style="--reveal-delay:100ms">
-        <iframe
-          class="eco-frame"
-          src="/mapa-ecosistema.html"
-          title="Mapa del ecosistema de Luipy"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-      <div class="legend reveal" style="--reveal-delay:180ms">
-        <span class="k"><span class="sw core"></span> Luipy</span>
-        <span class="k"><span class="sw"></span> área de trabajo</span>
-        <span class="k"><span class="sw flow"></span> en producción</span>
-        <span class="k"><span class="sw loop"></span> mejora / feedback</span>
-      </div>
-      <div class="map-cta reveal" style="--reveal-delay:240ms">
+      <a class="map-open reveal" style="--reveal-delay:100ms" href="/mapa-ecosistema.html" target="_blank" rel="noopener noreferrer">
+        <img class="map-open-img" src="/mapa-ecosistema-preview.png" width="1440" height="900" alt="Vista previa del mapa del ecosistema" loading="lazy">
+        <span class="map-open-bar">
+          <span class="map-open-title">Abrir mapa interactivo</span>
+          <span class="map-open-meta">viewer completo · zoom · leyenda</span>
+        </span>
+      </a>
+      <div class="map-cta reveal" style="--reveal-delay:180ms">
         <span class="hint">Agente en el mapa:</span>
         <a class="btn primary" href="/maestro/" target="_blank" rel="noopener noreferrer">Caso Maestro</a>
-        <a class="btn ghost" href="/maestro/maestro-runtime.architecture.html?theme=dark" target="_blank" rel="noopener noreferrer">Mapa interactivo</a>
       </div>
     </section>
 
@@ -153,7 +145,7 @@
     </div>
   </footer>
 
-<script src="/site.js?v=20261002c"></script>
+<script src="/site.js?v=20261003a"></script>
 <script src="/hits.js?v=20260930a" defer></script>
 </body>
 </html>

@@ -80,24 +80,16 @@
         <h2>Everything I do, <span style="color:var(--accent)">connected and running</span>.</h2>
         <p>I don't work in loose pieces: code, services, and infrastructure are one system.</p>
       </div>
-      <div class="map map-frame reveal" style="--reveal-delay:100ms">
-        <iframe
-          class="eco-frame"
-          src="/mapa-ecosistema-en.html"
-          title="Luipy ecosystem map"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
-      <div class="legend reveal" style="--reveal-delay:180ms">
-        <span class="k"><span class="sw core"></span> Luipy</span>
-        <span class="k"><span class="sw"></span> work area</span>
-        <span class="k"><span class="sw flow"></span> in production</span>
-        <span class="k"><span class="sw loop"></span> improvement / feedback</span>
-      </div>
-      <div class="map-cta reveal" style="--reveal-delay:240ms">
+      <a class="map-open reveal" style="--reveal-delay:100ms" href="/mapa-ecosistema-en.html" target="_blank" rel="noopener noreferrer">
+        <img class="map-open-img" src="/mapa-ecosistema-preview.png" width="1440" height="900" alt="Ecosystem map preview" loading="lazy">
+        <span class="map-open-bar">
+          <span class="map-open-title">Open interactive map</span>
+          <span class="map-open-meta">full viewer · zoom · legend</span>
+        </span>
+      </a>
+      <div class="map-cta reveal" style="--reveal-delay:180ms">
         <span class="hint">Agent on the map:</span>
         <a class="btn primary" href="/maestro/" target="_blank" rel="noopener noreferrer">Maestro case</a>
-        <a class="btn ghost" href="/maestro/maestro-runtime.architecture.html?theme=dark" target="_blank" rel="noopener noreferrer">Interactive map</a>
       </div>
     </section>
 
@@ -146,7 +138,7 @@
     </div>
   </footer>
 
-<script src="/site.js?v=20261002c"></script>
+<script src="/site.js?v=20261003a"></script>
 <script src="/hits.js?v=20260930a" defer></script>
 </body>
 </html>
