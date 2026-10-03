@@ -1,0 +1,350 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Everything I do, connected and running",
+    "output": "mapa-ecosistema-en.html",
+    "quality_profile": "showcase",
+    "animation": "trace",
+    "locale": "en"
+  },
+  "components": [
+    {
+      "id": "luipy",
+      "type": "backend",
+      "pos": [
+        410,
+        36
+      ],
+      "size": [
+        220,
+        68
+      ],
+      "tag": "hub",
+      "label": "LUIPY",
+      "sublabel": "full-stack & sysadmin"
+    },
+    {
+      "id": "web",
+      "type": "frontend",
+      "pos": [
+        70,
+        188
+      ],
+      "size": [
+        180,
+        56
+      ],
+      "label": "WEB PRODUCT",
+      "sublabel": "sites & apps"
+    },
+    {
+      "id": "auto",
+      "type": "messagebus",
+      "pos": [
+        430,
+        188
+      ],
+      "size": [
+        180,
+        56
+      ],
+      "label": "AUTOMATION",
+      "sublabel": "bots & agents"
+    },
+    {
+      "id": "infra",
+      "type": "cloud",
+      "pos": [
+        790,
+        188
+      ],
+      "size": [
+        180,
+        56
+      ],
+      "label": "INFRASTRUCTURE",
+      "sublabel": "deploy & ops"
+    },
+    {
+      "id": "helio",
+      "type": "frontend",
+      "pos": [
+        70,
+        340
+      ],
+      "size": [
+        180,
+        52
+      ],
+      "tag": "live",
+      "label": "Helio-3",
+      "sublabel": "game / product"
+    },
+    {
+      "id": "serra",
+      "type": "frontend",
+      "pos": [
+        70,
+        450
+      ],
+      "size": [
+        180,
+        52
+      ],
+      "tag": "live",
+      "label": "Serralleria Solidària",
+      "sublabel": "live website"
+    },
+    {
+      "id": "maestro",
+      "type": "security",
+      "pos": [
+        410,
+        332
+      ],
+      "size": [
+        220,
+        64
+      ],
+      "tag": "case",
+      "label": "Maestro",
+      "sublabel": "Discord orchestrator"
+    },
+    {
+      "id": "ultron",
+      "type": "messagebus",
+      "pos": [
+        410,
+        450
+      ],
+      "size": [
+        180,
+        52
+      ],
+      "tag": "live",
+      "label": "Ultron",
+      "sublabel": "bot ↔ tracker"
+    },
+    {
+      "id": "km0",
+      "type": "cloud",
+      "pos": [
+        790,
+        340
+      ],
+      "size": [
+        180,
+        52
+      ],
+      "tag": "live",
+      "label": "KM0 Digital",
+      "sublabel": "cloud + mail"
+    },
+    {
+      "id": "nexus",
+      "type": "cloud",
+      "pos": [
+        790,
+        450
+      ],
+      "size": [
+        180,
+        52
+      ],
+      "tag": "live",
+      "label": "WITHERED Nexus",
+      "sublabel": "live service"
+    },
+    {
+      "id": "loop",
+      "type": "security",
+      "pos": [
+        410,
+        555
+      ],
+      "size": [
+        220,
+        56
+      ],
+      "tag": "loop",
+      "label": "AGENT LOOP",
+      "sublabel": "observe → improve"
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Capability layers",
+      "wraps": [
+        "web",
+        "auto",
+        "infra"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "Real cases",
+      "wraps": [
+        "helio",
+        "serra",
+        "maestro",
+        "ultron",
+        "km0",
+        "nexus"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "luipy-web",
+      "from": "luipy",
+      "to": "web",
+      "label": "builds",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "luipy-auto",
+      "from": "luipy",
+      "to": "auto",
+      "label": "automates",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "luipy-infra",
+      "from": "luipy",
+      "to": "infra",
+      "label": "operates",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "web-helio",
+      "from": "web",
+      "to": "helio",
+      "label": "proves",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "helio-serra",
+      "from": "helio",
+      "to": "serra",
+      "label": "also",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "auto-maestro",
+      "from": "auto",
+      "to": "maestro",
+      "label": "flagship",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "auto-ultron",
+      "from": "auto",
+      "to": "ultron",
+      "label": "integrates",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "right",
+      "via": [
+        [
+          650,
+          216
+        ],
+        [
+          650,
+          476
+        ]
+      ]
+    },
+    {
+      "id": "infra-km0",
+      "from": "infra",
+      "to": "km0",
+      "label": "proves",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "km0-nexus",
+      "from": "km0",
+      "to": "nexus",
+      "label": "also",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "maestro-loop",
+      "from": "maestro",
+      "to": "loop",
+      "label": "orchestrates",
+      "variant": "emphasis",
+      "fromSide": "left",
+      "toSide": "left",
+      "via": [
+        [
+          360,
+          364
+        ],
+        [
+          360,
+          583
+        ]
+      ]
+    },
+    {
+      "id": "loop-luipy",
+      "from": "loop",
+      "to": "luipy",
+      "label": "improves",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "right",
+      "via": [
+        [
+          660,
+          583
+        ],
+        [
+          660,
+          70
+        ]
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "How I work",
+      "items": [
+        "Three layers: web product, automation, and infrastructure",
+        "Stack follows the problem; nothing is sacred"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "Real cases",
+      "items": [
+        "Maestro is the flagship Discord ops / agent loop case",
+        "KM0, Nexus, Helio-3, Serra and Ultron prove the layers in public"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Loop",
+      "items": [
+        "Maestro observes live systems, applies changes, and documents",
+        "Feedback returns to the hub: build and keep running are one job"
+      ]
+    }
+  ]
+}

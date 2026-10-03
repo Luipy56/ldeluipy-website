@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Build it, keep it running, stay in the loop",
+    "output": "mapa-ecosistema-en.html",
+    "quality_profile": "showcase",
+    "animation": "trace",
+    "locale": "en"
+  },
+  "components": [
+    {
+      "id": "luipy",
+      "type": "backend",
+      "pos": [
+        410,
+        36
+      ],
+      "size": [
+        220,
+        72
+      ],
+      "tag": "hub",
+      "label": "LUIPY",
+      "sublabel": "full-stack & sysadmin"
+    },
+    {
+      "id": "product",
+      "type": "frontend",
+      "pos": [
+        70,
+        210
+      ],
+      "size": [
+        200,
+        60
+      ],
+      "label": "PRODUCT",
+      "sublabel": "UI, APIs, data"
+    },
+    {
+      "id": "auto",
+      "type": "messagebus",
+      "pos": [
+        420,
+        210
+      ],
+      "size": [
+        200,
+        60
+      ],
+      "label": "AUTOMATION",
+      "sublabel": "bots, glue, agents"
+    },
+    {
+      "id": "infra",
+      "type": "cloud",
+      "pos": [
+        770,
+        210
+      ],
+      "size": [
+        200,
+        60
+      ],
+      "label": "INFRA",
+      "sublabel": "Linux, deploy, ops"
+    },
+    {
+      "id": "live",
+      "type": "frontend",
+      "pos": [
+        250,
+        380
+      ],
+      "size": [
+        420,
+        72
+      ],
+      "tag": "live",
+      "label": "IN PRODUCTION",
+      "sublabel": "KM0 · Nexus · Helio-3 · Serra"
+    },
+    {
+      "id": "maestro",
+      "type": "security",
+      "pos": [
+        280,
+        540
+      ],
+      "size": [
+        360,
+        72
+      ],
+      "tag": "loop",
+      "label": "MAESTRO",
+      "sublabel": "Discord orchestrator"
+    }
+  ],
+  "boundaries": [],
+  "connections": [
+    {
+      "id": "luipy-product",
+      "from": "luipy",
+      "to": "product",
+      "label": "ships code",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "luipy-auto",
+      "from": "luipy",
+      "to": "auto",
+      "label": "automates",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "luipy-infra",
+      "from": "luipy",
+      "to": "infra",
+      "label": "brings online",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "product-live",
+      "from": "product",
+      "to": "live",
+      "label": "publishes",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "auto-live",
+      "from": "auto",
+      "to": "live",
+      "label": "wires systems",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "infra-live",
+      "from": "infra",
+      "to": "live",
+      "label": "keeps up",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "luipy-maestro",
+      "from": "luipy",
+      "to": "maestro",
+      "label": "orders",
+      "variant": "emphasis",
+      "fromSide": "left",
+      "toSide": "left",
+      "via": [
+        [
+          28,
+          72
+        ],
+        [
+          28,
+          576
+        ]
+      ]
+    },
+    {
+      "id": "maestro-live",
+      "from": "maestro",
+      "to": "live",
+      "label": "acts on live",
+      "variant": "security",
+      "fromSide": "top",
+      "toSide": "bottom"
+    },
+    {
+      "id": "maestro-luipy",
+      "from": "maestro",
+      "to": "luipy",
+      "label": "documents",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "right",
+      "via": [
+        [
+          1040,
+          576
+        ],
+        [
+          1040,
+          72
+        ]
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Thesis",
+      "items": [
+        "Crafts on top; live systems below; Maestro closes the loop.",
+        "Not three teams: I build, automate, and operate the same system.",
+        "A product is not done at commit time — it is done when it is live."
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "In production",
+      "items": [
+        "KM0 Digital, WITHERED Nexus, Helio-3 and Serralleria Solidaria are public proof.",
+        "Ultron and betterclip sit in automation (repo / integration)."
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "Maestro",
+      "items": [
+        "From Discord: project context, action on live systems, written trail.",
+        "Closes the loop: order → session → change → documentation."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "05dc395d-5694-4bcf-88bb-58922ba24a29",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/var/www/ldeluipy.es/.archify/architecture-ecosistema-20261003-010500/candidate.json",
+  "output": "/var/www/ldeluipy.es/.archify/architecture-ecosistema-20261003-010500/mapa-ecosistema.html",
+  "specification": {
+    "sha256": "f70d6baab881923444fcd24be4830282787a7ccddcbb77a7565c12da6111d62d",
+    "bytes": 35227
+  },
+  "artifact": {
+    "sha256": "d44568a860d7ad74d71ff65ec534662acff3994c6522b57fd275c05a85424c7a",
+    "bytes": 768202
+  }
+}

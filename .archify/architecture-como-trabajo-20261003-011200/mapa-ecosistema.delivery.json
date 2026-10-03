@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "ee3f5c80-f6aa-4dd7-85ba-66bc7f644aeb",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/var/www/ldeluipy.es/.archify/architecture-como-trabajo-20261003-011200/candidate.json",
+  "output": "/var/www/ldeluipy.es/.archify/architecture-como-trabajo-20261003-011200/mapa-ecosistema.html",
+  "specification": {
+    "sha256": "a96c75eea40a683e54be6cefefc35fd042aaace7a9747fdf6df57211f4d43ac3",
+    "bytes": 33330
+  },
+  "artifact": {
+    "sha256": "902d9da9d713a17cbdd6435f04d812dc1995c72a89d0e02ced1da0220d708cff",
+    "bytes": 759019
+  }
+}

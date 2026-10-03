@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Todo lo que hago, conectado y corriendo",
+    "subtitle": "Mapa del ecosistema",
+    "output": "mapa-ecosistema.html",
+    "quality_profile": "showcase",
+    "locale": "en",
+    "animation": "trace"
+  },
+  "components": [
+    {
+      "id": "luipy",
+      "type": "backend",
+      "label": "LUIPY",
+      "sublabel": "full-stack & sysadmin",
+      "pos": [
+        400,
+        28
+      ],
+      "size": [
+        180,
+        64
+      ],
+      "tag": "hub"
+    },
+    {
+      "id": "web",
+      "type": "frontend",
+      "label": "PRODUCTO WEB",
+      "sublabel": "sites & apps",
+      "pos": [
+        80,
+        150
+      ],
+      "size": [
+        170,
+        52
+      ]
+    },
+    {
+      "id": "auto",
+      "type": "messagebus",
+      "label": "AUTOMATIZACION",
+      "sublabel": "bots & glue",
+      "pos": [
+        405,
+        150
+      ],
+      "size": [
+        170,
+        52
+      ]
+    },
+    {
+      "id": "infra",
+      "type": "cloud",
+      "label": "INFRAESTRUCTURA",
+      "sublabel": "servers & ops",
+      "pos": [
+        730,
+        150
+      ],
+      "size": [
+        170,
+        52
+      ]
+    },
+    {
+      "id": "km0",
+      "type": "frontend",
+      "label": "KM0 Digital",
+      "sublabel": "en vivo",
+      "pos": [
+        80,
+        275
+      ],
+      "size": [
+        170,
+        52
+      ],
+      "tag": "live"
+    },
+    {
+      "id": "ultron",
+      "type": "messagebus",
+      "label": "Ultron",
+      "sublabel": "bot ↔ tracker",
+      "pos": [
+        405,
+        275
+      ],
+      "size": [
+        170,
+        52
+      ],
+      "tag": "live"
+    },
+    {
+      "id": "nexus",
+      "type": "cloud",
+      "label": "WITHERED Nexus",
+      "sublabel": "en vivo",
+      "pos": [
+        730,
+        275
+      ],
+      "size": [
+        170,
+        52
+      ],
+      "tag": "live"
+    },
+    {
+      "id": "live",
+      "type": "backend",
+      "label": "TODO EN VIVO",
+      "sublabel": "en produccion",
+      "pos": [
+        80,
+        400
+      ],
+      "size": [
+        820,
+        52
+      ],
+      "tag": "live"
+    },
+    {
+      "id": "agent",
+      "type": "security",
+      "label": "AGENTE",
+      "sublabel": "revisa y mejora",
+      "pos": [
+        980,
+        200
+      ],
+      "size": [
+        180,
+        64
+      ],
+      "tag": "loop"
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Capas de capacidad",
+      "wraps": [
+        "web",
+        "auto",
+        "infra"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "Casos reales",
+      "wraps": [
+        "km0",
+        "ultron",
+        "nexus"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "luipy-web",
+      "from": "luipy",
+      "to": "web",
+      "label": "producto",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "luipy-auto",
+      "from": "luipy",
+      "to": "auto",
+      "label": "automatiza",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "luipy-infra",
+      "from": "luipy",
+      "to": "infra",
+      "label": "infra",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "web-km0",
+      "from": "web",
+      "to": "km0",
+      "label": "en produccion",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "auto-ultron",
+      "from": "auto",
+      "to": "ultron",
+      "label": "en produccion",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "infra-nexus",
+      "from": "infra",
+      "to": "nexus",
+      "label": "en produccion",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "km0-live",
+      "from": "km0",
+      "to": "live",
+      "label": "suministra",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "ultron-live",
+      "from": "ultron",
+      "to": "live",
+      "label": "suministra",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "nexus-live",
+      "from": "nexus",
+      "to": "live",
+      "label": "suministra",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "live-agent",
+      "from": "live",
+      "to": "agent",
+      "label": "feedback",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "bottom"
+    },
+    {
+      "id": "agent-luipy",
+      "from": "agent",
+      "to": "luipy",
+      "label": "mejora",
+      "variant": "dashed",
+      "fromSide": "top",
+      "toSide": "right"
+    }
+  ]
+}

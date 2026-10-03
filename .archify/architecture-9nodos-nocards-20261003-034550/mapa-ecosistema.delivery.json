@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "8c5da878-b203-49ec-8c77-fbea225c9466",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/var/www/ldeluipy.es/.archify/architecture-9nodos-nocards-20261003-034550/candidate.json",
+  "output": "/var/www/ldeluipy.es/.archify/architecture-9nodos-nocards-20261003-034550/mapa-ecosistema.html",
+  "specification": {
+    "sha256": "e40b7e555bbd75162775c45ec8d031b87f2aedfc214346650b0b8024c35d8ed7",
+    "bytes": 4736
+  },
+  "artifact": {
+    "sha256": "985308405c42c5c05b5564a695a825ccd2315193a31e7a7a7293a555849c1340",
+    "bytes": 765709
+  }
+}

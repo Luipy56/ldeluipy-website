@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "eac21b67-cc56-4d46-abfc-a2278aae210a",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/var/www/ldeluipy.es/.archify/architecture-9nodos-livefix-20261003-034311/candidate.json",
+  "output": "/var/www/ldeluipy.es/.archify/architecture-9nodos-livefix-20261003-034311/mapa-ecosistema.html",
+  "specification": {
+    "sha256": "cff2dfeac6378b3b9f094449209d53863d1ed9240657d4c5421e689677a6bdcc",
+    "bytes": 5362
+  },
+  "artifact": {
+    "sha256": "908ed98b3106277e8a649a30b25d263de17fb3784752c6923f776bc641762970",
+    "bytes": 766670
+  }
+}

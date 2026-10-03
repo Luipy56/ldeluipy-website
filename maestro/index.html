@@ -138,16 +138,20 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;font-style:normal;letter-spacing:
 }
 .enter-nav{
   opacity:0;
-  animation:luipy-fade-in .7s var(--eo) .35s forwards;
+  animation:luipy-fade-in .7s var(--eo) forwards;
+  animation-delay:.35s;
+  animation-fill-mode:both;
 }
 .enter-item{
   opacity:0;
-  animation:luipy-fade-up .75s var(--eo) calc(.45s + (var(--enter,1) - 1) * .12s) forwards;
+  animation:luipy-fade-up .75s var(--eo) forwards;
+  animation-delay:calc(.45s + (var(--enter,1) - 1) * .12s);
+  animation-fill-mode:both;
 }
 .reveal{
   opacity:0;
   transform:translateY(18px);
-  transition:opacity .7s var(--eo),transform .7s var(--eo);
+  transition:opacity .75s var(--eo),transform .75s var(--eo);
   transition-delay:var(--reveal-delay,0ms);
 }
 .reveal.in{opacity:1;transform:none}
@@ -188,23 +192,23 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;font-style:normal;letter-spacing:
     </div>
     <p class="lede enter-item" style="--enter:4">Agente ultra-orquestador en Discord: recibe una orden y la convierte en una sesión enfocada, con catálogo de proyectos, contexto del caso y reglas de seguridad estrictas. Los hilos persistentes del chat quedan ligados a esa sesión.</p>
 
-    <h2>Por qué existe</h2>
-    <p>Maestro nació para dejar de saltar entre servidores y proyectos. Antes, cualquier arreglo empezaba igual: abrir la terminal, entrar al servidor que tocara, buscar el proyecto, reconstruir de memoria en qué punto se quedó, levantar un agente efímero y escribirle desde cero el prompt, las tecnologías y las manías de ese repositorio. Al terminar, todo ese contexto se perdía.</p>
+    <h2 class="reveal" style="--reveal-delay:0ms">Por qué existe</h2>
+    <p class="reveal" style="--reveal-delay:80ms">Maestro nació para dejar de saltar entre servidores y proyectos. Antes, cualquier arreglo empezaba igual: abrir la terminal, entrar al servidor que tocara, buscar el proyecto, reconstruir de memoria en qué punto se quedó, levantar un agente efímero y escribirle desde cero el prompt, las tecnologías y las manías de ese repositorio. Al terminar, todo ese contexto se perdía.</p>
 
-    <p>Ahora el flujo entero vive en Discord. No hay que recordar dónde está el proyecto ni con qué instrucciones arrancar el agente: eso ya lo sabe él.</p>
+    <p class="reveal" style="--reveal-delay:140ms">Ahora el flujo entero vive en Discord. No hay que recordar dónde está el proyecto ni con qué instrucciones arrancar el agente: eso ya lo sabe él.</p>
 
-    <p>Hablo con Maestro desde Discord, con comandos estructurados o en lenguaje natural. Él consulta su catálogo de proyectos, carga el contexto del proyecto y abre una sesión acotada a ese trabajo. Se conecta al servidor donde vive el proyecto y el agente ejecuta en el árbol correcto. El hilo de Discord y el agente quedan enlazados. Así puedo continuar la misma sesión sin que Maestro olvide nada.</p>
+    <p class="reveal" style="--reveal-delay:200ms">Hablo con Maestro desde Discord, con comandos estructurados o en lenguaje natural. Él consulta su catálogo de proyectos, carga el contexto del proyecto y abre una sesión acotada a ese trabajo. Se conecta al servidor donde vive el proyecto y el agente ejecuta en el árbol correcto. El hilo de Discord y el agente quedan enlazados. Así puedo continuar la misma sesión sin que Maestro olvide nada.</p>
 
-    <h2>Hilos que duran</h2>
-    <p>Cada caso abre un hilo en Discord ligado a su sesión. Mientras el hilo esté abierto, el agente sigue en el mismo trabajo: conoce el proyecto, lo ya intentado y lo que quedó a medias. Puedes dejarlo el lunes, volver el jueves, pegar un log o una captura, y retomar sin reexplicar el entorno ni levantar otro agente desde cero.</p>
+    <h2 class="reveal" style="--reveal-delay:0ms">Hilos que duran</h2>
+    <p class="reveal" style="--reveal-delay:60ms">Cada caso abre un hilo en Discord ligado a su sesión. Mientras el hilo esté abierto, el agente sigue en el mismo trabajo: conoce el proyecto, lo ya intentado y lo que quedó a medias. Puedes dejarlo el lunes, volver el jueves, pegar un log o una captura, y retomar sin reexplicar el entorno ni levantar otro agente desde cero.</p>
 
-    <p>Cuando el caso termina, cierras el hilo. Maestro deja un resumen de lo hecho: cambios, decisiones y motivos. Si el caso lo pide, también una nota en el tracker. El chat deja de ser el lugar de trabajo; lo que importa queda escrito fuera.</p>
+    <p class="reveal" style="--reveal-delay:100ms">Cuando el caso termina, cierras el hilo. Maestro deja un resumen de lo hecho: cambios, decisiones y motivos. Si el caso lo pide, también una nota en el tracker. El chat deja de ser el lugar de trabajo; lo que importa queda escrito fuera.</p>
 
-    <h2>Los servidores</h2>
-    <p>Hay unos diez servidores y cerca de cuarenta proyectos registrados en el catálogo. Unos sirven webs y APIs, otros levantan las herramientas internas del día a día, y el resto se reparte el correo, el almacenamiento y los modelos que corren en local con Ollama. Lo que no está en el catálogo no existe para él. Además del trabajo por proyecto están los casos de operación: repasar los journals de errores de cada servidor y arreglar lo que esté en su mano, o avisarle de un fallo para que lo localice, lo corrija y cuente qué ha cambiado. <a href="/maestro/maestro-fleet.architecture.html?theme=dark">Mapa de hosts del catálogo</a>.</p>
+    <h2 class="reveal" style="--reveal-delay:0ms">Los servidores</h2>
+    <p class="reveal" style="--reveal-delay:60ms">Hay unos diez servidores y cerca de cuarenta proyectos registrados en el catálogo. Unos sirven webs y APIs, otros levantan las herramientas internas del día a día, y el resto se reparte el correo, el almacenamiento y los modelos que corren en local con Ollama. Lo que no está en el catálogo no existe para él. Además del trabajo por proyecto están los casos de operación: repasar los journals de errores de cada servidor y arreglar lo que esté en su mano, o avisarle de un fallo para que lo localice, lo corrija y cuente qué ha cambiado. <a href="/maestro/maestro-fleet.architecture.html?theme=dark" target="_blank" rel="noopener noreferrer">Mapa de hosts del catálogo</a>.</p>
 
-    <h2>Más que una carpeta</h2>
-    <p>Maestro puede estar trabajando en un proyecto de un servidor, darse cuenta de que necesita una herramienta que vive en otro y usarla sin instalar nada nuevo, porque el mapa de servidores ya está cargado. Sabe qué hay en cada máquina, cómo se llama y cómo se invoca. En un mismo hilo cruza proyectos, hosts y herramientas: mira un registro aquí, ejecuta allá y devuelve una sola respuesta. Un agente suelto solo ve la carpeta donde lo has arrancado.</p>
+    <h2 class="reveal" style="--reveal-delay:0ms">Más que una carpeta</h2>
+    <p class="reveal" style="--reveal-delay:60ms">Maestro puede estar trabajando en un proyecto de un servidor, darse cuenta de que necesita una herramienta que vive en otro y usarla sin instalar nada nuevo, porque el mapa de servidores ya está cargado. Sabe qué hay en cada máquina, cómo se llama y cómo se invoca. En un mismo hilo cruza proyectos, hosts y herramientas: mira un registro aquí, ejecuta allá y devuelve una sola respuesta. Un agente suelto solo ve la carpeta donde lo has arrancado.</p>
 
     <h2 class="reveal" style="--reveal-delay:0ms">Cómo fluye</h2>
     <p class="reveal" style="--reveal-delay:60ms">Maestro es un bot en Discord. Consulta el catálogo, abre una sesión con el Modelo IA y llega a los servidores por SSH. Si el camino directo falla o el caso lo pide, pasa por un puente SSH con sus propias normas y contexto.</p>
@@ -219,13 +223,13 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;font-style:normal;letter-spacing:
       ></iframe>
     </div>
     <p class="flow-source reveal" style="--reveal-delay:200ms">
-      <a href="/maestro/maestro-runtime.architecture.html?theme=dark">Mapa completo</a>
-      <a href="/maestro/maestro-fleet.architecture.html?theme=dark">Hosts del catálogo</a>
+      <a href="/maestro/maestro-runtime.architecture.html?theme=dark" target="_blank" rel="noopener noreferrer">Mapa completo</a>
+      <a href="/maestro/maestro-fleet.architecture.html?theme=dark" target="_blank" rel="noopener noreferrer">Hosts del catálogo</a>
     </p>
 
-    <h2>Qué puede hacer</h2>
-    <p>Capacidades operativas que Maestro expone desde Discord.</p>
-    <ul class="toc">
+    <h2 class="reveal" style="--reveal-delay:0ms">Qué puede hacer</h2>
+    <p class="reveal" style="--reveal-delay:60ms">Capacidades operativas que Maestro expone desde Discord.</p>
+    <ul class="toc reveal" style="--reveal-delay:100ms">
       <li><span class="cap">Entrada NL / comandos</span><p class="note">Acepta lenguaje natural y slash commands en el mismo canal o hilo.</p></li>
       <li><span class="cap">Sesiones persistentes</span><p class="note">Mantiene hilos de Discord ligados a una sesión de Modelo IA reanudable.</p></li>
       <li><span class="cap">Ingesta de adjuntos</span><p class="note">Lee imágenes, capturas, logs, PDF y ficheros de texto del mensaje.</p></li>
@@ -236,11 +240,11 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;font-style:normal;letter-spacing:
       <li><span class="cap">Operación de hosts</span><p class="note">Inspecciona journals, certificados y fallos de servicio; corrige lo que esté en alcance.</p></li>
     </ul>
 
-    <span class="orn" aria-hidden="true">✦</span>
+    <span class="orn reveal" style="--reveal-delay:0ms" aria-hidden="true">✦</span>
 
-    <p class="dim">En el mapa del landing, el nodo «AGENTE» es este tipo de bucle: revisar lo vivo, aplicar y documentar, operable desde un mensaje.</p>
+    <p class="dim reveal" style="--reveal-delay:60ms">En el mapa del landing, Maestro es ese bucle: revisar lo vivo, aplicar y documentar, operable desde un mensaje.</p>
 
-    <p class="close">
+    <p class="close reveal" style="--reveal-delay:100ms">
       <a href="/#trabajo">Volver a casos reales</a>
     </p>
   </article>
@@ -264,17 +268,22 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;font-style:normal;letter-spacing:
     nodes.forEach(function (el) { el.classList.add("in"); });
     return;
   }
-  var io = new IntersectionObserver(
-    function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("in");
-        io.unobserve(entry.target);
-      });
-    },
-    { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
-  );
-  nodes.forEach(function (el) { io.observe(el); });
+  /* After the nav is on screen (0.35s + ~0.5s of fade); overlaps the last hero item. */
+  var afterNav = 900;
+  function observe() {
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+    );
+    nodes.forEach(function (el) { io.observe(el); });
+  }
+  setTimeout(observe, afterNav);
 })();
 </script>
 <script src="/hits.js?v=20260930a" defer></script>

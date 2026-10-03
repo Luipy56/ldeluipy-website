@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "/var/www/ldeluipy.es/.archify/architecture-como-trabajo-20261003-011200/candidate.json",
+    "sha256": "a96c75eea40a683e54be6cefefc35fd042aaace7a9747fdf6df57211f4d43ac3",
+    "bytes": 33330
+  },
+  "artifact": {
+    "path": "/var/www/ldeluipy.es/.archify/architecture-como-trabajo-20261003-011200/mapa-ecosistema.html",
+    "sha256": "902d9da9d713a17cbdd6435f04d812dc1995c72a89d0e02ced1da0220d708cff",
+    "bytes": 759019
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/var/www/ldeluipy.es/.archify/architecture-como-trabajo-20261003-011200/mapa-ecosistema.finalize.json",
+    "summaryReceipt": "/var/www/ldeluipy.es/.archify/architecture-como-trabajo-20261003-011200/mapa-ecosistema.finalize-summary.json",
+    "browserCheckReceipt": "/var/www/ldeluipy.es/.archify/architecture-como-trabajo-20261003-011200/mapa-ecosistema.browser-check.json"
+  },
+  "update": {
+    "status": "unavailable",
+    "installedVersion": null,
+    "availableVersion": null,
+    "releaseNotes": null,
+    "checkedAt": null,
+    "source": null,
+    "noticeRequired": false,
+    "noticeText": null,
+    "reason": "disabled"
+  },
+  "visualReview": "not-requested",
+  "durationMs": 3696,
+  "visualReviewRecommendation": {
+    "action": "inspect-route-readability",
+    "signals": {
+      "resolvedCrossovers": 1,
+      "routesOverSuggestedStretch": 2
+    },
+    "reason": "Automated gates passed, but crossings or detours still need perceptual review before claiming visual quality.",
+    "affectedRoutes": {
+      "crossings": [
+        {
+          "left": {
+            "id": "auto-live",
+            "from": "auto",
+            "to": "live",
+            "label": "conecta",
+            "collectionIndex": 4,
+            "artifactIndex": 5
+          },
+          "right": {
+            "id": "infra-live",
+            "from": "infra",
+            "to": "live",
+            "label": "mantiene",
+            "collectionIndex": 5,
+            "artifactIndex": 6
+          },
+          "point": [
+            488,
+            356
+          ],
+          "sharedNode": "live"
+        }
+      ],
+      "detours": [
+        {
+          "relationship": {
+            "id": "luipy-maestro",
+            "from": "luipy",
+            "to": "maestro",
+            "label": "ordena",
+            "collectionIndex": 6,
+            "artifactIndex": 7
+          },
+          "bends": 2,
+          "stretch": 1.795
+        },
+        {
+          "relationship": {
+            "id": "maestro-luipy",
+            "from": "maestro",
+            "to": "luipy",
+            "label": "documenta",
+            "collectionIndex": 8,
+            "artifactIndex": 9
+          },
+          "bends": 2,
+          "stretch": 2.556
+        }
+      ],
+      "truncated": false
+    },
+    "hints": [
+      "auto → live and infra → live cross next to live: move node auto or infra so the two reach live from different sides (for example one level with it, one directly above or below it).",
+      "luipy → maestro needs 2 bends: move node luipy or maestro so they share a row or column with matching centers, or sit diagonally with a clear corner.",
+      "maestro → luipy needs 2 bends: move node maestro or luipy so they share a row or column with matching centers, or sit diagonally with a clear corner."
+    ],
+    "repair": "Trace these relationships at the desktop viewport. For Architecture, use references/architecture-layout-repair.md: reflow a blocked main path or tangled connected scene, and repair an isolated defect locally only when the surrounding composition is accepted. Preserve all semantic content and user-fixed geometry. Rerun finalize once after the edit."
+  }
+}

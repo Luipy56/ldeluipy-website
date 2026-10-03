@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "/var/www/ldeluipy.es/.archify/architecture-ecosistema-20261003-010500/candidate-en.json",
+    "sha256": "7674d442df9ceddbfb10f30e161ac8baaadb3f9299c46f83910fb1d044b7167c",
+    "bytes": 6242
+  },
+  "artifact": {
+    "path": "/var/www/ldeluipy.es/.archify/architecture-ecosistema-20261003-010500/mapa-ecosistema-en.html",
+    "sha256": "f82e3759ef142b862051ef3a172257d80f7746d1026da4c17318126e612eb1c5",
+    "bytes": 768073
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "/var/www/ldeluipy.es/.archify/architecture-ecosistema-20261003-010500/mapa-ecosistema-en.finalize.json",
+    "summaryReceipt": "/var/www/ldeluipy.es/.archify/architecture-ecosistema-20261003-010500/mapa-ecosistema-en.finalize-summary.json",
+    "browserCheckReceipt": "/var/www/ldeluipy.es/.archify/architecture-ecosistema-20261003-010500/mapa-ecosistema-en.browser-check.json"
+  },
+  "update": {
+    "status": "unavailable",
+    "installedVersion": null,
+    "availableVersion": null,
+    "releaseNotes": null,
+    "checkedAt": null,
+    "source": null,
+    "noticeRequired": false,
+    "noticeText": null,
+    "reason": "disabled"
+  },
+  "visualReview": "not-requested",
+  "durationMs": 3994,
+  "visualReviewRecommendation": {
+    "action": "inspect-route-readability",
+    "signals": {
+      "routesOverSuggestedStretch": 1
+    },
+    "reason": "Automated gates passed, but crossings or detours still need perceptual review before claiming visual quality.",
+    "affectedRoutes": {
+      "crossings": [],
+      "detours": [
+        {
+          "relationship": {
+            "id": "maestro-loop",
+            "from": "maestro",
+            "to": "loop",
+            "label": "orchestrates",
+            "collectionIndex": 9,
+            "artifactIndex": 10
+          },
+          "bends": 2,
+          "stretch": 1.457,
+          "directCorridorBlockers": [
+            {
+              "id": "ultron",
+              "label": "Ultron",
+              "box": [
+                410,
+                450,
+                180,
+                52
+              ]
+            }
+          ]
+        }
+      ],
+      "truncated": false
+    },
+    "repair": "Trace these relationships at the desktop viewport. For Architecture, use references/architecture-layout-repair.md: reflow a blocked main path or tangled connected scene, and repair an isolated defect locally only when the surrounding composition is accepted. Preserve all semantic content and user-fixed geometry. Rerun finalize once after the edit."
+  }
+}
