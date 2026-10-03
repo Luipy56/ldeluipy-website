@@ -79,4 +79,24 @@
   bindCopy("copydiscord", "data-nick");
 
   observeReveal();
+
+  function bindEcoMapMotion(){
+    var maps = Array.prototype.slice.call(document.querySelectorAll(".map"));
+    if(!maps.length) return;
+    function play(map){
+      if(!map.querySelector(".diagram.eco")) return;
+      map.classList.remove("eco-play");
+      void map.offsetWidth;
+      map.classList.add("eco-play");
+    }
+    maps.forEach(function(map){
+      if(map.classList.contains("in")) play(map);
+      var mo = new MutationObserver(function(){
+        if(map.classList.contains("in")){ play(map); mo.disconnect(); }
+      });
+      mo.observe(map, { attributes: true, attributeFilter: ["class"] });
+    });
+  }
+  bindEcoMapMotion();
+
 })();
