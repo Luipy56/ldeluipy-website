@@ -198,18 +198,54 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;letter-spacing:-0.03em;line-heigh
   85%{stroke-dashoffset:0;opacity:1}
   100%{stroke-dashoffset:0;opacity:1}
 }
-@keyframes eco-node-pulse{
+@keyframes eco-node-pulse-frontend{
   0%,72%,100%{filter:none}
-  18%,36%{filter:drop-shadow(0 0 8px color-mix(in srgb, var(--eco-emphasis) 70%, transparent))}
+  18%,36%{filter:drop-shadow(0 0 8px rgba(34,211,238,.8))}
+}
+@keyframes eco-node-pulse-backend{
+  0%,72%,100%{filter:none}
+  18%,36%{filter:drop-shadow(0 0 8px rgba(52,211,153,.8))}
+}
+@keyframes eco-node-pulse-messagebus{
+  0%,72%,100%{filter:none}
+  18%,36%{filter:drop-shadow(0 0 8px rgba(251,146,60,.8))}
+}
+@keyframes eco-node-pulse-cloud{
+  0%,72%,100%{filter:none}
+  18%,36%{filter:drop-shadow(0 0 8px rgba(251,191,36,.8))}
+}
+@keyframes eco-node-pulse-security{
+  0%,72%,100%{filter:none}
+  18%,36%{filter:drop-shadow(0 0 8px rgba(251,113,133,.8))}
 }
 @keyframes eco-dash-run{to{stroke-dashoffset:-28}}
 .map.eco-play .diagram.eco[data-animation="trace"] [data-animate="edge"]{
   animation:eco-edge-flow 2.35s linear 1 both;
   animation-delay:calc(var(--step, 0) * 150ms);
 }
-.map.eco-play .diagram.eco[data-animation="trace"] [data-animate="node"]{
+.map.eco-play .diagram.eco[data-animation="trace"] [data-animate="node"].c-frontend{
   transform-box:fill-box;transform-origin:center;
-  animation:eco-node-pulse 3.4s ease-in-out 1 both;
+  animation:eco-node-pulse-frontend 3.4s ease-in-out 1 both;
+  animation-delay:calc(var(--step, 0) * 150ms);
+}
+.map.eco-play .diagram.eco[data-animation="trace"] [data-animate="node"].c-backend{
+  transform-box:fill-box;transform-origin:center;
+  animation:eco-node-pulse-backend 3.4s ease-in-out 1 both;
+  animation-delay:calc(var(--step, 0) * 150ms);
+}
+.map.eco-play .diagram.eco[data-animation="trace"] [data-animate="node"].c-messagebus{
+  transform-box:fill-box;transform-origin:center;
+  animation:eco-node-pulse-messagebus 3.4s ease-in-out 1 both;
+  animation-delay:calc(var(--step, 0) * 150ms);
+}
+.map.eco-play .diagram.eco[data-animation="trace"] [data-animate="node"].c-cloud{
+  transform-box:fill-box;transform-origin:center;
+  animation:eco-node-pulse-cloud 3.4s ease-in-out 1 both;
+  animation-delay:calc(var(--step, 0) * 150ms);
+}
+.map.eco-play .diagram.eco[data-animation="trace"] [data-animate="node"].c-security{
+  transform-box:fill-box;transform-origin:center;
+  animation:eco-node-pulse-security 3.4s ease-in-out 1 both;
   animation-delay:calc(var(--step, 0) * 150ms);
 }
 /* Soft continuous flow after entrance */
