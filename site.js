@@ -56,16 +56,27 @@
   smoothMarquee("marq", 85);
   smoothMarquee("fmarq", 65);
 
-  var cm = document.getElementById("copymail");
-  if(cm) cm.addEventListener("click", function(){
-    var mail = cm.getAttribute("data-mail");
-    function done(){ cm.textContent = cm.getAttribute("data-done") || "Copiado ✓"; setTimeout(function(){ cm.textContent = mail; }, 1600); }
-    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(mail).then(done, done); }
-    else{
-      var i = document.createElement("input"); i.value = mail; document.body.appendChild(i);
-      i.select(); try{ document.execCommand("copy"); }catch(e){} document.body.removeChild(i); done();
-    }
-  });
+  function bindCopy(id, attr){
+    var el = document.getElementById(id);
+    if(!el) return;
+    var label = el.getAttribute("data-label") || el.textContent.trim();
+    el.addEventListener("click", function(){
+      var text = el.getAttribute(attr);
+      if(!text) return;
+      function done(){
+        el.textContent = el.getAttribute("data-done") || "Copiado ✓";
+        setTimeout(function(){ el.textContent = label; }, 1600);
+      }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(done, done);
+      } else {
+        var i = document.createElement("input"); i.value = text; document.body.appendChild(i);
+        i.select(); try{ document.execCommand("copy"); }catch(e){} document.body.removeChild(i); done();
+      }
+    });
+  }
+  bindCopy("copymail", "data-mail");
+  bindCopy("copydiscord", "data-nick");
 
   observeReveal();
 })();
