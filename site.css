@@ -185,13 +185,62 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;letter-spacing:-0.03em;line-heigh
 .diagram.eco [data-detail="fine"]{display:none}
 .diagram.eco g[data-node-id]{cursor:default;transition:filter .22s var(--eo), transform .22s var(--eo);transform-box:fill-box;transform-origin:center}
 .diagram.eco g[data-node-id] > rect[class^="c-"]:not(.c-mask){transition:stroke .2s var(--eo), stroke-width .2s var(--eo), filter .22s var(--eo)}
-/* Type-colored hover (not flat accent2) */
+/* Type-colored hover + Archify-like focus */
+.diagram.eco g[data-node-id]{cursor:pointer}
 .diagram.eco g[data-node-id]:hover{transform:translateY(-1.5px)}
-.diagram.eco g[data-node-id]:hover .c-frontend{stroke:#67e8f9;stroke-width:2.25px;filter:drop-shadow(0 0 8px rgba(34,211,238,.75))}
-.diagram.eco g[data-node-id]:hover .c-backend{stroke:#6ee7b7;stroke-width:2.25px;filter:drop-shadow(0 0 8px rgba(52,211,153,.75))}
-.diagram.eco g[data-node-id]:hover .c-messagebus{stroke:#fdba74;stroke-width:2.25px;filter:drop-shadow(0 0 8px rgba(251,146,60,.75))}
-.diagram.eco g[data-node-id]:hover .c-cloud{stroke:#fde68a;stroke-width:2.25px;filter:drop-shadow(0 0 8px rgba(251,191,36,.75))}
-.diagram.eco g[data-node-id]:hover .c-security{stroke:#fda4af;stroke-width:2.25px;filter:drop-shadow(0 0 8px rgba(251,113,133,.75))}
+.diagram.eco g[data-node-id]:hover .c-frontend,
+.diagram.eco g[data-node-id][data-focus-selected] .c-frontend{stroke:#67e8f9;stroke-width:2.25px;filter:drop-shadow(0 0 8px rgba(34,211,238,.75))}
+.diagram.eco g[data-node-id]:hover .c-backend,
+.diagram.eco g[data-node-id][data-focus-selected] .c-backend{stroke:#6ee7b7;stroke-width:2.25px;filter:drop-shadow(0 0 8px rgba(52,211,153,.75))}
+.diagram.eco g[data-node-id]:hover .c-messagebus,
+.diagram.eco g[data-node-id][data-focus-selected] .c-messagebus{stroke:#fdba74;stroke-width:2.25px;filter:drop-shadow(0 0 8px rgba(251,146,60,.75))}
+.diagram.eco g[data-node-id]:hover .c-cloud,
+.diagram.eco g[data-node-id][data-focus-selected] .c-cloud{stroke:#fde68a;stroke-width:2.25px;filter:drop-shadow(0 0 8px rgba(251,191,36,.75))}
+.diagram.eco g[data-node-id]:hover .c-security,
+.diagram.eco g[data-node-id][data-focus-selected] .c-security{stroke:#fda4af;stroke-width:2.25px;filter:drop-shadow(0 0 8px rgba(251,113,133,.75))}
+/* Focus: dim the rest, keep neighborhood (Archify data-focus-active) */
+.diagram.eco[data-focus-active] [data-node-id],
+.diagram.eco[data-focus-active] [data-edge-from]{opacity:.16;transition:opacity .18s var(--eo)}
+.diagram.eco[data-focus-active] [data-graph-role="automatic-crossover"] > [data-graph-role="automatic-crossover-underlay"]{opacity:.16}
+.diagram.eco[data-focus-active] [data-focus-match]{opacity:1}
+.diagram.eco[data-focus-active] [data-graph-role="automatic-crossover"]:has(> [data-focus-match]) > [data-graph-role="automatic-crossover-underlay"]{opacity:1}
+.diagram.eco[data-focus-active] [data-focus-match][data-edge-from]{
+  filter:drop-shadow(0 0 5px color-mix(in srgb, var(--eco-loop) 55%, transparent));
+}
+.diagram.eco[data-focus-active] [data-focus-match].a-emphasis{
+  filter:drop-shadow(0 0 5px color-mix(in srgb, var(--eco-emphasis) 55%, transparent));
+}
+/* Hover pulse overlay (Archify relationship-flow-pulse) */
+.diagram.eco .eco-flow-pulse{
+  fill:none;
+  stroke:var(--eco-loop);
+  stroke-width:3.2;
+  stroke-linecap:round;
+  stroke-dasharray:14 18;
+  opacity:.95;
+  pointer-events:none;
+  filter:drop-shadow(0 0 5px color-mix(in srgb, var(--eco-loop) 70%, transparent));
+  animation:eco-flow-pulse 1.15s linear infinite;
+}
+.diagram.eco .eco-flow-pulse.is-emphasis{
+  stroke:var(--eco-emphasis);
+  filter:drop-shadow(0 0 5px color-mix(in srgb, var(--eco-emphasis) 70%, transparent));
+}
+@keyframes eco-flow-pulse{to{stroke-dashoffset:-64}}
+/* Continuous arrow march (feedback / suministra / en produccion) */
+@keyframes eco-dash-run{to{stroke-dashoffset:-36}}
+.diagram.eco .a-dashed{
+  stroke-dasharray:5 7;
+  animation:eco-dash-run 1.35s linear infinite;
+}
+.diagram.eco .a-emphasis{
+  stroke-dasharray:9 7;
+  animation:eco-dash-run 1.15s linear infinite;
+}
+.diagram.eco .a-default{
+  stroke-dasharray:10 8;
+  animation:eco-dash-run 1.8s linear infinite;
+}
 /* Trace entrance (Archify ambient, adapted for embed) */
 @keyframes eco-edge-flow{
   0%{stroke-dashoffset:54;opacity:.35}
@@ -218,10 +267,17 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;letter-spacing:-0.03em;line-heigh
   0%,72%,100%{filter:none}
   18%,36%{filter:drop-shadow(0 0 8px rgba(251,113,133,.8))}
 }
-@keyframes eco-dash-run{to{stroke-dashoffset:-28}}
 .map.eco-play .diagram.eco[data-animation="trace"] [data-animate="edge"]{
-  animation:eco-edge-flow 2.35s linear 1 both;
-  animation-delay:calc(var(--step, 0) * 150ms);
+  animation:eco-edge-flow 2.35s linear 1 both, eco-dash-run 1.35s linear infinite;
+  animation-delay:calc(var(--step, 0) * 150ms), 2.4s;
+}
+.map.eco-play .diagram.eco[data-animation="trace"] [data-animate="edge"].a-emphasis{
+  animation:eco-edge-flow 2.35s linear 1 both, eco-dash-run 1.15s linear infinite;
+  animation-delay:calc(var(--step, 0) * 150ms), 2.4s;
+}
+.map.eco-play .diagram.eco[data-animation="trace"] [data-animate="edge"].a-default{
+  animation:eco-edge-flow 2.35s linear 1 both, eco-dash-run 1.8s linear infinite;
+  animation-delay:calc(var(--step, 0) * 150ms), 2.4s;
 }
 .map.eco-play .diagram.eco[data-animation="trace"] [data-animate="node"].c-frontend{
   transform-box:fill-box;transform-origin:center;
@@ -248,21 +304,16 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;letter-spacing:-0.03em;line-heigh
   animation:eco-node-pulse-security 3.4s ease-in-out 1 both;
   animation-delay:calc(var(--step, 0) * 150ms);
 }
-/* Soft continuous flow after entrance */
-.map.eco-play .diagram.eco .a-emphasis{
-  animation:eco-edge-flow 2.35s linear 1 both, eco-dash-run 1.55s linear infinite;
-  animation-delay:calc(var(--step, 0) * 150ms), 2.4s;
-}
-.map.eco-play .diagram.eco .a-dashed{
-  animation:eco-edge-flow 2.35s linear 1 both, eco-dash-run 2.1s linear infinite;
-  animation-delay:calc(var(--step, 0) * 150ms), 2.5s;
-}
 @media (prefers-reduced-motion: reduce){
+  .diagram.eco .a-dashed,
+  .diagram.eco .a-emphasis,
+  .diagram.eco .a-default,
+  .diagram.eco .eco-flow-pulse,
   .map.eco-play .diagram.eco[data-animation="trace"] [data-animate],
-  .map.eco-play .diagram.eco .a-emphasis,
-  .map.eco-play .diagram.eco .a-dashed{animation:none !important}
+  .map.eco-play .diagram.eco[data-animation="trace"] [data-animate="edge"],
+  .map.eco-play .diagram.eco[data-animation="trace"] [data-animate="edge"].a-emphasis,
+  .map.eco-play .diagram.eco[data-animation="trace"] [data-animate="edge"].a-default{animation:none !important}
 }
-
 
 /* work strip — Photographic frames (aperture hover) */
 .strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4)}

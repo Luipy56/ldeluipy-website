@@ -83,13 +83,80 @@
   function bindEcoMapMotion(){
     var maps = Array.prototype.slice.call(document.querySelectorAll(".map"));
     if(!maps.length) return;
+
     function play(map){
       if(!map.querySelector(".diagram.eco")) return;
       map.classList.remove("eco-play");
       void map.offsetWidth;
       map.classList.add("eco-play");
     }
+
+    function clearFocus(svg){
+      svg.removeAttribute("data-focus-active");
+      Array.prototype.forEach.call(svg.querySelectorAll("[data-focus-match], [data-focus-selected]"), function(el){
+        el.removeAttribute("data-focus-match");
+        el.removeAttribute("data-focus-selected");
+      });
+      Array.prototype.forEach.call(svg.querySelectorAll(".eco-flow-pulse"), function(el){ el.remove(); });
+    }
+
+    function focusNode(svg, id){
+      clearFocus(svg);
+      var node = svg.querySelector('[data-node-id="' + id + '"]');
+      if(!node) return;
+      svg.setAttribute("data-focus-active", id);
+      node.setAttribute("data-focus-match", "");
+      node.setAttribute("data-focus-selected", "");
+
+      var edges = Array.prototype.slice.call(svg.querySelectorAll(
+        '[data-edge-from="' + id + '"], [data-edge-to="' + id + '"]'
+      ));
+      var neighbors = {};
+      neighbors[id] = true;
+      edges.forEach(function(edge){
+        edge.setAttribute("data-focus-match", "");
+        var a = edge.getAttribute("data-edge-from");
+        var b = edge.getAttribute("data-edge-to");
+        if(a) neighbors[a] = true;
+        if(b) neighbors[b] = true;
+        /* Archify-like traveling pulse on connected routes */
+        if(edge.tagName && edge.tagName.toLowerCase() === "path" && edge.getAttribute("d")){
+          var pulse = edge.cloneNode(false);
+          pulse.removeAttribute("data-animate");
+          pulse.removeAttribute("marker-end");
+          pulse.removeAttribute("class");
+          pulse.setAttribute("class", "eco-flow-pulse" + (edge.classList.contains("a-emphasis") ? " is-emphasis" : ""));
+          pulse.setAttribute("d", edge.getAttribute("d"));
+          edge.parentNode.appendChild(pulse);
+        }
+      });
+      Object.keys(neighbors).forEach(function(nid){
+        var n = svg.querySelector('[data-node-id="' + nid + '"]');
+        if(n) n.setAttribute("data-focus-match", "");
+      });
+    }
+
+    function bindFocus(svg){
+      var nodes = Array.prototype.slice.call(svg.querySelectorAll("[data-node-id]"));
+      nodes.forEach(function(node){
+        var id = node.getAttribute("data-node-id");
+        if(!id) return;
+        node.addEventListener("pointerenter", function(){ focusNode(svg, id); });
+        node.addEventListener("pointerleave", function(ev){
+          /* keep focus if moving to another node inside svg */
+          var to = ev.relatedTarget;
+          if(to && svg.contains(to) && to.closest && to.closest("[data-node-id]")) return;
+          clearFocus(svg);
+        });
+        node.addEventListener("focus", function(){ focusNode(svg, id); });
+        node.addEventListener("blur", function(){ clearFocus(svg); });
+      });
+      svg.addEventListener("pointerleave", function(){ clearFocus(svg); });
+    }
+
     maps.forEach(function(map){
+      var svg = map.querySelector(".diagram.eco");
+      if(svg) bindFocus(svg);
       if(map.classList.contains("in")) play(map);
       var mo = new MutationObserver(function(){
         if(map.classList.contains("in")){ play(map); mo.disconnect(); }
