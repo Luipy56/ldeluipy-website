@@ -106,7 +106,7 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;letter-spacing:-0.03em;line-heigh
 .legend .k{display:inline-flex;align-items:center;gap:.5ch}
 .legend .sw{width:22px;height:0;border-top:2px solid oklch(45% 0.05 190)}
 .legend .sw.flow{border-top:2px dashed var(--accent)}
-.legend .sw.loop{border-top:2px dashed #c084fc}
+.legend .sw.loop{border-top:2px dashed oklch(72% 0.12 155)}
 .legend .sw.core{width:12px;height:12px;border:2px solid var(--accent);border-radius:3px}
 .legend .sw.sw-frontend,.legend .sw.sw-backend,.legend .sw.sw-bus,.legend .sw.sw-cloud,.legend .sw.sw-security{
   width:12px;height:12px;border-radius:3px;border:2px solid currentColor;border-top-style:solid
@@ -140,7 +140,7 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;letter-spacing:-0.03em;line-heigh
   --eco-security-fill:rgba(251,113,133,.18);
   --eco-security-stroke:#fb7185;
   --eco-region:oklch(42% 0.05 160 / .7);
-  --eco-loop:#c084fc;
+  --eco-loop:oklch(72% 0.12 155);
 }
 .diagram.eco .c-grid{stroke:var(--eco-grid);opacity:.7}
 .diagram.eco .c-mask{fill:var(--mask)}

@@ -33,7 +33,7 @@ Then visit `http://localhost:8080`.
 
 ## Contact
 
-- Email: yoelberjaga@gmail.com
+- Email: luipy@ldeluipy.es
 - GitHub: [Luipy56](https://github.com/Luipy56)
 - Discord: invite linked from the live site
 
