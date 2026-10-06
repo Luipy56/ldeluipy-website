@@ -4,30 +4,37 @@
   function smoothMarquee(id, pxPerSec){
     var track = document.getElementById(id);
     if(!track) return;
-    track.insertAdjacentHTML("beforeend", track.innerHTML);
-    if(reduce) return;
-    var half = 0, pos = 0, vel = 1, target = 1, lastT = -1, running = false;
     var box = track.parentElement;
-    function measure(){ half = track.scrollWidth / 2; }
+    var seed = track.innerHTML;
+    var unit = 0, pos = 0, vel = 1, target = 1, lastT = -1, running = false;
+    function layout(){
+      track.innerHTML = seed;
+      unit = track.scrollWidth;
+      var guard = 0;
+      while(box.clientWidth && track.scrollWidth < box.clientWidth * 2 + unit && guard < 8){
+        track.insertAdjacentHTML("beforeend", seed);
+        guard++;
+      }
+    }
+    if(reduce){ layout(); return; }
     function tick(now){
       if(lastT < 0) lastT = now;
       var dt = Math.min((now - lastT) / 1000, 0.05); lastT = now;
       vel += (target - vel) * Math.min(1, dt * 2.6);
       pos -= pxPerSec * dt * vel;
-      if(half > 0 && -pos >= half) pos += half;
+      if(unit > 0 && -pos >= unit) pos += unit;
       track.style.transform = "translate3d(" + pos + "px,0,0)";
       requestAnimationFrame(tick);
     }
     function kickoff(){
-      measure();
+      layout();
       if(!running){ running = true; requestAnimationFrame(tick); }
     }
-    box.addEventListener("mouseenter", function(){ target = 0; });
+    box.addEventListener("mouseenter", function(){ target = 0.28; });
     box.addEventListener("mouseleave", function(){ target = 1; });
-    addEventListener("resize", function(){ requestAnimationFrame(measure); });
-    /* Separate DOM write from geometry read (avoids forced reflow) */
+    addEventListener("resize", function(){ requestAnimationFrame(function(){ layout(); }); });
     requestAnimationFrame(function(){ requestAnimationFrame(kickoff); });
-    if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ requestAnimationFrame(measure); });
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ requestAnimationFrame(layout); });
   }
 
   var io;
