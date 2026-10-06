@@ -30,8 +30,8 @@ Tech marquee can list tools (and light easter eggs like Minecraft). Space words 
 - Ultron lives at `https://github.com/AMVARA-CONSULTING/ultron-redmine` (repo moved off Luipy56).
 - Ecosystem map: capability layers (web / automation / infra), not a tech-name dump; no brittle static service counts on the hub node.
 
-## Deploy & sync
+## Deploy
 
-- DocumentRoot for the apex is `/var/www/ldeluipy.es`. After edits here, keep `vault.ldeluipy.es/ldeluipy.es/` in sync if that mirror still exists.
+- DocumentRoot for the apex is `/var/www/ldeluipy.es`. Apache serves that folder live; there is no vault mirror to keep in sync.
 - Do not expose tooling dirs (`.cursor`, `.hallmark`, `.git`) via Apache.
 - Commits: author **Luipy56**; commit messages must not mention AI tooling.
