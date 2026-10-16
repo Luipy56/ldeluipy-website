@@ -106,6 +106,21 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;font-style:normal;letter-spacing:
   background: var(--paper);
   overflow: hidden;
 }
+.prose .flow-map.flow-map--laya iframe{
+  aspect-ratio: 1240 / 760;
+}
+.prose .flow-caption{
+  --flow-w: min(1100px, 96vw);
+  width: var(--flow-w);
+  max-width: none;
+  margin: var(--s3) auto var(--s2);
+  margin-inline: calc((100% - var(--flow-w)) / 2);
+  font-family: var(--fm);
+  font-size: .78rem;
+  letter-spacing: .04em;
+  color: var(--neutral);
+  text-align: center;
+}
 .prose .flow-source{
   --flow-w: min(1100px, 96vw);
   width: var(--flow-w);
@@ -212,6 +227,7 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;font-style:normal;letter-spacing:
 
     <h2 class="reveal" style="--reveal-delay:0ms">Cómo fluye</h2>
     <p class="reveal" style="--reveal-delay:60ms">Maestro es un bot en Discord. Consulta el catálogo, abre una sesión con el Modelo IA y llega a los servidores por SSH. Si el camino directo falla o el caso lo pide, pasa por un puente SSH con sus propias normas y contexto.</p>
+    <p class="flow-caption reveal" style="--reveal-delay:100ms">Hoy · flujo simple</p>
     <div class="flow-map reveal" style="--reveal-delay:120ms">
       <iframe
         class="diagram"
@@ -222,8 +238,20 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;font-style:normal;letter-spacing:
         scrolling="no"
       ></iframe>
     </div>
-    <p class="flow-source reveal" style="--reveal-delay:200ms">
+    <p class="flow-caption reveal" style="--reveal-delay:160ms">Próximo · gates Laya + debate ChatGPT</p>
+    <div class="flow-map flow-map--laya reveal" style="--reveal-delay:180ms">
+      <iframe
+        class="diagram"
+        title="Diagrama interactivo de Maestro con gates Laya (Harm, Mode, Project, Reply) y debate ChatGPT: Luipy, Discord, Maestro, Catalog, cursor-agent, Fleet, Redmine, OpenCloud y Projects."
+        src="/maestro/maestro-runtime-laya-chatgpt.architecture.html?theme=dark"
+        loading="lazy"
+        referrerpolicy="no-referrer"
+        scrolling="no"
+      ></iframe>
+    </div>
+    <p class="flow-source reveal" style="--reveal-delay:220ms">
       <a href="/maestro/maestro-runtime.architecture.html?theme=dark" target="_blank" rel="noopener noreferrer">Mapa completo</a>
+      <a href="/maestro/maestro-runtime-laya-chatgpt.architecture.html?theme=dark" target="_blank" rel="noopener noreferrer">Mapa Laya + ChatGPT</a>
       <a href="/maestro/maestro-fleet.architecture.html?theme=dark" target="_blank" rel="noopener noreferrer">Hosts del catálogo</a>
     </p>
 
