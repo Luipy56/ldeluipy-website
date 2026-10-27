@@ -1,0 +1,40 @@
+/* Bridge-only tweaks on top of helio3 Lab CSS */
+body[data-page="bridge"] .hero-bridge {
+  padding: calc(var(--nav-h) + 3rem) 0 3rem;
+  min-height: min(78svh, 720px);
+  display: flex;
+  align-items: center;
+}
+body[data-page="bridge"] .hero-bridge .wrap {
+  width: var(--wrap);
+  margin-inline: auto;
+}
+body[data-page="bridge"] .bridge-note {
+  color: var(--muted);
+  max-width: 42ch;
+  margin: 1rem 0 0;
+}
+body[data-page="bridge"] .site-foot {
+  margin-top: 2rem;
+}
+/* Lang as links (portfolio ES/EN pages) inside theme tools */
+.bridge-lang {
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+}
+.bridge-lang a {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.25rem 0.45rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+}
+.bridge-lang a[aria-current="page"] {
+  color: var(--neon);
+  border-color: rgba(var(--accent-rgb), 0.35);
+}
+.bridge-lang a:hover { color: var(--neon); }
