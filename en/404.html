@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 · path not found · Luipy</title>
+<meta name="description" content="This path does not exist on ldeluipy.es.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#0a1410">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/site.css?v=20261025a">
+</head>
+<body class="lost-page">
+
+  <header class="banner" id="banner">
+    <a class="b" href="/en/">luipy</a>
+    <div class="end">
+      <nav class="langs" aria-label="Language">
+        <a href="/" hreflang="es" lang="es">ES</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <a href="/en/" hreflang="en" lang="en" aria-current="page">EN</a>
+      </nav>
+      <a class="cta" href="/en/">Home</a>
+    </div>
+  </header>
+
+  <main class="lost">
+    <div class="lost-art" aria-hidden="true"></div>
+    <div class="lost-c">
+      <p class="lost-code" aria-hidden="true">404</p>
+      <span class="k">Path not found</span>
+      <h1>This URL is not <span class="g">here</span>.</h1>
+      <p>You asked for something this server does not serve. No drama: head home or switch language.</p>
+      <p class="lost-path">
+        <span class="lbl">requested</span>
+        <code id="lost-path">/</code>
+      </p>
+      <div class="a">
+        <a class="btn primary" href="/en/">Back home</a>
+        <a class="btn ghost" href="/">Español</a>
+      </div>
+    </div>
+  </main>
+
+<script>
+(function () {
+  var el = document.getElementById("lost-path");
+  if (!el) return;
+  el.textContent = (location.pathname || "/") + location.search + location.hash;
+})();
+</script>
+</body>
+</html>

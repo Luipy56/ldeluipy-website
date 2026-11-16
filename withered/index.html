@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Withered Nexus · servidor Minecraft de Luipy</title>
+<meta name="description" content="Withered Nexus es el servidor Minecraft de Luipy: Survival Hard, crossplay Java + Bedrock. Sitio oficial en mc.ldeluipy.es.">
+<link rel="canonical" href="https://ldeluipy.es/withered/">
+<link rel="alternate" hreflang="es" href="https://ldeluipy.es/withered/">
+<link rel="alternate" hreflang="en" href="https://ldeluipy.es/en/withered/">
+<link rel="alternate" hreflang="x-default" href="https://ldeluipy.es/withered/">
+<meta name="theme-color" content="#1a0a2e">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Luipy">
+<meta property="og:url" content="https://ldeluipy.es/withered/">
+<meta property="og:title" content="Withered Nexus · servidor Minecraft de Luipy">
+<meta property="og:description" content="Survival Hard · crossplay Java + Bedrock. Sitio oficial: mc.ldeluipy.es">
+<meta property="og:image" content="https://ldeluipy.es/withered/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Withered Nexus · servidor Minecraft de Luipy">
+<meta name="twitter:description" content="Survival Hard · crossplay Java + Bedrock. Sitio oficial: mc.ldeluipy.es">
+<meta name="twitter:image" content="https://ldeluipy.es/withered/assets/og.jpg">
+<link rel="icon" href="/withered/assets/withered_coin.png" type="image/png">
+<link rel="stylesheet" href="/withered/withered-landing.css?v=20261025a">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://ldeluipy.es/withered/#page","name":"Withered Nexus","url":"https://ldeluipy.es/withered/","description":"Portfolio bridge for Withered Nexus, Luipy's Minecraft server.","isPartOf":{"@type":"WebSite","@id":"https://ldeluipy.es/#website","url":"https://ldeluipy.es/","name":"Luipy"},"about":{"@type":"WebSite","name":"Withered Nexus","url":"https://mc.ldeluipy.es/"},"author":{"@type":"Person","@id":"https://ldeluipy.es/#person","name":"Luipy","url":"https://ldeluipy.es/"}}
+</script>
+</head>
+<body>
+  <header class="wn-nav">
+    <a class="brand" href="https://mc.ldeluipy.es/">
+      <img src="/withered/assets/withered_coin.png" width="28" height="28" alt="">
+      Withered Nexus
+    </a>
+    <div class="end">
+      <nav class="langs" aria-label="Idioma">
+        <a href="/withered/" hreflang="es" lang="es" aria-current="page">ES</a>
+        <span aria-hidden="true">/</span>
+        <a href="/en/withered/" hreflang="en" lang="en">EN</a>
+      </nav>
+      <a class="back" href="/">← Luipy</a>
+    </div>
+  </header>
+
+  <main class="wn-main">
+    <article class="wn-card">
+      <p class="wn-kicker">Minecraft · producción</p>
+      <h1>Withered Nexus</h1>
+      <p class="wn-lead">Mi servidor Minecraft. Survival Hard en Paper, Java y Bedrock.</p>
+      <p>Estado, info y cómo entrar están en <strong>mc.ldeluipy.es</strong>.</p>
+      <ul class="wn-list">
+        <li>Survival Hard · Paper</li>
+        <li>Crossplay Java + Bedrock</li>
+        <li>Claims, AuthMe y economía Withered Coin</li>
+        <li>IP: <code style="color:var(--accent)">mc.ldeluipy.es</code></li>
+      </ul>
+      <div class="wn-actions">
+        <a class="btn primary" href="https://mc.ldeluipy.es/">Sitio oficial · mc.ldeluipy.es</a>
+        <button class="btn ghost" type="button" id="copyip" data-ip="mc.ldeluipy.es" data-label="Copiar IP" data-done="IP copiada ✓">Copiar IP</button>
+      </div>
+      <p class="wn-note">Otros proyectos en <a href="/">ldeluipy.es</a>. Helio-3: <a href="/helio-3/">/helio-3/</a>.</p>
+    </article>
+  </main>
+
+  <footer class="wn-foot">
+    <span>© 2026 Luipy · Withered Nexus</span>
+    <a href="/">ldeluipy.es</a>
+  </footer>
+<script>
+(function () {
+  var btn = document.getElementById("copyip");
+  if (!btn) return;
+  btn.addEventListener("click", function () {
+    var ip = btn.getAttribute("data-ip") || "mc.ldeluipy.es";
+    var done = btn.getAttribute("data-done") || "OK";
+    var label = btn.getAttribute("data-label") || "Copy IP";
+    function ok() {
+      btn.textContent = done;
+      setTimeout(function () { btn.textContent = label; }, 1600);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(ip).then(ok).catch(function () {
+        window.prompt("IP", ip);
+      });
+    } else {
+      window.prompt("IP", ip);
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 · ruta no encontrada · Luipy</title>
+<meta name="description" content="Esta ruta no existe en ldeluipy.es.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#0a1410">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/site.css?v=20261025a">
+</head>
+<body class="lost-page">
+
+  <header class="banner" id="banner">
+    <a class="b" href="/">luipy</a>
+    <div class="end">
+      <nav class="langs" aria-label="Idioma">
+        <a href="/" hreflang="es" lang="es" aria-current="page">ES</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <a href="/en/" hreflang="en" lang="en">EN</a>
+      </nav>
+      <a class="cta" href="/">Inicio</a>
+    </div>
+  </header>
+
+  <main class="lost">
+    <div class="lost-art" aria-hidden="true"></div>
+    <div class="lost-c">
+      <p class="lost-code" aria-hidden="true">404</p>
+      <span class="k">Ruta no encontrada</span>
+      <h1>Esta URL no existe <span class="g">aquí</span>.</h1>
+      <p>Pediste algo que este servidor no sirve. Sin drama: vuelve al inicio o cambia de idioma.</p>
+      <p class="lost-path">
+        <span class="lbl">pedida</span>
+        <code id="lost-path">/</code>
+      </p>
+      <div class="a">
+        <a class="btn primary" href="/">Volver al inicio</a>
+        <a class="btn ghost" href="/en/">English</a>
+      </div>
+    </div>
+  </main>
+
+<script>
+(function () {
+  var el = document.getElementById("lost-path");
+  if (!el) return;
+  el.textContent = (location.pathname || "/") + location.search + location.hash;
+})();
+</script>
+</body>
+</html>

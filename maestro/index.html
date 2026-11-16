@@ -5,8 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maestro · orquestador Discord · Luipy</title>
 <meta name="description" content="Maestro: agente ultra-orquestador en Discord que convierte una orden en una sesión enfocada, con catálogo de proyectos, contexto e hilos persistentes.">
+<link rel="canonical" href="https://ldeluipy.es/maestro/">
 <meta name="theme-color" content="#0a1410">
 <meta property="og:type" content="article">
+<meta property="og:url" content="https://ldeluipy.es/maestro/">
 <meta property="og:title" content="Maestro · orquestador Discord · Luipy">
 <meta property="og:description" content="Agente ultra-orquestador en Discord: sesión enfocada, catálogo de proyectos y hilos persistentes.">
 <meta property="og:image" content="https://ldeluipy.es/maestro/maestro.png">
@@ -220,7 +222,7 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;font-style:normal;letter-spacing:
     <p class="reveal" style="--reveal-delay:100ms">Cuando el caso termina, cierras el hilo. Maestro deja un resumen de lo hecho: cambios, decisiones y motivos. Si el caso lo pide, también una nota en el tracker. El chat deja de ser el lugar de trabajo; lo que importa queda escrito fuera.</p>
 
     <h2 class="reveal" style="--reveal-delay:0ms">Los servidores</h2>
-    <p class="reveal" style="--reveal-delay:60ms">Hay unos diez servidores y cerca de cuarenta proyectos registrados en el catálogo. Unos sirven webs y APIs, otros levantan las herramientas internas del día a día, y el resto se reparte el correo, el almacenamiento y los modelos que corren en local con Ollama. Lo que no está en el catálogo no existe para él. Además del trabajo por proyecto están los casos de operación: repasar los journals de errores de cada servidor y arreglar lo que esté en su mano, o avisarle de un fallo para que lo localice, lo corrija y cuente qué ha cambiado. <a href="/maestro/maestro-fleet.architecture.html?theme=dark" target="_blank" rel="noopener noreferrer">Mapa de hosts del catálogo</a>.</p>
+    <p class="reveal" style="--reveal-delay:60ms">Hay unos diez servidores y cerca de cuarenta proyectos registrados en el catálogo. Unos sirven webs y APIs, otros levantan las herramientas internas del día a día, y el resto se reparte el correo, el almacenamiento y los modelos que corren en local con Ollama. Lo que no está en el catálogo no existe para él. Además alcanza CMDIP/Cognos por el pack howtocmdip (lu-zero → amvara8 → VPN), sin ser un host SSH del catálogo. Además del trabajo por proyecto están los casos de operación: repasar los journals de errores de cada servidor y arreglar lo que esté en su mano, o avisarle de un fallo para que lo localice, lo corrija y cuente qué ha cambiado. <a href="/maestro/maestro-fleet.architecture.html" target="_blank" rel="noopener noreferrer">Mapa de hosts del catálogo</a>.</p>
 
     <h2 class="reveal" style="--reveal-delay:0ms">Más que una carpeta</h2>
     <p class="reveal" style="--reveal-delay:60ms">Maestro puede estar trabajando en un proyecto de un servidor, darse cuenta de que necesita una herramienta que vive en otro y usarla sin instalar nada nuevo, porque el mapa de servidores ya está cargado. Sabe qué hay en cada máquina, cómo se llama y cómo se invoca. En un mismo hilo cruza proyectos, hosts y herramientas: mira un registro aquí, ejecuta allá y devuelve una sola respuesta. Un agente suelto solo ve la carpeta donde lo has arrancado.</p>
@@ -238,11 +240,11 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;font-style:normal;letter-spacing:
         scrolling="no"
       ></iframe>
     </div>
-    <p class="flow-caption reveal" style="--reveal-delay:160ms">Próximo · gates Laya + debate ChatGPT</p>
+    <p class="flow-caption reveal" style="--reveal-delay:160ms">Hoy · gates Laya + debate peer (2ª sesión cursor-agent)</p>
     <div class="flow-map flow-map--laya reveal" style="--reveal-delay:180ms">
       <iframe
         class="diagram"
-        title="Diagrama interactivo de Maestro con gates Laya (Harm, Mode, Project, Reply) y debate ChatGPT: Luipy, Discord, Maestro, Catalog, cursor-agent, Fleet, Redmine, OpenCloud y Projects."
+        title="Diagrama interactivo de Maestro con gates Laya (Harm, Mode, Project, Reply) y debate peer: segunda sesión efímera de cursor-agent (no API ChatGPT), Fleet, Redmine, OpenCloud y Projects."
         src="/maestro/maestro-runtime-laya-chatgpt.architecture.html?theme=dark"
         loading="lazy"
         referrerpolicy="no-referrer"
@@ -250,9 +252,9 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;font-style:normal;letter-spacing:
       ></iframe>
     </div>
     <p class="flow-source reveal" style="--reveal-delay:220ms">
-      <a href="/maestro/maestro-runtime.architecture.html?theme=dark" target="_blank" rel="noopener noreferrer">Mapa completo</a>
-      <a href="/maestro/maestro-runtime-laya-chatgpt.architecture.html?theme=dark" target="_blank" rel="noopener noreferrer">Mapa Laya + ChatGPT</a>
-      <a href="/maestro/maestro-fleet.architecture.html?theme=dark" target="_blank" rel="noopener noreferrer">Hosts del catálogo</a>
+      <a href="/maestro/maestro-runtime.architecture.html" target="_blank" rel="noopener noreferrer">Mapa completo</a>
+      <a href="/maestro/maestro-runtime-laya-chatgpt.architecture.html" target="_blank" rel="noopener noreferrer">Mapa Laya + debate peer</a>
+      <a href="/maestro/maestro-fleet.architecture.html" target="_blank" rel="noopener noreferrer">Hosts del catálogo (+ CMDIP)</a>
     </p>
 
     <h2 class="reveal" style="--reveal-delay:0ms">Qué puede hacer</h2>
