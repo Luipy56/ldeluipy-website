@@ -6,6 +6,9 @@
 <title>Maestro · orquestador Discord · Luipy</title>
 <meta name="description" content="Maestro: agente ultra-orquestador en Discord que convierte una orden en una sesión enfocada, con catálogo de proyectos, contexto e hilos persistentes.">
 <link rel="canonical" href="https://ldeluipy.es/maestro/">
+<link rel="alternate" hreflang="es" href="https://ldeluipy.es/maestro/">
+<link rel="alternate" hreflang="en" href="https://ldeluipy.es/en/maestro/">
+<link rel="alternate" hreflang="x-default" href="https://ldeluipy.es/maestro/">
 <meta name="theme-color" content="#0a1410">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://ldeluipy.es/maestro/">
@@ -15,6 +18,8 @@
 <meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="640">
 <meta property="og:image:height" content="640">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maestro · orquestador Discord · Luipy">
 <meta name="twitter:description" content="Agente ultra-orquestador en Discord: sesión enfocada, catálogo de proyectos y hilos persistentes.">
@@ -59,11 +64,17 @@ a:hover{color:var(--accent)}
 ::selection{background:var(--accent);color:var(--paper)}
 h1,h2,h3{font-family:var(--fd);font-weight:700;font-style:normal;letter-spacing:-0.03em;line-height:1.12;overflow-wrap:anywhere;min-width:0}
 
-.top{display:flex;justify-content:space-between;align-items:baseline;padding:var(--s6) max(4vw,var(--s6)) var(--s4);max-width:calc(var(--measure) + 8vw);margin-inline:auto}
+.top{display:flex;justify-content:space-between;align-items:baseline;padding:var(--s6) max(4vw,var(--s6)) var(--s4);max-width:calc(var(--measure) + 8vw);margin-inline:auto;gap:var(--s4);flex-wrap:wrap}
 .top a{font-family:var(--fm);font-size:.82rem;text-decoration:none;color:var(--neutral);letter-spacing:.04em}
 .top a:hover{color:var(--accent)}
 .top .mark{display:inline-flex;align-items:center;gap:.5ch;color:var(--ink);text-decoration:none}
 .top .mark .d{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.top .end{display:inline-flex;align-items:center;gap:var(--s4);margin-left:auto}
+.langs{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--fm);font-size:.78rem;letter-spacing:.08em}
+.langs a{color:var(--neutral);text-decoration:none}
+.langs a[aria-current="page"]{color:var(--accent)}
+.langs a:hover{color:var(--accent)}
+.langs .sep{color:var(--rule);user-select:none}
 
 .prose{width:min(var(--measure),92vw);margin:0 auto var(--s24)}
 .prose .meta{font-family:var(--fm);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2);margin-bottom:var(--s6);text-align:left}
@@ -198,7 +209,14 @@ h1,h2,h3{font-family:var(--fd);font-weight:700;font-style:normal;letter-spacing:
 
   <header class="top enter-nav">
     <a class="mark" href="/"><span class="d" aria-hidden="true"></span>luipy</a>
-    <a href="/#contacto">Contactar</a>
+    <div class="end">
+      <nav class="langs" aria-label="Idioma">
+        <a href="/maestro/" hreflang="es" lang="es" aria-current="page">ES</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <a href="/en/maestro/" hreflang="en" lang="en">EN</a>
+      </nav>
+      <a href="/#contacto">Contactar</a>
+    </div>
   </header>
 
   <article class="prose">

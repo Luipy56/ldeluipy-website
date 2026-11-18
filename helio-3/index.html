@@ -6,6 +6,8 @@
   <title>Helio-3 · demo gratis en Steam</title>
   <meta name="description" content="Helio-3 The Lab: demo gratis en Steam. Proyecto de videojuegos de Luipy (The Lab y The Moon). El juego completo llega pronto. Sitio oficial en helio3.ldeluipy.es.">
   <meta name="theme-color" content="#05070A">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
   <link rel="canonical" href="https://ldeluipy.es/helio-3/">
   <link rel="alternate" hreflang="es" href="https://ldeluipy.es/helio-3/">
   <link rel="alternate" hreflang="en" href="https://ldeluipy.es/en/helio-3/">
@@ -31,9 +33,9 @@
 </head>
 <body data-theme="cyan">
   <div class="menu-tools">
-    <div class="bridge-lang" aria-label="Idioma">
-      <a href="/helio-3/" hreflang="es" lang="es" aria-current="page">ES</a>
-      <a href="/en/helio-3/" hreflang="en" lang="en" target="_blank" rel="noopener noreferrer">EN</a>
+    <div class="bridge-lang" role="group" aria-label="Idioma">
+      <a href="/helio-3/" hreflang="es" lang="es" target="_self" aria-current="page">ES</a>
+      <a href="/en/helio-3/" hreflang="en" lang="en" target="_self">EN</a>
     </div>
   </div>
 
@@ -82,7 +84,7 @@
             </a>
           </li>
           <li>
-            <a class="menu-btn" href="/" target="_blank" rel="noopener noreferrer">
+            <a class="menu-btn" href="/" target="_self">
               <span class="corner-tr" aria-hidden="true"></span>
               <span class="corner-bl" aria-hidden="true"></span>
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4.5v7M8.5 8.5 12 5l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter"/><circle cx="12" cy="16.5" r="3.2" stroke="currentColor" stroke-width="1.6"/></svg>
@@ -92,7 +94,7 @@
         </ul>
       </nav>
 
-      <p class="menu-foot">web bridge · by <a href="/" target="_blank" rel="noopener noreferrer">Luipy</a></p>
+      <p class="menu-foot">web bridge · by <a href="/" target="_self">Luipy</a></p>
     </div>
 
     <div class="menu-right" aria-hidden="true">
@@ -115,6 +117,21 @@
       </div>
     </div>
   </main>
-  <script src="/helio-3/bridge-field-bg.js?v=20261115e" defer></script>
+  <script src="/helio-3/bridge-field-bg.js?v=20261118a" defer></script>
+  <script>
+    (function () {
+      document.querySelectorAll(".bridge-lang a").forEach(function (a) {
+        a.setAttribute("target", "_self");
+        a.removeAttribute("rel");
+        a.addEventListener("click", function (ev) {
+          if (ev.defaultPrevented) return;
+          if (ev.button !== 0) return;
+          if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
+          ev.preventDefault();
+          window.location.assign(a.href);
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maestro · Discord orchestrator · Luipy</title>
+<meta name="description" content="Maestro: Discord ultra-orchestrator by Luipy. English page scaffold — full copy pending.">
+<link rel="canonical" href="https://ldeluipy.es/en/maestro/">
+<link rel="alternate" hreflang="es" href="https://ldeluipy.es/maestro/">
+<link rel="alternate" hreflang="en" href="https://ldeluipy.es/en/maestro/">
+<link rel="alternate" hreflang="x-default" href="https://ldeluipy.es/maestro/">
+<meta name="theme-color" content="#0a1410">
+<meta name="robots" content="noindex,follow">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ldeluipy.es/en/maestro/">
+<meta property="og:title" content="Maestro · Discord orchestrator · Luipy">
+<meta property="og:description" content="English scaffold for the Maestro case page. Full translation pending.">
+<meta property="og:image" content="https://ldeluipy.es/maestro/maestro.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="640">
+<meta property="og:image:height" content="640">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="es_ES">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Maestro · Discord orchestrator · Luipy">
+<meta name="twitter:description" content="English scaffold for the Maestro case page. Full translation pending.">
+<meta name="twitter:image" content="https://ldeluipy.es/maestro/maestro.png">
+<link rel="icon" href="/maestro/maestro.png" type="image/png">
+<link rel="apple-touch-icon" href="/maestro/maestro.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* Hallmark · macrostructure: Long Document · genre: atmospheric · theme: dark aurora (site tokens)
+ * nav: N9 edge-min · footer: Ft2 inline · enrichment: none
+ * pre-emit critique: P5 H4 E4 S5 R5 V4
+ * display: Sora · body: IBM Plex Sans · mono: JetBrains Mono · accent #0f0 */
+@font-face{font-family:"Sora";font-style:normal;font-weight:600 700;font-display:optional;
+  src:url("/fonts/sora-latin.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400 500;font-display:optional;
+  src:url("/fonts/ibm-plex-sans-latin.woff2") format("woff2")}
+@font-face{font-family:"JetBrains Mono";font-style:normal;font-weight:400 500;font-display:optional;
+  src:url("/fonts/jetbrains-mono-latin.woff2") format("woff2")}
+:root{
+  --paper:oklch(14% 0.02 160);--paper-2:oklch(18% 0.024 160);--paper-3:oklch(23% 0.03 160);
+  --rule:oklch(30% 0.03 160);--ink:oklch(96% 0.02 155);--muted:oklch(78% 0.035 155);--neutral:oklch(62% 0.03 155);
+  --accent:#0f0;--accent2:oklch(82% 0.2 155);--glow:oklch(86% 0.28 150/.35);--focus:#0f0;
+  --fd:"Sora",system-ui,sans-serif;--fb:"IBM Plex Sans",system-ui,sans-serif;--fm:"JetBrains Mono",monospace;
+  --s2:.5rem;--s3:.75rem;--s4:1rem;--s6:1.5rem;--s8:2rem;--s10:2.5rem;--s12:3rem;--s16:4rem;--s20:5rem;--s24:6rem;
+  --measure:65ch;
+  --eo:cubic-bezier(0.16,1,0.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--fb);font-size:1.05rem;line-height:1.7;-webkit-font-smoothing:antialiased;position:relative}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(40% 35% at 88% 0%, oklch(60% 0.22 155/.14), transparent 70%),
+    radial-gradient(35% 40% at 0% 100%, oklch(55% 0.2 175/.1), transparent 70%)}
+.page{position:relative;z-index:1}
+a{color:var(--accent2);text-decoration:underline;text-underline-offset:.18em;text-decoration-thickness:1px}
+a:hover{color:var(--accent)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+::selection{background:var(--accent);color:var(--paper)}
+h1,h2,h3{font-family:var(--fd);font-weight:700;font-style:normal;letter-spacing:-0.03em;line-height:1.12;overflow-wrap:anywhere;min-width:0}
+
+.top{display:flex;justify-content:space-between;align-items:baseline;padding:var(--s6) max(4vw,var(--s6)) var(--s4);max-width:calc(var(--measure) + 8vw);margin-inline:auto;gap:var(--s4);flex-wrap:wrap}
+.top a{font-family:var(--fm);font-size:.82rem;text-decoration:none;color:var(--neutral);letter-spacing:.04em}
+.top a:hover{color:var(--accent)}
+.top .mark{display:inline-flex;align-items:center;gap:.5ch;color:var(--ink);text-decoration:none}
+.top .mark .d{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent)}
+.top .end{display:inline-flex;align-items:center;gap:var(--s4);margin-left:auto}
+.langs{display:inline-flex;align-items:center;gap:.4rem;font-family:var(--fm);font-size:.78rem;letter-spacing:.08em}
+.langs a{color:var(--neutral);text-decoration:none}
+.langs a[aria-current="page"]{color:var(--accent)}
+.langs a:hover{color:var(--accent)}
+.langs .sep{color:var(--rule);user-select:none}
+
+.prose{width:min(var(--measure),92vw);margin:0 auto var(--s24)}
+.prose .meta{font-family:var(--fm);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent2);margin-bottom:var(--s6);text-align:left}
+.prose .title-row{display:flex;align-items:center;justify-content:space-between;gap:var(--s6);margin-bottom:var(--s8)}
+.prose .title-row h1{flex:1 1 auto;min-width:0;margin-bottom:0}
+.prose .portrait{flex:0 0 auto;display:block;width:min(7.5rem,28vw);height:auto;aspect-ratio:1;margin:0;border-radius:1rem;border:1px solid var(--rule);box-shadow:0 0 0 1px oklch(60% 0.22 155/.25),0 0 36px var(--glow);object-fit:cover;background:var(--paper-2)}
+.prose h1{font-size:clamp(2.2rem,5.5vw,3.6rem);max-width:18ch;margin-bottom:var(--s8);overflow-wrap:normal;word-break:normal;text-align:left}
+.prose h1 .g{color:var(--accent);text-shadow:0 0 28px var(--glow)}
+@media(max-width:420px){
+  .prose .title-row{align-items:flex-start}
+  .prose .portrait{width:min(5.5rem,26vw)}
+}
+.prose .lede{font-size:1.22rem;color:var(--muted);margin-bottom:var(--s10);max-width:52ch;text-align:justify;text-justify:inter-word}
+.prose p{margin-bottom:var(--s6);color:var(--ink);text-align:justify;text-justify:inter-word}
+.prose p.dim{color:var(--muted)}
+.prose h2{font-size:1.15rem;margin:var(--s12) 0 var(--s4);color:var(--ink);letter-spacing:-0.02em;text-align:left}
+.prose h2::before{content:"";display:block;width:2rem;height:1px;background:var(--rule);margin-bottom:var(--s4)}
+.prose .orn{display:block;text-align:center;color:var(--accent);margin:var(--s12) 0;font-size:1.2rem;letter-spacing:.4em}
+.prose .toc{list-style:none;padding:0;margin:var(--s6) 0 var(--s8);border-top:1px solid var(--rule)}
+.prose .toc li{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);gap:var(--s3) var(--s4);padding:var(--s3) 0;border-bottom:1px solid var(--rule);align-items:baseline}
+@media(max-width:560px){.prose .toc li{grid-template-columns:1fr;gap:var(--s1)}}
+.prose .toc .cap{font-family:var(--fm);font-size:.82rem;color:var(--accent2);letter-spacing:.02em}
+.prose .toc .note{font-size:.95rem;color:var(--muted);text-align:justify;text-justify:inter-word;margin:0}
+.prose .flow-map{
+  --flow-w: min(1100px, 96vw);
+  width: var(--flow-w);
+  max-width: none;
+  margin: var(--s6) auto var(--s3);
+  margin-inline: calc((100% - var(--flow-w)) / 2);
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  line-height: 0;
+}
+.prose .flow-map iframe{
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1090 / 580;
+  border: 0;
+  background: var(--paper);
+  overflow: hidden;
+}
+.prose .flow-map.flow-map--laya iframe{
+  aspect-ratio: 1240 / 760;
+}
+.prose .flow-caption{
+  --flow-w: min(1100px, 96vw);
+  width: var(--flow-w);
+  max-width: none;
+  margin: var(--s3) auto var(--s2);
+  margin-inline: calc((100% - var(--flow-w)) / 2);
+  font-family: var(--fm);
+  font-size: .78rem;
+  letter-spacing: .04em;
+  color: var(--neutral);
+  text-align: center;
+}
+.prose .flow-source{
+  --flow-w: min(1100px, 96vw);
+  width: var(--flow-w);
+  max-width: none;
+  margin: var(--s4) auto var(--s8);
+  margin-inline: calc((100% - var(--flow-w)) / 2);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s3) var(--s6);
+  justify-content: center;
+  font-family: var(--fm);
+  font-size: .78rem;
+}
+.prose .flow-source a{
+  color: var(--neutral);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--rule);
+  padding-bottom: .1em;
+}
+.prose .flow-source a:hover{color: var(--accent); border-color: var(--accent)}
+
+/* Page enter + scroll reveal (Helio-3 pattern) */
+@keyframes luipy-fade-in{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes luipy-fade-up{
+  from{opacity:0;transform:translateY(14px)}
+  to{opacity:1;transform:none}
+}
+.enter-nav{
+  opacity:0;
+  animation:luipy-fade-in .7s var(--eo) forwards;
+  animation-delay:.35s;
+  animation-fill-mode:both;
+}
+.enter-item{
+  opacity:0;
+  animation:luipy-fade-up .75s var(--eo) forwards;
+  animation-delay:calc(.45s + (var(--enter,1) - 1) * .12s);
+  animation-fill-mode:both;
+}
+.reveal{
+  opacity:0;
+  transform:translateY(18px);
+  transition:opacity .75s var(--eo),transform .75s var(--eo);
+  transition-delay:var(--reveal-delay,0ms);
+}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .enter-nav,.enter-item{
+    opacity:1!important;
+    transform:none!important;
+    animation:none!important;
+  }
+  .reveal{opacity:1!important;transform:none!important;transition:none!important}
+}
+.prose .close{margin-top:var(--s12);padding-top:var(--s8);border-top:1px solid var(--rule);color:var(--muted);text-align:left}
+.prose .close a{font-family:var(--fd);font-weight:600;font-size:1.05rem;text-decoration:none;color:var(--ink)}
+.prose .close a:hover{color:var(--accent)}
+
+.foot{border-top:1px solid var(--rule);padding:var(--s6) max(4vw,var(--s6));max-width:calc(var(--measure) + 8vw);margin-inline:auto;font-family:var(--fm);font-size:.78rem;color:var(--neutral);display:flex;flex-wrap:wrap;gap:var(--s4);justify-content:space-between;align-items:baseline}
+.foot a{color:var(--neutral);text-decoration:none}
+.foot a:hover{color:var(--accent)}
+.visit-count{display:inline-flex;align-items:baseline;gap:.35rem;font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.visit-count [data-visit-count]{color:var(--accent);font-weight:500}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="top enter-nav">
+    <a class="mark" href="/en/"><span class="d" aria-hidden="true"></span>luipy</a>
+    <div class="end">
+      <nav class="langs" aria-label="Language">
+        <a href="/maestro/" hreflang="es" lang="es">ES</a>
+        <span class="sep" aria-hidden="true">/</span>
+        <a href="/en/maestro/" hreflang="en" lang="en" aria-current="page">EN</a>
+      </nav>
+      <a href="/en/#contact">Contact</a>
+    </div>
+  </header>
+
+  <article class="prose">
+    <p class="meta enter-item" style="--enter:1">Case · live system · EN scaffold</p>
+    <div class="title-row">
+      <h1 class="enter-item" style="--enter:2">Maestro, Discord <span class="g">orchestrator</span>.</h1>
+      <img class="portrait enter-item" style="--enter:3" src="/maestro/maestro.png" width="640" height="640" alt="Maestro: dark robot with headphones and golden eyes" decoding="async" fetchpriority="high">
+    </div>
+    <p class="lede enter-item" style="--enter:4">English copy for this page is not written yet. The route <code>/en/maestro/</code> is ready; switch language above, or read the Spanish case.</p>
+
+    <p class="reveal" style="--reveal-delay:0ms">Architecture diagrams (language-neutral) stay available:</p>
+    <p class="flow-source reveal" style="--reveal-delay:60ms">
+      <a href="/maestro/maestro-flow.architecture.html" target="_blank" rel="noopener noreferrer">Flow map</a>
+      <a href="/maestro/maestro-runtime-laya-chatgpt.architecture.html" target="_blank" rel="noopener noreferrer">Laya + peer map</a>
+      <a href="/maestro/maestro-fleet.architecture.html" target="_blank" rel="noopener noreferrer">Fleet hosts</a>
+      <a href="/maestro/" hreflang="es">Full Spanish page</a>
+    </p>
+
+    <p class="close reveal" style="--reveal-delay:100ms">
+      <a href="/en/#work">Back to cases</a>
+    </p>
+  </article>
+
+  <footer class="foot">
+    <span>© 2026 Luipy · Maestro</span>
+    <a href="/en/">ldeluipy.es</a>
+  </footer>
+
+</div>
+<script>
+(function () {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var nodes = document.querySelectorAll(".reveal");
+  if (!nodes.length) return;
+  if (reduce || !("IntersectionObserver" in window)) {
+    nodes.forEach(function (el) { el.classList.add("in"); });
+    return;
+  }
+  var afterNav = 900;
+  function observe() {
+    var io = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+    );
+    nodes.forEach(function (el) { io.observe(el); });
+  }
+  setTimeout(observe, afterNav);
+})();
+</script>
+</body>
+</html>
